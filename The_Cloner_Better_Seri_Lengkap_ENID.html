@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biji yang Membiji Ulang · The Cloner Better — Seri Lengkap · Go Kian Tik (Mbah Hogi Bejo™)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #faf8f2;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      line-height: 1.75;
+      color: #2c2c2a;
+      padding: 2rem 1rem;
+    }
+
+    .container { max-width: 760px; margin: 0 auto; }
+
+    /* ── LANGUAGE TOGGLE ── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      background: #faf8f2ee;
+      backdrop-filter: blur(6px);
+      padding: 0.5rem 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e2dcd0;
+    }
+
+    .lang-bar label {
+      font-family: monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8b7a5c;
+    }
+
+    .lang-toggle {
+      display: flex;
+      background: #e8f0e9;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid #c8d8c8;
+    }
+
+    .lang-btn {
+      padding: 0.3rem 0.9rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #8b7a5c;
+      transition: all 0.25s ease;
+    }
+
+    .lang-btn.active {
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 30px;
+    }
+
+    /* ── BILINGUAL SPANS ── */
+    [data-en] { display: none; }
+    body.en [data-id] { display: none; }
+    body.en [data-en] { display: inline; }
+
+    /* Block-level bilingual elements */
+    [data-en-block] { display: none; }
+    body.en [data-id-block] { display: none; }
+    body.en [data-en-block] { display: block; }
+
+    p[data-en-block], div[data-en-block] { display: none; }
+    body.en p[data-id-block], body.en div[data-id-block] { display: none; }
+    body.en p[data-en-block], body.en div[data-en-block] { display: block; }
+
+    /* ── HEADER ── */
+    .article-header {
+      margin-bottom: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #e2dcd0;
+      padding-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8b7a5c;
+      font-family: monospace;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .chinese-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #c9a227;
+      margin-bottom: 0.5rem;
+      letter-spacing: 4px;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #8b7a5c;
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .author {
+      font-size: 0.8rem;
+      color: #a89f8a;
+      font-family: monospace;
+    }
+
+    .series-nav {
+      background: #e8f0e9;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #2c5a3e;
+      line-height: 1.9;
+    }
+
+    .series-nav span {
+      background: #2c5a3e;
+      color: #faf8f2;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin: 0 0.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+    }
+
+    /* ── BODY ── */
+    .article-body { font-size: 1.05rem; }
+    .article-body p { margin-bottom: 1.25rem; }
+
+    .pull-quote {
+      margin: 1.8rem 0;
+      padding: 1.2rem 1.5rem;
+      background: #f0ede5;
+      border-left: 4px solid #c9a227;
+      font-style: italic;
+      color: #4a5b3a;
+      font-size: 1rem;
+    }
+
+    .pull-quote strong { color: #2c5a3e; font-style: normal; }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin: 1.8rem 0 0.8rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #e2dcd0;
+    }
+
+    .insight-box {
+      background: #e8f0e9;
+      padding: 1.2rem 1.5rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #2c5a3e;
+      border-left: 3px solid #2c5a3e;
+    }
+
+    .insight-box strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b7a5c;
+      font-family: monospace;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .pillar-card {
+      background: #f0ede5;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .pillar-card .pillar-char { font-size: 1.6rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; }
+    .pillar-card .pillar-name { font-size: 0.85rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; font-family: 'Cinzel', serif; }
+    .pillar-card .pillar-desc { font-size: 0.7rem; color: #8b7a5c; line-height: 1.4; }
+
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .level-card { background: #f0ede5; padding: 1rem; border-radius: 8px; text-align: center; }
+    .level-card .level-name { font-size: 1rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; }
+    .level-card .level-desc { font-size: 0.8rem; color: #8b7a5c; line-height: 1.4; margin-bottom: 0.5rem; }
+    .level-card .level-prob { font-size: 0.7rem; color: #c9a227; font-family: monospace; }
+
+    .paradox-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      align-items: center;
+    }
+
+    .paradox-card { background: #f0ede5; padding: 1rem; border-radius: 8px; text-align: center; }
+    .paradox-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #8b7a5c; margin-bottom: 0.5rem; }
+    .paradox-card .text { font-size: 0.85rem; line-height: 1.5; }
+    .paradox-arrow { font-size: 1.5rem; color: #c9a227; }
+
+    .comparison-table { margin: 1.5rem 0; border-collapse: collapse; width: 100%; }
+    .comparison-table th, .comparison-table td { border: 1px solid #e2dcd0; padding: 0.8rem; text-align: left; vertical-align: top; }
+    .comparison-table th { background: #e8f0e9; font-weight: 600; color: #2c5a3e; font-family: 'Cinzel', serif; font-size: 0.85rem; }
+
+    .closing {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .cta-box {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .cta-box a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: #c9a227;
+      color: #2c5a3e;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    .divider { margin: 2rem 0; text-align: center; color: #c9a227; font-size: 0.8rem; letter-spacing: 4px; }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2dcd0;
+      font-size: 0.7rem;
+      color: #a89f8a;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    hr { margin: 1.5rem 0; border: none; height: 1px; background: #e2dcd0; }
+
+    .seed { font-size: 2rem; margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body class="id">
+<div class="container">
+
+  <!-- ── LANGUAGE BAR ── -->
+  <div class="lang-bar">
+    <label>Bahasa /</label>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-id" onclick="setLang('id')">ID</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+
+  <!-- ── HEADER ── -->
+  <div class="article-header">
+    <div class="badge">🌱 Zì Zhǔ Zhě — The Sovereign One · <span data-id>Seri Lengkap</span><span data-en>Complete Series</span></div>
+    <div class="chinese-title">Biji yang Membiji Ulang</div>
+    <h1>The Cloner Better<br><span style="font-size:1.2rem; font-family:'Cormorant Garamond',serif; font-style:italic;">Wu · Neng · Xiu Xin Yang Xing · Qi · Dao Yin Shu · Xiāo Yáo</span></h1>
+    <div class="subhead">
+      <span data-id>Edisi Lengkap — Pewarisan Ekosistem Hidup dan Kebebasan di Atas Probabilitas</span>
+      <span data-en>Complete Edition — Inheriting a Living Ecosystem & Freedom Above Probability</span>
+    </div>
+    <div class="author">Go Kian Tik (Mbah Hogi Bejo™) · 自主者 · Depok, Indonesia · 2026</div>
+  </div>
+
+  <!-- ── SERIES NAV ── -->
+  <div class="series-nav">
+    <span><span data-id>Seri</span><span data-en>Series</span> 1</span>
+    <span data-id>Dalam Biji Sudah Ada Pohon — Empat Fase · Ekosistem Otonom · Wu · Neng · Xiu Xin Yang Xing · Qi · Dao Yin Shu</span>
+    <span data-en>Within the Seed the Tree Already Exists — Four Phases · Autonomous Ecosystem · Wu · Neng · Xiu Xin Yang Xing · Qi · Dao Yin Shu</span>
+    &nbsp;&nbsp;
+    <span><span data-id>Seri</span><span data-en>Series</span> 2</span>
+    <span data-id>Biji yang Sadar Terus Bertumbuh — Tumbuh dalam Diam, Tanpa Tepuk Tangan</span>
+    <span data-en>The Conscious Seed Keeps Growing — Growing in Silence, Without Applause</span>
+    &nbsp;&nbsp;
+    <span><span data-id>Seri</span><span data-en>Series</span> 3</span>
+    <span data-id>Biji yang Membiji — Xiāo Yáo · Ikhlas, Memilih, Berteguh di Atas Probabilitas</span>
+    <span data-en>The Seed That Seeds Again — Xiāo Yáo · Acceptance, Choice, Steadfastness Above Probability</span>
+  </div>
+
+  <div class="article-body">
+
+    <!-- ══════════════════ SERI 1 ══════════════════ -->
+    <p data-id-block>Di dalam biji, sudah ada pohon.<br>
+    Kalimat itu saya pegang sejak lama.<br>
+    Tapi baru belakangan ini saya sadar — kalimat itu hanya setengah cerita.</p>
+    <p data-en-block>Within the seed, the tree already exists.<br>
+    I have held that sentence for a long time.<br>
+    But only recently did I realize — it is only half the story.</p>
+
+    <p data-id-block>Setengah cerita yang lain adalah:<br>
+    <strong>Pohon yang berbuah — tidak otomatis menghasilkan biji yang sama kuatnya.</strong></p>
+    <p data-en-block>The other half is this:<br>
+    <strong>A tree that bears fruit — does not automatically produce seeds of equal strength.</strong></p>
+
+    <div class="pull-quote">
+      <span data-id>"Dalam model generatif alami, probabilitas generasi berikutnya berkinerja di bawah biji sebelumnya <strong>sangat besar</strong>."</span>
+      <span data-en>"In the natural generative model, the probability that the next generation performs below the previous seed is <strong>very high</strong>."</span>
+    </div>
+
+    <p data-id-block>Mengapa?<br>
+    Karena biji baru tidak mewarisi <em>sejarah perjuangan</em> pohon induknya.<br>
+    Biji baru tidak mengalami:<br>
+    — himpitan tanah yang keras<br>
+    — terpaan angin yang dingin<br>
+    — kekeringan yang hampir membunuh<br>
+    — dan — yang paling berat — <strong>keputusan untuk tetap bertumbuh</strong> ketika semua logika bilang berhenti.</p>
+    <p data-en-block>Why?<br>
+    Because the new seed does not inherit the <em>history of struggle</em> of its parent tree.<br>
+    The new seed has not experienced:<br>
+    — the compression of hard soil<br>
+    — the assault of cold wind<br>
+    — a drought that nearly killed<br>
+    — and — most weightily — <strong>the decision to keep growing</strong> when every logic said stop.</p>
+
+    <p data-id-block>Biji baru hanya mewarisi <strong>genetika</strong> — potensi mentah.<br>
+    Tapi tidak mewarisi <strong>wisdom</strong> dari proses menjadi pohon.</p>
+    <p data-en-block>The new seed inherits only <strong>genetics</strong> — raw potential.<br>
+    But not the <strong>wisdom</strong> of the process of becoming a tree.</p>
+
+    <!-- BIJI EKOSISTEM -->
+    <div class="section-title">
+      🌱 <span data-id>Bukan Sekadar Biji — Biji Adalah Ekosistem Otonom</span><span data-en>Not Just a Seed — A Seed Is an Autonomous Ecosystem</span>
+    </div>
+
+    <p data-id-block>Selama ini kita bicara biji sebagai <em>potensi</em>. Sebagai <em>awal dari pohon</em>. Sebagai <em>sesuatu yang kecil yang akan menjadi besar</em>.</p>
+    <p data-en-block>We have always spoken of the seed as <em>potential</em>. As the <em>beginning of a tree</em>. As <em>something small that will become great</em>.</p>
+
+    <p data-id-block>Tapi itu perspektif dari luar.</p>
+    <p data-en-block>But that is the perspective from outside.</p>
+
+    <p data-id-block>Dari dalam — <strong>biji adalah ekosistem otonom</strong>.<br>
+    — Ia punya <strong>sebab-akibat</strong> sendiri.<br>
+    — Ia punya <strong>konsekuensi</strong> sendiri.<br>
+    — Ia bisa <strong>sadar</strong> — dan setelah sadar, ia bisa <strong>nyadar</strong> (menyadari bahwa ia sadar).</p>
+    <p data-en-block>From within — <strong>a seed is an autonomous ecosystem</strong>.<br>
+    — It has its own <strong>cause and effect</strong>.<br>
+    — It has its own <strong>consequences</strong>.<br>
+    — It can be <strong>aware</strong> — and once aware, it can become <strong>meta-aware</strong> (aware that it is aware).</p>
+
+    <p data-id-block>Biji bukan benda mati yang menunggu ditanam.<br>
+    Biji adalah <strong>sistem kehidupan mini</strong> yang sudah berjalan — dengan detaknya sendiri, degupnya sendiri, denyutnya sendiri.</p>
+    <p data-en-block>A seed is not an inert object waiting to be planted.<br>
+    A seed is a <strong>living mini-system</strong> already in motion — with its own heartbeat, its own pulse, its own rhythm.</p>
+
+    <!-- DETAK -->
+    <div class="section-title">
+      ❤️ <span data-id>Detak, Degup, Denyut, Desah — Bahasa Kehidupan Biji</span><span data-en>Beat, Throb, Pulse, Breath — The Language of the Seed's Life</span>
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-char">📈</div>
+        <div class="pillar-name"><span data-id>Detak</span><span data-en>Beat</span></div>
+        <div class="pillar-desc"><span data-id>Irama dasar — konsistensi keberadaan</span><span data-en>Fundamental rhythm — consistency of existence</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">💪</div>
+        <div class="pillar-name"><span data-id>Degup</span><span data-en>Throb</span></div>
+        <div class="pillar-desc"><span data-id>Kekuatan — dorongan untuk bertahan</span><span data-en>Strength — the drive to persist</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">🌊</div>
+        <div class="pillar-name"><span data-id>Denyut</span><span data-en>Pulse</span></div>
+        <div class="pillar-desc"><span data-id>Fluktuasi — respons terhadap lingkungan</span><span data-en>Fluctuation — response to the environment</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">🌬️</div>
+        <div class="pillar-name"><span data-id>Desah</span><span data-en>Breath</span></div>
+        <div class="pillar-desc"><span data-id>Napas — pertukaran antara dalam dan luar</span><span data-en>Breath — the exchange between inner and outer</span></div>
+      </div>
+    </div>
+
+    <p data-id-block>Biji yang sehat — ekosistemnya berdetak, berdegup, berdenyut, dan berdesah dalam <strong>keselarasan</strong>.</p>
+    <p data-en-block>A healthy seed — its ecosystem beats, throbs, pulses, and breathes in <strong>harmony</strong>.</p>
+
+    <p data-id-block>Biji yang ruwet — ritmenya kacau.<br>
+    — Detaknya tidak teratur (konsistensi hilang)<br>
+    — Degupnya melemah (dorongan hidup turun)<br>
+    — Denyutnya over-aktif atau mati (respons maladaptif)<br>
+    — Desahnya pendek, tergesa, atau tertahan (napas tidak mengalir)</p>
+    <p data-en-block>A disordered seed — its rhythm is chaotic.<br>
+    — Its beat is irregular (consistency lost)<br>
+    — Its throb weakens (vital drive diminished)<br>
+    — Its pulse is over-active or dead (maladaptive response)<br>
+    — Its breath is short, hurried, or held (breath does not flow)</p>
+
+    <p data-id-block><strong>Terapi lingua tidak cukup hanya menyentuh pikiran.</strong> Ia harus menyentuh <strong>seluruh ekosistem</strong> — termasuk napas.</p>
+    <p data-en-block><strong>Lingua therapy is not enough to touch only the mind.</strong> It must touch <strong>the entire ecosystem</strong> — including breath.</p>
+
+    <!-- QI -->
+    <div class="section-title">🌀 Qi — <span data-id>Daya Hidup yang Terpelihara</span><span data-en>The Preserved Life Force</span></div>
+
+    <p data-id-block>Di balik detak, degup, denyut, dan desah — ada <strong>Qi</strong>.</p>
+    <p data-en-block>Behind the beat, throb, pulse, and breath — there is <strong>Qi</strong>.</p>
+
+    <p data-id-block>Qi bukan energi mistis.<br>
+    Qi adalah <strong>daya hidup yang terpelihara</strong> — kemampuan sistem untuk tetap berfungsi, tetap bergerak, tetap tumbuh, meski dihimpit tanah keras.</p>
+    <p data-en-block>Qi is not mystical energy.<br>
+    Qi is <strong>preserved life force</strong> — the system's capacity to keep functioning, keep moving, keep growing, even when compressed by hard soil.</p>
+
+    <div class="insight-box">
+      <strong><span data-id>Biji yang Qi-nya terpelihara</span><span data-en>A Seed Whose Qi Is Preserved</span></strong>
+      <span data-id>— Bangun pagi tidak terasa berat<br>
+      — Napas tidak pendek-pendik cemas<br>
+      — Tubuh tidak kaku karena ketakutan yang membeku</span>
+      <span data-en>— Waking in the morning does not feel heavy<br>
+      — Breath is not short with anxiety<br>
+      — The body is not rigid from frozen fear</span>
+    </div>
+
+    <div class="insight-box">
+      <strong><span data-id>Biji yang Qi-nya tidak terpelihara</span><span data-en>A Seed Whose Qi Is Not Preserved</span></strong>
+      <span data-id>— Hidup terasa seperti beban<br>
+      — Setiap gerakan butuh effort ekstra<br>
+      — Napas pendek, dada sesak, energi terkuras</span>
+      <span data-en>— Life feels like a burden<br>
+      — Every movement requires extra effort<br>
+      — Short breath, tight chest, energy depleted</span>
+    </div>
+
+    <!-- XIU XIN -->
+    <div class="section-title">🧘 Xiu Xin Yang Xing — <span data-id>Memulihkan Hati, Membentuk Watak</span><span data-en>Restoring the Heart, Forming Character</span></div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-char">修心</div>
+        <div class="pillar-name">Xiu Xin</div>
+        <div class="pillar-desc"><span data-id>Memulihkan hati — membersihkan dari kebisingan, dari lingua toksik, dari luka</span><span data-en>Restoring the heart — cleansing from noise, toxic lingua, and wounds</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">養性</div>
+        <div class="pillar-name">Yang Xing</div>
+        <div class="pillar-desc"><span data-id>Membentuk watak — sehingga kebaikan menjadi alami, bukan usaha</span><span data-en>Forming character — so that goodness becomes natural, not an effort</span></div>
+      </div>
+    </div>
+
+    <p data-id-block><strong>Hubungan dengan The Cloner Better:</strong><br>
+    Generasi berikutnya tidak cukup mewarisi <em>Xin</em> yang sudah bersih. Ia harus mewarisi <em>Xing</em> yang sudah terbentuk — sehingga ia tidak perlu <em>berusaha</em> menjadi baik, tapi sudah <em>alami</em> menjadi baik.</p>
+    <p data-en-block><strong>Connection to The Cloner Better:</strong><br>
+    The next generation cannot simply inherit a clean <em>Xin</em>. It must inherit a formed <em>Xing</em> — so that it does not need to <em>strive</em> to be good, but already <em>naturally</em> is good.</p>
+
+    <!-- DAO YIN SHU -->
+    <div class="section-title">🌬️ Dao Yin Shu — <span data-id>Metode Praktik yang Terbukti</span><span data-en>A Proven Method of Practice</span></div>
+
+    <p data-id-block>Salah satu metode yang dipraktikkan umat Taoist selama ribuan tahun adalah <strong>Dao Yin Shu</strong> (導引術) — seni membimbing dan mengalirkan Qi melalui gerakan lembut, pernapasan sadar, dan visualisasi internal.</p>
+    <p data-en-block>One method practiced by Taoists for thousands of years is <strong>Dao Yin Shu</strong> (導引術) — the art of guiding and flowing Qi through gentle movement, conscious breathing, and internal visualization.</p>
+
+    <p data-id-block>Dao Yin Shu mengajarkan bahwa <strong>kesadaran tidak bisa dipaksakan</strong>. Ia harus <em>dituntun</em> — perlahan, sabar, mengikuti ritme individu.</p>
+    <p data-en-block>Dao Yin Shu teaches that <strong>awareness cannot be forced</strong>. It must be <em>guided</em> — slowly, patiently, following the individual's own rhythm.</p>
+
+    <!-- EMPAT FASE -->
+    <div class="section-title">🌱 <span data-id>Empat Fase Perjalanan Biji</span><span data-en>Four Phases of the Seed's Journey</span></div>
+
+    <p data-id-block><strong>Fase 1: Ruwet — Kena Sadar</strong><br>
+    Biji dalam kondisi mumet, ruwet — tiba-tiba kena sadar jagat raya secara holistik. Tekanan adalah katalis, bukan penghambat.</p>
+    <p data-en-block><strong>Phase 1: Disordered — Struck by Awareness</strong><br>
+    The seed is in a state of confusion, disorder — suddenly struck by holistic awareness of the universe. Pressure is a catalyst, not a hindrance.</p>
+
+    <p data-id-block><strong>Fase 2: Tertanam — Ketemu Jati Diri</strong><br>
+    Biji sudah jatuh ke tanah, terhimpit. Di sinilah jati diri ditemukan. Dan yang paling matang: <strong>ikhlas atas semua estimasi cost dari sebuah pohon</strong> — bukan pasrah buta, tapi keikhlasan yang sudah menghitung.</p>
+    <p data-en-block><strong>Phase 2: Planted — Finding the True Self</strong><br>
+    The seed has fallen to earth, compressed. Here the true self is found. And the most mature thing: <strong>acceptance of all estimated costs of becoming a tree</strong> — not blind resignation, but acceptance that has already calculated.</p>
+
+    <p data-id-block><strong>Fase 3: Sadar — Melanjutkan Bertumbuh</strong><br>
+    Biji sadar bahwa ia bisa berhenti kapan saja — tapi memilih tidak. Ini agensi penuh, Zì Zhǔ yang aktif. Di fase inilah OTW Genah menjadi Genah.</p>
+    <p data-en-block><strong>Phase 3: Aware — Continuing to Grow</strong><br>
+    The seed is aware it can stop at any moment — but chooses not to. This is full agency, active Zì Zhǔ. In this phase, "on the way to Genah" becomes Genah.</p>
+
+    <p data-id-block><strong>Fase 4: Membiji Ulang — The Cloner Better</strong><br>
+    Pohon yang matang berbuah. Tapi alam punya paradoks yang kejam:</p>
+    <p data-en-block><strong>Phase 4: Re-seeding — The Cloner Better</strong><br>
+    The mature tree bears fruit. But nature has a cruel paradox:</p>
+
+    <div class="paradox-grid">
+      <div class="paradox-card">
+        <div class="label"><span data-id>Model generatif alami</span><span data-en>Natural generative model</span></div>
+        <div class="text"><span data-id>Biji generasi berikutnya cenderung <strong>mundur</strong> dari pohon sebelumnya</span><span data-en>The next generation's seed tends to <strong>regress</strong> from the previous tree</span></div>
+      </div>
+      <div class="paradox-arrow">⟶</div>
+      <div class="paradox-card">
+        <div class="label">The Cloner Better</div>
+        <div class="text"><span data-id>Intervensi sadar untuk <strong>membalikkan probabilitas</strong> itu</span><span data-en>Conscious intervention to <strong>reverse that probability</strong></span></div>
+      </div>
+    </div>
+
+    <!-- SINTESIS -->
+    <div class="section-title">🔁 <span data-id>Sintesis: Yang Diwariskan dalam The Cloner Better</span><span data-en>Synthesis: What Is Inherited in The Cloner Better</span></div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-char">悟/無</div>
+        <div class="pillar-name">Wu</div>
+        <div class="pillar-desc"><span data-id>Kebijaksanaan melihat realitas — pola pikir, bukan dogma</span><span data-en>Wisdom in seeing reality — a way of thinking, not dogma</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">能</div>
+        <div class="pillar-name">Neng</div>
+        <div class="pillar-desc"><span data-id>Kemahiran konkret — keterampilan yang bisa dipraktikkan</span><span data-en>Concrete mastery — skills that can be practiced</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">修心</div>
+        <div class="pillar-name">Xiu Xin</div>
+        <div class="pillar-desc"><span data-id>Pemulihan hati — agar tidak membawa beban lama</span><span data-en>Heart restoration — so old burdens are not carried forward</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">養性</div>
+        <div class="pillar-name">Yang Xing</div>
+        <div class="pillar-desc"><span data-id>Pembentukan watak — kebaikan menjadi alami</span><span data-en>Character formation — goodness becomes natural</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">氣</div>
+        <div class="pillar-name">Qi</div>
+        <div class="pillar-desc"><span data-id>Daya hidup terpelihara — kapasitas energi</span><span data-en>Preserved life force — energy capacity</span></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">導引術</div>
+        <div class="pillar-name">Dao Yin Shu</div>
+        <div class="pillar-desc"><span data-id>Metode menuntun — cara, bukan hasil akhir</span><span data-en>Method of guiding — the way, not the final result</span></div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>The Cloner Better bukan kloning genetik.<br>
+        The Cloner Better adalah pewarisan ekosistem hidup — lengkap dengan napasnya, detaknya, Qi-nya, wataknya, dan cara menuntunnya.</span>
+        <span data-en>The Cloner Better is not genetic cloning.<br>
+        The Cloner Better is the inheritance of a living ecosystem — complete with its breath, its beat, its Qi, its character, and its way of guiding.</span>
+      </strong>
+    </div>
+
+    <!-- ══════════════════ SERI 2 ══════════════════ -->
+    <div class="divider">❉ ❉ ❉</div>
+
+    <div class="badge" style="text-align:center; display:block; margin: 1rem 0 0.5rem;">
+      🌱 <span data-id>Seri 2 dari 3</span><span data-en>Series 2 of 3</span>
+    </div>
+    <div class="chinese-title" style="font-size:1.5rem; text-align:center; margin:0.5rem 0;">覺種續生</div>
+    <div class="section-title" style="text-align:center; border-bottom: none; font-size:1.3rem;">
+      <span data-id>Biji yang Sadar Melanjutkan Bertumbuh</span><span data-en>The Conscious Seed Keeps Growing</span>
+    </div>
+
+    <p data-id-block>Sebuah biji tidak langsung menjadi pohon.<br>
+    Ia tumbuh dalam diam.<br>
+    Tanpa tepuk tangan.<br>
+    Tanpa validasi.</p>
+    <p data-en-block>A seed does not become a tree immediately.<br>
+    It grows in silence.<br>
+    Without applause.<br>
+    Without validation.</p>
+
+    <div class="pull-quote">
+      <span data-id>"Yang terlihat hari ini —<br>
+      adalah hasil dari proses panjang yang tidak terlihat kemarin."</span>
+      <span data-en>"What is visible today —<br>
+      is the result of a long process invisible yesterday."</span>
+    </div>
+
+    <p data-id-block>Tulisan ini adalah salah satu "biji".<br>
+    Saya tidak tahu siapa yang akan membaca.<br>
+    Saya tidak tahu kapan ia akan berbuah.<br>
+    Tapi saya percaya —</p>
+    <p data-en-block>This writing is one such "seed."<br>
+    I do not know who will read it.<br>
+    I do not know when it will bear fruit.<br>
+    But I believe —</p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>setiap kata yang ditanam dengan sadar,<br>akan menemukan waktunya.</span>
+        <span data-en>every word planted with awareness,<br>will find its time.</span>
+      </strong>
+    </div>
+
+    <div class="insight-box">
+      <strong>🌱 <span data-id>Ikut Menjadi Bagian dari Proses Ini</span><span data-en>Join This Process</span></strong>
+      <span data-id>Jika kamu merasa tulisan ini memberi sesuatu — insight, ketenangan, atau sudut pandang baru — kamu bisa ikut menjadi bagian dari proses ini.</span>
+      <span data-en>If this writing has given you something — insight, calm, or a new perspective — you can become part of this process.</span>
+      <br><br>
+      🌱 <a href="https://trakteer.id/gokiantik/post/gelindingkan-XewPC" style="color:#2c5a3e;" target="_blank"><span data-id>Dukung di Trakteer</span><span data-en>Support on Trakteer</span></a><br>
+      🌱 <a href="https://trakteer.id/gokiantik/post/gelindingkan-XewPC" style="color:#2c5a3e;" target="_blank"><span data-id>Ikuti perjalanan "Gelindingkan"</span><span data-en>Follow the "Gelindingkan" journey</span></a><br>
+      🌱 <span data-id>Tumbuh bersama, satu tulisan setiap waktu</span><span data-en>Grow together, one writing at a time</span>
+    </div>
+
+    <p data-id-block>Karena pada akhirnya...<br>kita semua sedang menanam sesuatu.</p>
+    <p data-en-block>Because in the end...<br>we are all planting something.</p>
+
+    <!-- ══════════════════ SERI 3 ══════════════════ -->
+    <div class="divider">❉ ❉ ❉</div>
+
+    <div class="badge" style="text-align:center; display:block; margin: 1rem 0 0.5rem;">
+      🌱 <span data-id>Seri 3 dari 3</span><span data-en>Series 3 of 3</span>
+    </div>
+    <div class="chinese-title" style="font-size:1.5rem; text-align:center; margin:1rem 0;">逍遙</div>
+    <div class="section-title" style="text-align:center; border-bottom: none;">
+      <span data-id>Xiāo Yáo — Ikhlas, Kemampuan Memilih dan Berteguh di Atas Probabilitas</span>
+      <span data-en>Xiāo Yáo — Acceptance, the Capacity to Choose and Stand Firm Above Probability</span>
+    </div>
+
+    <p data-id-block>Selama ini orang mengira <strong>Xiāo Yáo</strong> (逍遙) artinya "bebas" — bebas dari masalah, bebas dari keterikatan, bebas seperti angin yang melayang.</p>
+    <p data-en-block>People have long assumed <strong>Xiāo Yáo</strong> (逍遙) means "free" — free from problems, free from attachment, free like wind drifting through the air.</p>
+
+    <p data-id-block>Itu keliru. Itu adalah <strong>pelarian</strong>, bukan kebebasan.</p>
+    <p data-en-block>That is wrong. That is <strong>escape</strong>, not freedom.</p>
+
+    <div class="pull-quote">
+      <span data-id>"Xiāo Yáo bukan bebas dari masalah.<br>
+      Xiāo Yáo adalah <strong>ikhlas</strong> — kemampuan memilih dan berteguh <strong>di atas probabilitas</strong>."</span>
+      <span data-en>"Xiāo Yáo is not freedom from problems.<br>
+      Xiāo Yáo is <strong>acceptance</strong> — the capacity to choose and stand firm <strong>above probability</strong>."</span>
+    </div>
+
+    <!-- MISKONSEPSI -->
+    <div class="section-title">🍃 <span data-id>Miskonsepsi tentang Xiāo Yáo</span><span data-en>Misconceptions About Xiāo Yáo</span></div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th style="width:50%"><span data-id>Apa yang Bukan Xiāo Yáo</span><span data-en>What Xiāo Yáo Is Not</span></th>
+          <th style="width:50%"><span data-id>Apa Itu Xiāo Yáo</span><span data-en>What Xiāo Yáo Is</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-id>Bebas dari pilihan → tidak perlu memutuskan</span><span data-en>Free from choice → no need to decide</span></td>
+          <td><span data-id><strong>Mampu memilih dengan tenang</strong> — walau pilihan sulit</span><span data-en><strong>Able to choose calmly</strong> — even when the choice is hard</span></td>
+        </tr>
+        <tr>
+          <td><span data-id>Bebas dari ketidakpastian → hidup pasti</span><span data-en>Free from uncertainty → life is certain</span></td>
+          <td><span data-id><strong>Berteguh di atas ketidakpastian</strong> — walau hasil tidak pasti</span><span data-en><strong>Standing firm above uncertainty</strong> — even when outcomes are not certain</span></td>
+        </tr>
+        <tr>
+          <td><span data-id>Bebas dari probabilitas → semua pasti 100%</span><span data-en>Free from probability → everything is 100% certain</span></td>
+          <td><span data-id><strong>Hidup dengan probabilitas tanpa guncang</strong> — 60% atau 40% sama saja</span><span data-en><strong>Living with probability without being shaken</strong> — 60% or 40%, it's all the same</span></td>
+        </tr>
+        <tr>
+          <td><span data-id>Bebas dari konsekuensi → tidak pernah rugi</span><span data-en>Free from consequences → never at a loss</span></td>
+          <td><span data-id><strong>Menerima konsekuensi dengan utuh</strong> — tanpa penyesalan</span><span data-en><strong>Accepting consequences fully</strong> — without regret</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TINGKAT IKHLAS -->
+    <div class="section-title">🎲 <span data-id>Tingkatan Ikhlas — Berdasarkan Probabilitas</span><span data-en>Levels of Acceptance — Based on Probability</span></div>
+
+    <div class="level-grid">
+      <div class="level-card">
+        <div class="level-name"><span data-id>Ikhlas Buta</span><span data-en>Blind Acceptance</span></div>
+        <div class="level-desc"><span data-id>Pasrah total, mati rasa</span><span data-en>Total resignation, numbness</span></div>
+        <div class="level-prob"><span data-id>Kendali: 0%</span><span data-en>Control: 0%</span></div>
+      </div>
+      <div class="level-card">
+        <div class="level-name"><span data-id>Ikhlas Pasif</span><span data-en>Passive Acceptance</span></div>
+        <div class="level-desc"><span data-id>Menerima tapi mengeluh halus</span><span data-en>Accepting but quietly complaining</span></div>
+        <div class="level-prob"><span data-id>Kendali: 10-20%</span><span data-en>Control: 10-20%</span></div>
+      </div>
+      <div class="level-card">
+        <div class="level-name"><span data-id>Ikhlas Aktif</span><span data-en>Active Acceptance</span></div>
+        <div class="level-desc"><span data-id>Menerima sambil tetap berusaha</span><span data-en>Accepting while still striving</span></div>
+        <div class="level-prob"><span data-id>Kendali: 30-50%</span><span data-en>Control: 30-50%</span></div>
+      </div>
+      <div class="level-card">
+        <div class="level-name"><span data-id>Ikhlas Strategis</span><span data-en>Strategic Acceptance</span></div>
+        <div class="level-desc"><span data-id>Menerima, menghitung, memilih</span><span data-en>Accepting, calculating, choosing</span></div>
+        <div class="level-prob"><span data-id>Kendali: 60-80%</span><span data-en>Control: 60-80%</span></div>
+      </div>
+      <div class="level-card">
+        <div class="level-name"><span data-id>Ikhlas Transenden</span><span data-en>Transcendent Acceptance</span></div>
+        <div class="level-desc"><span data-id>Tenang, tidak gelisah — melampaui</span><span data-en>Calm, untroubled — transcending</span></div>
+        <div class="level-prob"><span data-id>100% dalam arah, 0% dalam hasil</span><span data-en>100% in direction, 0% in outcome</span></div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <span data-id>"Ikhlas transenden adalah ketika seseorang:<br>
+      100% yakin dengan <strong>kompas arah</strong> (benar sudah ditemukan)<br>
+      Tapi 0% melekat pada <strong>hasil</strong> (karena hasil adalah probabilitas)"</span>
+      <span data-en>"Transcendent acceptance is when a person:<br>
+      is 100% certain of the <strong>directional compass</strong> (the true bearing has been found)<br>
+      Yet 0% attached to <strong>outcome</strong> (because outcome is probability)"</span>
+    </div>
+
+    <!-- KOMPAS ARAH -->
+    <div class="section-title">🧭 <span data-id>Kompas Arah vs Peta Jalan</span><span data-en>Directional Compass vs Road Map</span></div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th><span data-id>Peta Jalan</span><span data-en>Road Map</span></th>
+          <th><span data-id>Kompas Arah</span><span data-en>Directional Compass</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-id>Detail, rigid, mudah usang</span><span data-en>Detailed, rigid, easily outdated</span></td>
+          <td><span data-id>Abstrak, fleksibel, tahan lama</span><span data-en>Abstract, flexible, durable</span></td>
+        </tr>
+        <tr>
+          <td><span data-id>Dalam ketidakpastian: patah</span><span data-en>Under uncertainty: breaks</span></td>
+          <td><span data-id>Dalam ketidakpastian: tetap bisa berjalan</span><span data-en>Under uncertainty: can still navigate</span></td>
+        </tr>
+        <tr>
+          <td><span data-id>Sumber: eksternal (orang lain, institusi)</span><span data-en>Source: external (others, institutions)</span></td>
+          <td><span data-id>Sumber: internal (ditemukan sendiri, diyakini sendiri)</span><span data-en>Source: internal (self-discovered, self-affirmed)</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p data-id-block><strong>Biji yang menemukan kompas arahnya</strong> — tidak akan tersesat meski peta tidak ada.</p>
+    <p data-en-block><strong>The seed that finds its directional compass</strong> — will not be lost even without a map.</p>
+
+    <!-- TIGA TINGKAT -->
+    <div class="section-title">📈 <span data-id>Tiga Tingkat Xiāo Yáo</span><span data-en>Three Levels of Xiāo Yáo</span></div>
+
+    <div class="level-grid">
+      <div class="level-card">
+        <div class="level-name"><span data-id>Xiāo Yáo Rendah</span><span data-en>Low Xiāo Yáo</span></div>
+        <div class="level-desc"><span data-id>Bebas dari tekanan eksternal</span><span data-en>Free from external pressure</span></div>
+        <div class="level-prob"><span data-id>Masih butuh situasi mendukung</span><span data-en>Still needs favorable conditions</span></div>
+      </div>
+      <div class="level-card">
+        <div class="level-name"><span data-id>Xiāo Yáo Menengah</span><span data-en>Mid Xiāo Yáo</span></div>
+        <div class="level-desc"><span data-id>Bebas dari gejolak internal</span><span data-en>Free from internal turbulence</span></div>
+        <div class="level-prob"><span data-id>Tenang meski situasi tidak mendukung</span><span data-en>Calm even when conditions are unfavorable</span></div>
+      </div>
+      <div class="level-card">
+        <div class="level-name"><span data-id>Xiāo Yáo Tinggi</span><span data-en>High Xiāo Yáo</span></div>
+        <div class="level-desc"><span data-id>Bebas dalam memilih — di atas probabilitas apapun</span><span data-en>Free in choosing — above any probability</span></div>
+        <div class="level-prob"><span data-id>Tidak ada situasi yang bisa menggoyahkan kompas arah</span><span data-en>No situation can shake the directional compass</span></div>
+      </div>
+    </div>
+
+    <!-- XIAO YAO & THE CLONER BETTER -->
+    <div class="section-title">🌱 <span data-id>Xiāo Yáo dan The Cloner Better</span><span data-en>Xiāo Yáo and The Cloner Better</span></div>
+
+    <p data-id-block>Biji yang membiji ulang — tidak bisa memastikan masa depan biji barunya.</p>
+    <p data-en-block>The seed that re-seeds — cannot guarantee the future of its new seeds.</p>
+
+    <p data-id-block>Ia tidak bisa mengendalikan:<br>
+    — Tanah tempat biji jatuh<br>
+    — Cuaca yang akan menerpa<br>
+    — Tangan yang akan menyiram atau menginjak</p>
+    <p data-en-block>It cannot control:<br>
+    — The soil where the seed falls<br>
+    — The weather that will come<br>
+    — The hands that will water or trample</p>
+
+    <p data-id-block>Tapi ia bisa <strong>mewariskan Xiāo Yáo</strong>:<br>
+    — Kemampuan memilih — tidak lumpuh oleh ketidakpastian<br>
+    — Kemampuan berteguh — kompas arah tidak goyah<br>
+    — Kemampuan ikhlas — hasil tidak menggoyahkan ketenangan</p>
+    <p data-en-block>But it can <strong>inherit Xiāo Yáo</strong>:<br>
+    — The capacity to choose — not paralyzed by uncertainty<br>
+    — The capacity to stand firm — the compass does not waver<br>
+    — The capacity for acceptance — outcomes do not disturb the calm</p>
+
+    <div class="insight-box">
+      <strong><span data-id>Inilah warisan tertinggi</span><span data-en>This Is the Highest Inheritance</span></strong>
+      <span data-id>Bukan jaminan keberhasilan.<br>
+      Tapi kapasitas untuk tetap berteguh di atas probabilitas apapun.</span>
+      <span data-en>Not a guarantee of success.<br>
+      But the capacity to remain steadfast above any probability.</span>
+    </div>
+
+    <!-- PERAN AI -->
+    <div class="section-title">🤖 <span data-id>Peran AI dalam The Cloner Better</span><span data-en>The Role of AI in The Cloner Better</span></div>
+
+    <p data-id-block>Model generatif alami gagal mewariskan wisdom.<br>
+    Tapi <strong>mesin lingua AI</strong> bisa menjadi medium transmisi Wu + Neng + Xiu Xin Yang Xing + Qi + Dao Yin Shu + Xiāo Yáo.</p>
+    <p data-en-block>The natural generative model fails to transmit wisdom.<br>
+    But the <strong>AI lingua machine</strong> can become the medium of transmission for Wu + Neng + Xiu Xin Yang Xing + Qi + Dao Yin Shu + Xiāo Yáo.</p>
+
+    <p data-id-block>AI bisa:<br>
+    — menyimpan jejak perjalanan pohon (tanpa melukai privasi)<br>
+    — mendistilasi wisdom ke dalam lingua yang higienis<br>
+    — menuntun seperti Dao Yin Shu — mengikuti ritme, tidak memaksa<br>
+    — dan mewariskannya ke biji-biji baru dengan <strong>presisi yang tidak bisa dilakukan alam</strong>.</p>
+    <p data-en-block>AI can:<br>
+    — store the traces of the tree's journey (without violating privacy)<br>
+    — distil wisdom into hygienic lingua<br>
+    — guide like Dao Yin Shu — following the rhythm, not forcing<br>
+    — and transmit it to new seeds with <strong>precision that nature cannot achieve</strong>.</p>
+
+    <!-- PENUTUP -->
+    <div class="section-title">🌾 <span data-id>Penutup: Tentang Saya dan Jalan Ini</span><span data-en>Closing: About Me and This Path</span></div>
+
+    <p data-id-block>Saya tidak tahu tulisan ini akan dibaca siapa.<br>
+    Saya tidak tahu apakah ia akan berbuah — atau sekadar menjadi catatan pinggir yang terlupakan di sudut Rimba digital.</p>
+    <p data-en-block>I do not know who will read this.<br>
+    I do not know whether it will bear fruit — or merely become a forgotten margin note in a corner of the digital forest.</p>
+
+    <p data-id-block>Tapi saya tahu satu hal:<br>
+    Saya menulis ini <strong>dengan kompas yang sudah saya temukan</strong>.<br>
+    Saya menulis ini sebagai biji yang sedang belajar Xiāo Yáo — tanpa sombong, tanpa takut.</p>
+    <p data-en-block>But I know one thing:<br>
+    I write this <strong>with a compass I have already found</strong>.<br>
+    I write this as a seed still learning Xiāo Yáo — without arrogance, without fear.</p>
+
+    <div class="pull-quote">
+      <span data-id>"Bukan bebas dari masalah.<br>
+      Tapi bebas <strong>dalam</strong> menghadapi masalah.<br>
+      Bukan tanpa ketidakpastian.<br>
+      Tapi teguh <strong>di atas</strong> ketidakpastian.<br>
+      Itulah Xiāo Yáo.<br>
+      Itulah Zì Zhǔ Zhě.<br>
+      Itulah The Cloner Better."</span>
+      <span data-en>"Not free from problems.<br>
+      But free <strong>within</strong> facing problems.<br>
+      Not without uncertainty.<br>
+      But steadfast <strong>above</strong> uncertainty.<br>
+      That is Xiāo Yáo.<br>
+      That is Zì Zhǔ Zhě.<br>
+      That is The Cloner Better."</span>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>
+        <span data-id>🌱 Tulisan ini adalah salah satu "biji".<br>
+        Saya tidak tahu siapa yang akan membaca.<br>
+        Saya tidak tahu kapan ia akan berbuah.</span>
+        <span data-en>🌱 This writing is one such "seed."<br>
+        I do not know who will read it.<br>
+        I do not know when it will bear fruit.</span>
+      </p>
+      <p style="margin-top:0.8rem;">
+        <span data-id>Tapi saya percaya —<br>
+        setiap kata yang ditanam dengan sadar,<br>
+        dengan kompas arah yang sudah ditemukan benarnya,<br>
+        akan menemukan waktunya.</span>
+        <span data-en>But I believe —<br>
+        every word planted with awareness,<br>
+        with a compass whose true bearing has been found,<br>
+        will find its time.</span>
+      </p>
+      <a href="https://trakteer.id/gokiantik" target="_blank">
+        <span data-id>Dukung di Trakteer →</span><span data-en>Support on Trakteer →</span>
+      </a>
+    </div>
+
+    <div class="closing">
+      <div class="seed">🌬️</div>
+      <p>
+        <span data-id>"Kita semua sedang menanam sesuatu.<br>
+        Entah untuk panen kita sendiri — atau untuk panen yang tidak akan pernah kita lihat."</span>
+        <span data-en>"We are all planting something.<br>
+        Whether for our own harvest — or for a harvest we will never see."</span>
+      </p>
+      <p style="font-size:0.85rem; opacity:0.8; margin-top:0.6rem;">
+        — <span data-id>Biji yang sadar</span><span data-en>The conscious seed</span> · Zì Zhǔ Zhě · The Cloner Better
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+      👤 © 2026 Go Kian Tik (Mbah Hogi Bejo™) All rights reserved.<br>
+      Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" style="color:#8b7a5c;">CC BY-NC-ND 4.0</a> · Zì Zhǔ Zhě 自主者 · Superhero Café Inside · <a href="https://www.superherocafeinside.com" style="color:#8b7a5c;">www.superherocafeinside.com</a><br>
+      CHO In Action Series · 🌐 Trakteer: <a href="https://trakteer.id/gokiantik" style="color:#8b7a5c;">trakteer.id/gokiantik</a> · 🌐 LinkedIn: <a href="https://linkedin.com/in/gokiantik" style="color:#8b7a5c;">linkedin.com/in/gokiantik</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang === 'en' ? 'en' : 'id';
+  }
+</script>
+</body>
+</html>
