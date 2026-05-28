@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════╗
+  ║  SOVEREIGN ONE HTML TEMPLATE                                            ║
+  ║  Go Kian Tik (Mbah Hogi Bejo™) · Zì Zhǔ Zhě 自主者                     ║
+  ║  CHO In Action Series · Superhero Café Inside · 2026                    ║
+  ║                                                                          ║
+  ║  TEMA: BIJI YANG SADAR MELANJUTKAN BERTUMBUH                            ║
+  ║  Tentang pertumbuhan diam, kesadaran, dan proses yang tak terlihat       ║
+  ║  Seri 2 dari "Di dalam biji, sudah ada pohon"                           ║
+  ╚══════════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biji yang sadar melanjutkan bertumbuh · Go Kian Tik (Mbah Hogi Bejo™)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ════════════════════════════════════════
+       RESET & BASE
+    ════════════════════════════════════════ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── PALET CHO ──────────────────────────
+       Forest Green  : #2c5a3e
+       Gold          : #c9a227
+       Cream BG      : #faf8f2
+       Warm Parchment: #f0ede5
+       Sage Light    : #e8f0e9
+       Ink           : #2c2c2a
+       Muted Gold    : #8b7a5c
+       Soft Ink      : #a89f8a
+    ────────────────────────────────────────── */
+
+    body {
+      background: #faf8f2;
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+      line-height: 1.75;
+      color: #2c2c2a;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ════════════════════════════════════════
+       BILINGUAL SYSTEM
+    ════════════════════════════════════════ */
+    [data-en]       { display: none; }
+    [data-en-block] { display: none; }
+
+    body.en [data-id]        { display: none; }
+    body.en [data-en]        { display: inline; }
+    body.en [data-id-block]  { display: none; }
+    body.en [data-en-block]  { display: block; }
+
+    /* ── LANGUAGE TOGGLE BAR ───────────────── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(250, 248, 242, 0.93);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 0 0.5rem 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e2dcd0;
+    }
+
+    .lang-bar label {
+      font-family: monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8b7a5c;
+    }
+
+    .lang-toggle {
+      display: flex;
+      background: #e8f0e9;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid #c8d8c8;
+    }
+
+    .lang-btn {
+      padding: 0.3rem 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #8b7a5c;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 30px;
+    }
+
+    /* ════════════════════════════════════════
+       HEADER
+    ════════════════════════════════════════ */
+    .article-header {
+      margin-bottom: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #e2dcd0;
+      padding-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8b7a5c;
+      font-family: monospace;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    h1 .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #4a5b3a;
+    }
+
+    .chinese-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #c9a227;
+      margin-bottom: 0.5rem;
+      letter-spacing: 4px;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #8b7a5c;
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .author {
+      font-size: 0.78rem;
+      color: #a89f8a;
+      font-family: monospace;
+    }
+
+    /* ════════════════════════════════════════
+       BODY TEXT
+    ════════════════════════════════════════ */
+    .article-body {
+      font-size: 1.05rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.25rem;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — SECTION TITLE
+    ════════════════════════════════════════ */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin: 1.8rem 0 0.8rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #e2dcd0;
+      letter-spacing: 0.3px;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — PULL QUOTE
+    ════════════════════════════════════════ */
+    .pull-quote {
+      margin: 1.8rem 0;
+      padding: 1.2rem 1.5rem;
+      background: #f0ede5;
+      border-left: 4px solid #c9a227;
+      font-style: italic;
+      color: #4a5b3a;
+      font-size: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .pull-quote strong {
+      color: #2c5a3e;
+      font-style: normal;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — INSIGHT BOX
+    ════════════════════════════════════════ */
+    .insight-box {
+      background: #e8f0e9;
+      padding: 1.2rem 1.5rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #2c5a3e;
+      border-left: 3px solid #2c5a3e;
+      line-height: 1.7;
+    }
+
+    .insight-box strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8b7a5c;
+      font-family: monospace;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — SERIES NAV (untuk navigasi antar seri)
+    ════════════════════════════════════════ */
+    .series-nav {
+      background: #e8f0e9;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #2c5a3e;
+      line-height: 2;
+    }
+
+    .series-nav .seri-badge {
+      display: inline-block;
+      background: #2c5a3e;
+      color: #faf8f2;
+      padding: 0.15rem 0.65rem;
+      border-radius: 20px;
+      margin: 0 0.25rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — CTA BOX
+    ════════════════════════════════════════ */
+    .cta-box {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .cta-box p { margin-bottom: 0.5rem; }
+
+    .cta-box a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.65rem 1.6rem;
+      background: #c9a227;
+      color: #2c5a3e;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-box a:hover { opacity: 0.85; }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — CLOSING BLOCK
+    ════════════════════════════════════════ */
+    .closing {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .closing .seed {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ════════════════════════════════════════
+       DIVIDER
+    ════════════════════════════════════════ */
+    .divider {
+      margin: 1.5rem 0;
+      text-align: center;
+      color: #c9a227;
+      font-size: 0.8rem;
+      letter-spacing: 5px;
+    }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    hr {
+      margin: 1.5rem 0;
+      border: none;
+      height: 1px;
+      background: #e2dcd0;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2dcd0;
+      font-size: 0.68rem;
+      color: #a89f8a;
+      text-align: center;
+      font-family: monospace;
+      line-height: 1.9;
+    }
+
+    .footer a { color: #8b7a5c; text-decoration: none; }
+    .footer a:hover { color: #2c5a3e; }
+
+    /* ════════════════════════════════════════
+       UTILITY
+    ════════════════════════════════════════ */
+    .text-center { text-align: center; }
+    .mt-sm { margin-top: 0.5rem; }
+    .mt-md { margin-top: 1rem; }
+    .gold   { color: #c9a227; }
+    .green  { color: #2c5a3e; }
+    .muted  { color: #8b7a5c; font-size: 0.85em; }
+  </style>
+</head>
+
+<body class="id">
+<div class="container">
+
+  <!-- ════════════════════════════════════════
+       LANGUAGE TOGGLE — JANGAN HAPUS
+  ════════════════════════════════════════ -->
+  <div class="lang-bar">
+    <label>Bahasa /</label>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-id" onclick="setLang('id')">ID</button>
+      <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════ -->
+  <div class="article-header">
+    <div class="badge">
+      🌱 Zì Zhǔ Zhě — The Sovereign One · 
+      <span data-id>Seri 2 dari "Di dalam biji, sudah ada pohon"</span>
+      <span data-en>Series 2 of "Inside the seed, the tree already exists"</span>
+    </div>
+
+    <div class="chinese-title">覺醒的種子繼續生長</div>
+
+    <h1>
+      Biji yang sadar melanjutkan bertumbuh<br>
+      <span class="subtitle">sebuah proses yang tidak terlihat</span>
+    </h1>
+
+    <div class="subhead">
+      <span data-id>Tentang pertumbuhan diam, kesadaran, dan proses panjang yang tidak terlihat kemarin</span>
+      <span data-en>On silent growth, awareness, and the long process that was invisible yesterday</span>
+    </div>
+
+    <div class="author">
+      Go Kian Tik (Mbah Hogi Bejo™) · 自主者 · Depok, Indonesia · 2026
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SERIES NAVIGATION (Navigasi antar seri)
+  ════════════════════════════════════════ -->
+  <div class="series-nav">
+    <span class="seri-badge"><span data-id>Seri</span><span data-en>Series</span> 1</span>
+    <a href="#seri1" style="color:#2c5a3e; text-decoration:none;"><span data-id>Di dalam biji, sudah ada pohon</span><span data-en>Inside the seed, the tree already exists</span></a>
+    &nbsp;❉&nbsp;
+    <span class="seri-badge"><span data-id>Seri</span><span data-en>Series</span> 2</span>
+    <span data-id><strong>Biji yang sadar melanjutkan bertumbuh</strong></span>
+    <span data-en><strong>The aware seed continues to grow</strong></span>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       ARTICLE BODY
+  ════════════════════════════════════════ -->
+  <div class="article-body">
+
+    <!-- Paragraf pembuka — kutipan utama -->
+    <div class="pull-quote">
+      <strong>
+        <span data-id>“Sebuah biji tidak langsung menjadi pohon.”</span>
+        <span data-en>“A seed does not become a tree overnight.”</span>
+      </strong>
+    </div>
+
+    <p data-id-block>
+      Ia tumbuh dalam diam.<br>
+      Tanpa tepuk tangan.<br>
+      Tanpa validasi.
+    </p>
+    <p data-en-block>
+      It grows in silence.<br>
+      Without applause.<br>
+      Without validation.
+    </p>
+
+    <div class="insight-box">
+      <strong><span data-id>YANG TERLIHAT HARI INI</span><span data-en>WHAT IS VISIBLE TODAY</span></strong>
+      <span data-id>
+        — adalah hasil dari proses panjang yang tidak terlihat kemarin.
+      </span>
+      <span data-en>
+        — is the result of a long process that was invisible yesterday.
+      </span>
+    </div>
+
+
+    <!-- Divider sebagai jeda kontemplatif -->
+    <div class="divider">❉ ❉ ❉</div>
+
+
+    <!-- Bagian inti: Tulisan sebagai biji -->
+    <div class="section-title">
+      🌱 <span data-id>Tulisan ini adalah salah satu “biji”</span><span data-en>This writing is one such “seed”</span>
+    </div>
+
+    <p data-id-block>
+      Saya tidak tahu siapa yang akan membaca.<br>
+      Saya tidak tahu kapan ia akan berbuah.
+    </p>
+    <p data-en-block>
+      I do not know who will read it.<br>
+      I do not know when it will bear fruit.
+    </p>
+
+    <p data-id-block>
+      Tapi saya percaya—
+    </p>
+    <p data-en-block>
+      But I believe—
+    </p>
+
+    <div class="pull-quote">
+      <span data-id>setiap kata yang ditanam dengan sadar, akan menemukan waktunya.</span>
+      <span data-en>every word planted with awareness will find its time.</span>
+    </div>
+
+
+    <!-- Seruan untuk ikut bertumbuh -->
+    <div class="section-title">
+      🌿 <span data-id>Jika kamu merasa tulisan ini memberi sesuatu</span><span data-en>If this writing gives you something</span>
+    </div>
+
+    <p data-id-block>
+      insight, ketenangan, atau sudut pandang baru—
+    </p>
+    <p data-en-block>
+      insight, peace, or a new perspective—
+    </p>
+
+    <p data-id-block>
+      kamu bisa ikut menjadi bagian dari proses ini.
+    </p>
+    <p data-en-block>
+      you can become part of this process.
+    </p>
+
+    <div class="insight-box">
+      <strong><span data-id>CARANYA SEDERHANA</span><span data-en>THE WAY IS SIMPLE</span></strong>
+      <span data-id>
+        — 🌱 Dukung di Trakteer<br>
+        — 🌱 Ikuti perjalanan “Gelindingkan”<br>
+        — 🌱 Tumbuh bersama, satu tulisan setiap waktu
+      </span>
+      <span data-en>
+        — 🌱 Support on Trakteer<br>
+        — 🌱 Follow the “Gelindingkan” journey<br>
+        — 🌱 Grow together, one writing at a time
+      </span>
+    </div>
+
+
+    <!-- CTA Links -->
+    <div class="cta-box">
+      <p>
+        <span data-id>
+          🌱 Tulisan ini adalah salah satu "biji".<br>
+          Saya tidak tahu siapa yang akan membaca.<br>
+          Saya tidak tahu kapan ia akan berbuah.
+        </span>
+        <span data-en>
+          🌱 This writing is one such "seed."<br>
+          I do not know who will read it.<br>
+          I do not know when it will bear fruit.
+        </span>
+      </p>
+      <p>
+        <span data-id>
+          Tapi saya percaya —<br>
+          setiap kata yang ditanam dengan sadar,<br>
+          akan menemukan waktunya.
+        </span>
+        <span data-en>
+          But I believe —<br>
+          every word planted with awareness,<br>
+          will find its time.
+        </span>
+      </p>
+      <a href="https://trakteer.id/gokiantik" target="_blank">
+        <span data-id>🌱 Dukung di Trakteer → 🌱</span>
+        <span data-en>🌱 Support on Trakteer → 🌱</span>
+      </a>
+    </div>
+
+    <p data-id-block style="text-align:center;">
+      🌱 Ikuti perjalanan “Gelindingkan”: 
+      <a href="https://trakteer.id/gokiantik/post/gelindingkan-XewPC" target="_blank" style="color:#2c5a3e;">trakteer.id/gokiantik/post/gelindingkan-XewPC</a>
+    </p>
+    <p data-en-block style="text-align:center;">
+      🌱 Follow the “Gelindingkan” journey: 
+      <a href="https://trakteer.id/gokiantik/post/gelindingkan-XewPC" target="_blank" style="color:#2c5a3e;">trakteer.id/gokiantik/post/gelindingkan-XewPC</a>
+    </p>
+
+    <p data-id-block>
+      🌱 Tumbuh bersama, satu tulisan setiap waktu
+    </p>
+    <p data-en-block>
+      🌱 Grow together, one writing at a time
+    </p>
+
+
+    <!-- Penutup filosofis -->
+    <div class="divider">❉ ❉ ❉</div>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>Karena pada akhirnya… kita semua sedang menanam sesuatu.</span>
+        <span data-en>Because in the end… we are all planting something.</span>
+      </strong>
+    </div>
+
+
+    <!-- =========================================================
+         CLOSING BLOCK
+    ========================================================= -->
+    <div class="closing">
+      <div class="seed">🌱</div>
+      <p>
+        <span data-id>“Biji yang sadar tidak berhenti bertumbuh.<br>Ia terus berakar, meski tidak terlihat.”</span>
+        <span data-en>“The aware seed does not stop growing.<br>It keeps taking root, even when unseen.”</span>
+      </p>
+      <p style="font-size:0.82rem; opacity:0.75; margin-top:0.5rem;">
+        — <span data-id>Go Kian Tik (Mbah Hogi Bejo™)</span><span data-en>Go Kian Tik (Mbah Hogi Bejo™)</span>
+        · Zì Zhǔ Zhě · Biji yang sadar melanjutkan bertumbuh
+      </p>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         FOOTER — JANGAN UBAH
+    ════════════════════════════════════════ -->
+    <hr>
+    <div class="footer">
+      👤 © 2026 Go Kian Tik (Mbah Hogi Bejo™) All rights reserved.<br>
+      Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
+      · Zì Zhǔ Zhě 自主者 · Superhero Café Inside
+      · <a href="https://www.superherocafeinside.com">www.superherocafeinside.com</a><br>
+      CHO In Action Series
+      · 🌐 Trakteer: <a href="https://trakteer.id/gokiantik">trakteer.id/gokiantik</a>
+      · 🌐 LinkedIn: <a href="https://linkedin.com/in/gokiantik">linkedin.com/in/gokiantik</a><br>
+      · Jejak Digital: <a href="https://trakteer.id/gokiantik/post/biji-yang-sadar-melanjutkan-bertumbuh-PrCVR">trakteer.id/post/biji-yang-sadar</a>
+    </div>
+
+  </div><!-- /article-body -->
+</div><!-- /container -->
+
+
+<!-- ════════════════════════════════════════
+     BILINGUAL TOGGLE SCRIPT — JANGAN UBAH
+════════════════════════════════════════ -->
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.documentElement.lang = lang === 'en' ? 'en' : 'id';
+    document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+</script>
+
+</body>
+</html>
