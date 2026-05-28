@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════╗
+  ║  SOVEREIGN ONE HTML TEMPLATE                                            ║
+  ║  Go Kian Tik (Mbah Hogi Bejo™) · Zì Zhǔ Zhě 自主者                     ║
+  ║  CHO In Action Series · Superhero Café Inside · 2026                    ║
+  ║                                                                          ║
+  ║  TEMA: DI DALAM BIJI, SUDAH ADA POHON                                    ║
+  ║  Refleksi dari Tiong Hoa Ie Wan, Semarang                               ║
+  ║  Tentang pertumbuhan, identitas, dan kesadaran                          ║
+  ╚══════════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Di dalam biji, sudah ada pohon · Go Kian Tik (Mbah Hogi Bejo™)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ════════════════════════════════════════
+       RESET & BASE
+    ════════════════════════════════════════ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── PALET CHO ──────────────────────────
+       Forest Green  : #2c5a3e
+       Gold          : #c9a227
+       Cream BG      : #faf8f2
+       Warm Parchment: #f0ede5
+       Sage Light    : #e8f0e9
+       Ink           : #2c2c2a
+       Muted Gold    : #8b7a5c
+       Soft Ink      : #a89f8a
+    ────────────────────────────────────────── */
+
+    body {
+      background: #faf8f2;
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+      line-height: 1.75;
+      color: #2c2c2a;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ════════════════════════════════════════
+       BILINGUAL SYSTEM
+       ─ Tambahkan data-id / data-en pada SETIAP
+         elemen teks yang perlu diterjemahkan.
+       ─ Untuk inline text: pakai <span data-id> / <span data-en>
+       ─ Untuk blok paragraph: pakai <p data-id-block> / <p data-en-block>
+       ─ Untuk div blok: pakai <div data-id-block> / <div data-en-block>
+    ════════════════════════════════════════ */
+    [data-en]       { display: none; }
+    [data-en-block] { display: none; }
+
+    body.en [data-id]        { display: none; }
+    body.en [data-en]        { display: inline; }
+    body.en [data-id-block]  { display: none; }
+    body.en [data-en-block]  { display: block; }
+
+    /* ── LANGUAGE TOGGLE BAR ───────────────── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(250, 248, 242, 0.93);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 0 0.5rem 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e2dcd0;
+    }
+
+    .lang-bar label {
+      font-family: monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8b7a5c;
+    }
+
+    .lang-toggle {
+      display: flex;
+      background: #e8f0e9;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid #c8d8c8;
+    }
+
+    .lang-btn {
+      padding: 0.3rem 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #8b7a5c;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 30px;
+    }
+
+    /* ════════════════════════════════════════
+       HEADER
+    ════════════════════════════════════════ */
+    .article-header {
+      margin-bottom: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #e2dcd0;
+      padding-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8b7a5c;
+      font-family: monospace;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    h1 .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #4a5b3a;
+    }
+
+    .chinese-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #c9a227;
+      margin-bottom: 0.5rem;
+      letter-spacing: 4px;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #8b7a5c;
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .author {
+      font-size: 0.78rem;
+      color: #a89f8a;
+      font-family: monospace;
+    }
+
+    /* ════════════════════════════════════════
+       BODY TEXT
+    ════════════════════════════════════════ */
+    .article-body {
+      font-size: 1.05rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.25rem;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — SECTION TITLE
+    ════════════════════════════════════════ */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin: 1.8rem 0 0.8rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #e2dcd0;
+      letter-spacing: 0.3px;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — PULL QUOTE
+    ════════════════════════════════════════ */
+    .pull-quote {
+      margin: 1.8rem 0;
+      padding: 1.2rem 1.5rem;
+      background: #f0ede5;
+      border-left: 4px solid #c9a227;
+      font-style: italic;
+      color: #4a5b3a;
+      font-size: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .pull-quote strong {
+      color: #2c5a3e;
+      font-style: normal;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — INSIGHT BOX
+    ════════════════════════════════════════ */
+    .insight-box {
+      background: #e8f0e9;
+      padding: 1.2rem 1.5rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #2c5a3e;
+      border-left: 3px solid #2c5a3e;
+      line-height: 1.7;
+    }
+
+    .insight-box strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8b7a5c;
+      font-family: monospace;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — FRAMEWORK GRID (3 pilar)
+    ════════════════════════════════════════ */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .pillar-card {
+      background: #f0ede5;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .pillar-card .pillar-char {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .pillar-card .pillar-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin-bottom: 0.3rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    .pillar-card .pillar-desc {
+      font-size: 0.68rem;
+      color: #8b7a5c;
+      line-height: 1.45;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — LEVEL GRID (Ruwet→Genah)
+    ════════════════════════════════════════ */
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .level-card {
+      background: #f0ede5;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .level-card .level-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c5a3e;
+      margin-bottom: 0.3rem;
+    }
+
+    .level-card .level-desc {
+      font-size: 0.78rem;
+      color: #8b7a5c;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — CTA BOX
+    ════════════════════════════════════════ */
+    .cta-box {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .cta-box p { margin-bottom: 0.5rem; }
+
+    .cta-box a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.65rem 1.6rem;
+      background: #c9a227;
+      color: #2c5a3e;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-box a:hover { opacity: 0.85; }
+
+    /* ════════════════════════════════════════
+       KOMPONEN — CLOSING BLOCK
+    ════════════════════════════════════════ */
+    .closing {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #2c5a3e;
+      color: #faf8f2;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .closing .seed {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    hr {
+      margin: 1.5rem 0;
+      border: none;
+      height: 1px;
+      background: #e2dcd0;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2dcd0;
+      font-size: 0.68rem;
+      color: #a89f8a;
+      text-align: center;
+      font-family: monospace;
+      line-height: 1.9;
+    }
+
+    .footer a { color: #8b7a5c; text-decoration: none; }
+    .footer a:hover { color: #2c5a3e; }
+
+    /* ════════════════════════════════════════
+       UTILITY
+    ════════════════════════════════════════ */
+    .text-center { text-align: center; }
+    .mt-sm { margin-top: 0.5rem; }
+    .mt-md { margin-top: 1rem; }
+    .gold   { color: #c9a227; }
+    .green  { color: #2c5a3e; }
+    .muted  { color: #8b7a5c; font-size: 0.85em; }
+  </style>
+</head>
+
+<body class="id">
+<div class="container">
+
+  <!-- ════════════════════════════════════════
+       LANGUAGE TOGGLE — JANGAN HAPUS
+  ════════════════════════════════════════ -->
+  <div class="lang-bar">
+    <label>Bahasa /</label>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-id" onclick="setLang('id')">ID</button>
+      <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════ -->
+  <div class="article-header">
+    <div class="badge">
+      🌱 Zì Zhǔ Zhě — The Sovereign One · 
+      <span data-id>Refleksi dari Rumah Sakit Telogorejo, Semarang</span>
+      <span data-en>Reflection from Telogorejo Hospital, Semarang</span>
+    </div>
+
+    <div class="chinese-title">种瓜得瓜</div>
+
+    <h1>
+      Di dalam biji, sudah ada pohon<br>
+      <span class="subtitle">pelajaran dari Tiong Hoa Ie Wan</span>
+    </h1>
+
+    <div class="subhead">
+      <span data-id>Sebuah perjalanan menemukan "pohon" di dalam diri — dari duka, menjadi terang</span>
+      <span data-en>A journey of discovering the "tree" within — from grief, into light</span>
+    </div>
+
+    <div class="author">
+      Go Kian Tik (Mbah Hogi Bejo™) · 自主者 · Depok, Indonesia · 2026
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       ARTICLE BODY
+  ════════════════════════════════════════ -->
+  <div class="article-body">
+
+    <!-- Paragraf pembuka -->
+    <p data-id-block>
+      “Di dalam biji, sudah ada pohon.”
+    </p>
+    <p data-en-block>
+      “Inside the seed, the tree already exists.”
+    </p>
+
+    <p data-id-block>
+      Kalimat ini sudah ada di kepala saya… mungkin sejak 30 tahun lalu.
+    </p>
+    <p data-en-block>
+      This sentence has been in my head… perhaps for 30 years.
+    </p>
+
+    <p data-id-block>
+      Tapi saya benar-benar merasakannya<br>
+      saat berdiri di Tiong Hoa Ie Wan, Semarang—<br>
+      mengantarkan ibu saya yang telah berpulang.
+    </p>
+    <p data-en-block>
+      But I truly felt it<br>
+      when I stood at Tiong Hoa Ie Wan, Semarang—<br>
+      accompanying my mother who had passed away.
+    </p>
+
+    <p data-id-block>
+      Di usia saya yang ke 49 tahun,<br>
+      di antara duka dan keheningan,<br>
+      muncul satu pertanyaan sederhana:
+    </p>
+    <p data-en-block>
+      At the age of 49,<br>
+      amidst grief and silence,<br>
+      one simple question emerged:
+    </p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>“Sebenarnya saya ini pohon apa?”</span>
+        <span data-en>“What tree am I, actually?”</span>
+      </strong>
+    </div>
+
+
+    <!-- SECTION 1: Mencari... dan Salah Menebak -->
+    <div class="section-title">
+      🌱 <span data-id>Mencari… dan Salah Menebak</span><span data-en>Searching… and Guessing Wrong</span>
+    </div>
+
+    <p data-id-block>
+      Saya mulai memeriksa diri saya.
+    </p>
+    <p data-en-block>
+      I began to examine myself.
+    </p>
+
+    <p data-id-block>
+      Sejak kecil saya suka menyanyi.<br>
+      Mungkin saya adalah seorang penyanyi.
+    </p>
+    <p data-en-block>
+      Since childhood, I loved to sing.<br>
+      Perhaps I was a singer.
+    </p>
+
+    <p data-id-block>
+      Saya jalani itu serius.<br>
+      Bahkan sampai 6 tahun.
+    </p>
+    <p data-en-block>
+      I pursued it seriously.<br>
+      Even for 6 years.
+    </p>
+
+    <p data-id-block>
+      Hasilnya?
+    </p>
+    <p data-en-block>
+      The result?
+    </p>
+
+    <p data-id-block>
+      Saya masih di sana.<br>
+      Bukan artis.<br>
+      Bukan penyanyi terkenal.
+    </p>
+    <p data-en-block>
+      I was still there.<br>
+      Not an artist.<br>
+      Not a famous singer.
+    </p>
+
+    <p data-id-block>
+      Di rumah malah…<br>
+      tidak boleh menyanyi sama anak perempuan dan istri saya 😄
+    </p>
+    <p data-en-block>
+      At home…<br>
+      I am not allowed to sing around my daughter and wife 😄
+    </p>
+
+    <div class="insight-box">
+      <strong><span data-id>PEMBELAJARAN PERTAMA</span><span data-en>FIRST LESSON</span></strong>
+      <span data-id>
+        — Menemukan “biji”<br>
+        — tidak sama dengan langsung menjadi “pohon”.
+      </span>
+      <span data-en>
+        — Finding the “seed”<br>
+        — is not the same as instantly becoming the “tree”.
+      </span>
+    </div>
+
+
+    <!-- SECTION 2: Pelajaran dari Tempat Saya Berdiri -->
+    <div class="section-title">
+      🌿 <span data-id>Pelajaran dari Tempat Saya Berdiri</span><span data-en>Lesson from Where I Stand</span>
+    </div>
+
+    <p data-id-block>
+      Saat itu saya berada di sebuah tempat<br>
+      yang justru sudah lebih dulu “menjadi pohon”:
+    </p>
+    <p data-en-block>
+      At that time, I was in a place<br>
+      that had already “become a tree”:
+    </p>
+
+    <div class="pull-quote">
+      <span data-id>Tiong Hoa Ie Wan.</span>
+      <span data-en>Tiong Hoa Ie Wan.</span>
+    </div>
+
+    <p data-id-block>
+      Saya mulai melihatnya dengan cara berbeda.
+    </p>
+    <p data-en-block>
+      I began to see it differently.
+    </p>
+
+
+    <!-- SECTION 3: Awalnya Hanya Biji -->
+    <div class="section-title">
+      🌱 <span data-id>Awalnya Hanya Biji</span><span data-en>It Started as Only a Seed</span>
+    </div>
+
+    <p data-id-block>
+      Ia dimulai dari:
+    </p>
+    <p data-en-block>
+      It began from:
+    </p>
+
+    <div class="pull-quote">
+      <span data-id>Sebuah poliklinik kecil di Gang Gambiran.</span>
+      <span data-en>A small clinic in Gang Gambiran.</span>
+    </div>
+
+    <p data-id-block>
+      Tidak ada yang melihatnya sebagai institusi besar.<br>
+      Masih berupa biji.
+    </p>
+    <p data-en-block>
+      No one saw it as a large institution.<br>
+      It was still a seed.
+    </p>
+
+
+    <!-- SECTION 4: Tumbuh Karena Kebutuhan -->
+    <div class="section-title">
+      🌿 <span data-id>Tumbuh Karena Kebutuhan</span><span data-en>Growing Out of Necessity</span>
+    </div>
+
+    <p data-id-block>
+      Pasca revolusi, terjadi lonjakan pasien.
+    </p>
+    <p data-en-block>
+      After the revolution, there was a surge in patients.
+    </p>
+
+    <p data-id-block>
+      Pengurus perkumpulan<br>
+      Lang Tjhwan Tiong Hoa Ie Wan<br>
+      mengambil keputusan penting:
+    </p>
+    <p data-en-block>
+      The board of the association<br>
+      Lang Tjhwan Tiong Hoa Ie Wan<br>
+      made an important decision:
+    </p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>Bertumbuh.</span>
+        <span data-en>Grow.</span>
+      </strong>
+    </div>
+
+    <p data-id-block>
+      Tahun 1948, pembangunan rumah sakit dimulai.
+    </p>
+    <p data-en-block>
+      In 1948, hospital construction began.
+    </p>
+
+    <p data-id-block>
+      Ini fase:
+    </p>
+    <p data-en-block>
+      This is the phase:
+    </p>
+
+    <div class="insight-box">
+      <strong><span data-id>FASE PERTUMBUHAN</span><span data-en>GROWTH PHASE</span></strong>
+      <span data-id>
+        — 👉 tidak nyaman<br>
+        — 👉 penuh tekanan<br>
+        — 👉 tapi penuh arah
+      </span>
+      <span data-en>
+        — 👉 uncomfortable<br>
+        — 👉 full of pressure<br>
+        — 👉 but full of direction
+      </span>
+    </div>
+
+
+    <!-- SECTION 5: Menjadi Pohon -->
+    <div class="section-title">
+      🌳 <span data-id>Menjadi Pohon</span><span data-en>Becoming a Tree</span>
+    </div>
+
+    <p data-id-block>
+      25 November 1951,<br>
+      resmi berdiri:
+    </p>
+    <p data-en-block>
+      November 25, 1951,<br>
+      officially established:
+    </p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>Rumah Sakit Tiong Hoa Ie Wan</span>
+        <span data-en>Tiong Hoa Ie Wan Hospital</span>
+      </strong>
+    </div>
+
+    <p data-id-block>
+      Dengan kapasitas 50 tempat tidur.
+    </p>
+    <p data-en-block>
+      With a capacity of 50 beds.
+    </p>
+
+    <p data-id-block>
+      Masih kecil.<br>
+      Tapi sudah menjadi pohon.
+    </p>
+    <p data-en-block>
+      Still small.<br>
+      But already a tree.
+    </p>
+
+
+    <!-- SECTION 6: Bertumbuh Lebih Besar -->
+    <div class="section-title">
+      🌲 <span data-id>Bertumbuh Lebih Besar</span><span data-en>Growing Larger</span>
+    </div>
+
+    <p data-id-block>
+      Tahun 1958,<br>
+      nama ini berkembang menjadi:
+    </p>
+    <p data-en-block>
+      In 1958,<br>
+      the name evolved into:
+    </p>
+
+    <div class="pull-quote">
+      <span data-id>Rumah Sakit Telogorejo</span>
+      <span data-en>Telogorejo Hospital</span>
+    </div>
+
+    <p data-id-block>
+      Nama berubah.<br>
+      Skala berubah.
+    </p>
+    <p data-en-block>
+      The name changed.<br>
+      The scale changed.
+    </p>
+
+    <p data-id-block>
+      Tapi akarnya tetap sama.<br>
+      Bijinya tidak pernah hilang.
+    </p>
+    <p data-en-block>
+      But its roots remained the same.<br>
+      The seed never disappeared.
+    </p>
+
+
+    <!-- SECTION 7: Refleksi yang Menyambung -->
+    <div class="section-title">
+      🔍 <span data-id>Refleksi yang Menyambung ke Diri Saya</span><span data-en>A Reflection That Connects to Myself</span>
+    </div>
+
+    <p data-id-block>
+      Di titik itu, saya sadar:
+    </p>
+    <p data-en-block>
+      At that point, I realized:
+    </p>
+
+    <p data-id-block>
+      Saya sedang mencari “pohon” saya…<br>
+      di tempat yang dulu hanyalah “biji”.
+    </p>
+    <p data-en-block>
+      I was searching for my “tree”…<br>
+      in a place that was once just a “seed”.
+    </p>
+
+    <p data-id-block>
+      Dan ironisnya—<br>
+      saya sendiri belum berani bertumbuh seperti itu.
+    </p>
+    <p data-en-block>
+      And ironically—<br>
+      I myself had not yet dared to grow like that.
+    </p>
+
+
+    <!-- SECTION 8: Petunjuk yang Dulu Saya Abaikan -->
+    <div class="section-title">
+      🧠 <span data-id>Petunjuk yang Dulu Saya Abaikan</span><span data-en>Clues I Once Ignored</span>
+    </div>
+
+    <p data-id-block>
+      4 tahun lalu,<br>
+      saya diminta merapikan naskah<br>
+      Biografi Sang Guru Besar Lie Song Hoo
+    </p>
+    <p data-en-block>
+      4 years ago,<br>
+      I was asked to tidy up the manuscript<br>
+      of the Biography of the Great Master Lie Song Hoo
+    </p>
+
+    <p data-id-block>
+      Saya hanya:<br>
+      merapikan · menyusun · memperjelas
+    </p>
+    <p data-en-block>
+      I only:<br>
+      tidied · arranged · clarified
+    </p>
+
+    <p data-id-block>
+      Saya pikir itu pekerjaan menulis seperti biasa.
+    </p>
+    <p data-en-block>
+      I thought it was just ordinary writing work.
+    </p>
+
+    <p data-id-block>
+      1,5 tahun lalu,<br>
+      saya mendengar testimoni dari Ye-Ye<br>
+      seorang praktisi Dao Yin Shu di Magelang<br>
+      yang mengalami serangan jantung dan sumbatan<br>
+      di pembuluh darahnya namun mengalami keajaiban — sumbatannya hilang.
+    </p>
+    <p data-en-block>
+      1.5 years ago,<br>
+      I heard a testimony from Ye-Ye<br>
+      a Dao Yin Shu practitioner in Magelang<br>
+      who suffered a heart attack and blockage<br>
+      in his blood vessels yet experienced a miracle — the blockage disappeared.
+    </p>
+
+    <p data-id-block>
+      Kali ini berbeda.
+    </p>
+    <p data-en-block>
+      This time was different.
+    </p>
+
+    <p data-id-block>
+      Saya tidak hanya mendengar.<br>
+      Saya menuliskannya.
+    </p>
+    <p data-en-block>
+      I didn't just listen.<br>
+      I wrote it down.
+    </p>
+
+    <p data-id-block>
+      Dan lahirlah sebuah buku:<br>
+      “Mukjizat Itu Nyata: Jantung Berhenti Berdetak, Jiwa Kembali Menyala.”
+    </p>
+    <p data-en-block>
+      And a book was born:<br>
+      “The Miracle Is Real: The Heart Stopped Beating, the Soul Ignited Again.”
+    </p>
+
+    <p data-id-block>
+      Namun tetap…<br>
+      saya belum sadar.
+    </p>
+    <p data-en-block>
+      Yet still…<br>
+      I was not yet aware.
+    </p>
+
+
+    <!-- SECTION 9: Titik Balik: AI sebagai Cermin -->
+    <div class="section-title">
+      🤖 <span data-id>Titik Balik: AI sebagai Cermin</span><span data-en>Turning Point: AI as a Mirror</span>
+    </div>
+
+    <p data-id-block>
+      Sampai saya mulai menggunakan AI.
+    </p>
+    <p data-en-block>
+      Until I started using AI.
+    </p>
+
+    <p data-id-block>
+      Sebagai:<br>
+      — mitra berpikir<br>
+      — kaca spion<br>
+      — penjaga tulisan
+    </p>
+    <p data-en-block>
+      As:<br>
+      — thinking partner<br>
+      — rearview mirror<br>
+      — guardian of writing
+    </p>
+
+    <p data-id-block>
+      Produktivitas menulis saya meningkat drastis.
+    </p>
+    <p data-en-block>
+      My writing productivity increased drastically.
+    </p>
+
+    <p data-id-block>
+      Dan di situlah semuanya mulai tersambung.
+    </p>
+    <p data-en-block>
+      And that's where everything began to connect.
+    </p>
+
+
+    <!-- SECTION 10: Data yang Menghentikan Saya -->
+    <div class="section-title">
+      ⚠️ <span data-id>Data yang Menghentikan Saya</span><span data-en>The Data That Stopped Me</span>
+    </div>
+
+    <p data-id-block>
+      Baru dua hari yang lalu saya membaca sebuah artikel dari PBB (UN: United Nations) yang melaporkan bahwa
+    </p>
+    <p data-en-block>
+      Just two days ago I read an article from the UN (United Nations) reporting that
+    </p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>840 ribu orang meninggal setiap tahun karena tekanan psikososial — mental disorder (pikiran, jiwa dan kesadarannya mumet dan ruwet)</span>
+        <span data-en>840,000 people die every year due to psychosocial pressure — mental disorder (their mind, soul, and consciousness are confused and entangled)</span>
+      </strong>
+    </div>
+
+    <p data-id-block>
+      <a href="https://www.linkedin.com/posts/united-nations_more-than-840000-people-die-every-year-due-activity-7453563676738883584-bX8k" target="_blank" style="color:#2c5a3e;">🔗 Sumber: LinkedIn PBB</a>
+    </p>
+    <p data-en-block>
+      <a href="https://www.linkedin.com/posts/united-nations_more-than-840000-people-die-every-year-due-activity-7453563676738883584-bX8k" target="_blank" style="color:#2c5a3e;">🔗 Source: UN LinkedIn</a>
+    </p>
+
+    <p data-id-block>
+      Dan saya tersadar:
+    </p>
+    <p data-en-block>
+      And I realized:
+    </p>
+
+    <div class="insight-box">
+      <strong><span data-id>INI BUKAN KEJADIAN TIBA-TIBA</span><span data-en>THIS IS NOT A SUDDEN EVENT</span></strong>
+      <span data-id>
+        Ini persoalan kemanusiaan yang serius.<br>
+        Manusia membutuhkan perhatian, kehadiran, terapi dan solusi.
+      </span>
+      <span data-en>
+        This is a serious humanitarian issue.<br>
+        Humans need attention, presence, therapy, and solutions.
+      </span>
+    </div>
+
+
+    <!-- SECTION 11: Framework yang Saya Temukan -->
+    <div class="section-title">
+      🔺 <span data-id>Framework yang Saya Temukan</span><span data-en>The Framework I Discovered</span>
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-char">🌀</div>
+        <div class="pillar-name">Ruwet</div>
+        <div class="pillar-desc">
+          <span data-id>tidak selaras, kacau, mumet</span>
+          <span data-en>misaligned, chaotic, confused</span>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">🚶</div>
+        <div class="pillar-name">OTW Genah</div>
+        <div class="pillar-desc">
+          <span data-id>mulai sadar, dalam perjalanan menuju selaras</span>
+          <span data-en>beginning to realize, on the journey toward alignment</span>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-char">🌿</div>
+        <div class="pillar-name">Genah</div>
+        <div class="pillar-desc">
+          <span data-id>utuh & selaras, tenang, beres</span>
+          <span data-en>whole & aligned, peaceful, settled</span>
+        </div>
+      </div>
+    </div>
+
+    <p data-id-block>
+      <a href="https://doi.org/10.5281/zenodo.19002243" target="_blank" style="color:#2c5a3e;">📄 DOI: 10.5281/zenodo.19002243 — Ruwet, OTW Genah, Genah: A Triadic Framework of Human Self-Coherence</a>
+    </p>
+    <p data-en-block>
+      <a href="https://doi.org/10.5281/zenodo.19002243" target="_blank" style="color:#2c5a3e;">📄 DOI: 10.5281/zenodo.19002243 — Ruwet, OTW Genah, Genah: A Triadic Framework of Human Self-Coherence</a>
+    </p>
+
+
+    <!-- SECTION 12: Peran Saya (yang Akhirnya Jelas) -->
+    <div class="section-title">
+      ✍️ <span data-id>Peran Saya (yang Akhirnya Jelas)</span><span data-en>My Role (Finally Clear)</span>
+    </div>
+
+    <p data-id-block>
+      Saya kira saya harus “menjadi sesuatu”.
+    </p>
+    <p data-en-block>
+      I thought I had to “become something”.
+    </p>
+
+    <p data-id-block>
+      Ternyata saya sedang “dibentuk”.
+    </p>
+    <p data-en-block>
+      It turns out I was being “formed”.
+    </p>
+
+    <p data-id-block>
+      Dan sekarang mulai terlihat:
+    </p>
+    <p data-en-block>
+      And now it is beginning to show:
+    </p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>Pohon di dalam diri saya… adalah pohon yang menulis.</span>
+        <span data-en>The tree within me… is a tree that writes.</span>
+      </strong>
+    </div>
+
+    <p data-id-block>
+      Bukan untuk terkenal.<br>
+      Bukan untuk viral.
+    </p>
+    <p data-en-block>
+      Not for fame.<br>
+      Not for virality.
+    </p>
+
+    <p data-id-block>
+      Tapi untuk:<br>
+      — merapikan pikiran<br>
+      — memberi arah<br>
+      — dan mungkin… menyelamatkan seseorang
+    </p>
+    <p data-en-block>
+      But to:<br>
+      — tidy the mind<br>
+      — give direction<br>
+      — and perhaps… save someone
+    </p>
+
+
+    <!-- SECTION 13: Penutup -->
+    <div class="section-title">
+      🌳 <span data-id>Penutup</span><span data-en>Closing</span>
+    </div>
+
+    <p data-id-block>
+      Tiong Hoa Ie Wan mengajarkan saya:
+    </p>
+    <p data-en-block>
+      Tiong Hoa Ie Wan taught me:
+    </p>
+
+    <div class="pull-quote">
+      <span data-id>Pohon besar tidak muncul tiba-tiba.<br>Ia selalu dimulai dari biji.</span>
+      <span data-en>A great tree does not appear suddenly.<br>It always begins from a seed.</span>
+    </div>
+
+    <p data-id-block>
+      Dan biji itu…<br>
+      sudah mengandung segalanya.
+    </p>
+    <p data-en-block>
+      And that seed…<br>
+      already contains everything.
+    </p>
+
+    <div class="pull-quote">
+      <strong>
+        <span data-id>“Di dalam biji, sudah ada pohon.”</span>
+        <span data-en>“Inside the seed, the tree already exists.”</span>
+      </strong>
+    </div>
+
+
+    <!-- =========================================================
+         CTA BOX — WAJIB ADA
+    ========================================================= -->
+    <div class="cta-box">
+      <p>
+        <span data-id>
+          🌱 Tulisan ini adalah salah satu "biji".<br>
+          Saya tidak tahu siapa yang akan membaca.<br>
+          Saya tidak tahu kapan ia akan berbuah.
+        </span>
+        <span data-en>
+          🌱 This writing is one such "seed."<br>
+          I do not know who will read it.<br>
+          I do not know when it will bear fruit.
+        </span>
+      </p>
+      <p>
+        <span data-id>
+          Tapi saya percaya —<br>
+          setiap kata yang ditanam dengan sadar,<br>
+          akan menemukan waktunya.
+        </span>
+        <span data-en>
+          But I believe —<br>
+          every word planted with awareness,<br>
+          will find its time.
+        </span>
+      </p>
+      <a href="https://trakteer.id/gokiantik" target="_blank">
+        <span data-id>🌱 Dukung di Trakteer → 🌱</span>
+        <span data-en>🌱 Support on Trakteer → 🌱</span>
+      </a>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         CLOSING BLOCK
+    ════════════════════════════════════════ -->
+    <div class="closing">
+      <div class="seed">🌱</div>
+      <p>
+        <span data-id>“Jawabannya bukan pada hasil akhir.<br>Jawabannya ada pada proses menjadi.”</span>
+        <span data-en>“The answer is not in the final result.<br>The answer lies in the process of becoming.”</span>
+      </p>
+      <p style="font-size:0.82rem; opacity:0.75; margin-top:0.5rem;">
+        — <span data-id>Go Kian Tik (Mbah Hogi Bejo™)</span><span data-en>Go Kian Tik (Mbah Hogi Bejo™)</span>
+        · Zì Zhǔ Zhě · Di dalam biji, sudah ada pohon
+      </p>
+    </div>
+
+
+    <!-- ════════════════════════════════════════
+         FOOTER — JANGAN UBAH
+    ════════════════════════════════════════ -->
+    <hr>
+    <div class="footer">
+      👤 © 2026 Go Kian Tik (Mbah Hogi Bejo™) All rights reserved.<br>
+      Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
+      · Zì Zhǔ Zhě 自主者 · Superhero Café Inside
+      · <a href="https://www.superherocafeinside.com">www.superherocafeinside.com</a><br>
+      CHO In Action Series
+      · 🌐 Trakteer: <a href="https://trakteer.id/gokiantik">trakteer.id/gokiantik</a>
+      · 🌐 LinkedIn: <a href="https://linkedin.com/in/gokiantik">linkedin.com/in/gokiantik</a><br>
+      · Jejak Digital: <a href="https://trakteer.id/gokiantik/post/biji-dan-pohon-pelajaran-dari-tiong-hwa-ie-wan-9Il7d">trakteer.id/post/biji-dan-pohon</a>
+    </div>
+
+  </div><!-- /article-body -->
+</div><!-- /container -->
+
+
+<!-- ════════════════════════════════════════
+     BILINGUAL TOGGLE SCRIPT — JANGAN UBAH
+════════════════════════════════════════ -->
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.documentElement.lang = lang === 'en' ? 'en' : 'id';
+    document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+</script>
+
+</body>
+</html>
