@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sovereign One · 4 Seri Biji · Go Kian Tik (Mbah Hogi Bejo™)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=DM+Mono:wght@300;400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           CHO DESIGN SYSTEM · ROOT VARIABLES (dari template master)
+        ════════════════════════════════════════════════════════════════ */
+        :root {
+            --ink:          #1a1410;
+            --gold:         #b8922a;
+            --gold-light:   #e8c97a;
+            --cream:        #f7f3ec;
+            --cream-deep:   #ede8df;
+            --parchment:    #faf7f2;
+            --muted:        #7a6e62;
+            --border:       #d4c9b8;
+            --teal:         #2d6b5e;
+            --teal-light:   #e8f4f1;
+            --font-serif:   'Cormorant Garamond', Georgia, serif;
+            --font-display: 'Cinzel', serif;
+            --font-mono:    'DM Mono', monospace;
+            --font-lora:    'Lora', Georgia, serif;
+            --base-size:    17px;
+            --line-height:  1.7;
+            --max-width:    1200px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background: var(--parchment);
+            color: var(--ink);
+            font-family: var(--font-serif);
+            font-size: var(--base-size);
+            line-height: var(--line-height);
+            min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LANG BAR — TRILINGUAL
+        ════════════════════════════════════════════════════════════════ */
+        .lang-bar {
+            background: var(--ink);
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.4rem 1.5rem;
+            gap: 0;
+            border-bottom: 1px solid rgba(184,146,42,0.2);
+        }
+        .lang-btn {
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            padding: 0.3rem 0.9rem;
+            background: transparent;
+            border: 1px solid rgba(184,146,42,0.3);
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn:not(:last-child) { border-right: none; }
+        .lang-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 600; }
+        .lang-btn:hover:not(.active) { color: var(--gold-light); border-color: var(--gold); }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HEADER
+        ════════════════════════════════════════════════════════════════ */
+        header {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg, transparent, transparent 40px,
+                rgba(184,146,42,0.04) 40px, rgba(184,146,42,0.04) 41px
+            );
+            pointer-events: none;
+        }
+        .header-eyebrow {
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 600;
+            color: var(--cream);
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        header .subtitle {
+            font-style: italic;
+            color: var(--gold-light);
+            font-size: 1rem;
+            font-weight: 300;
+            position: relative;
+        }
+        .gold-line { width: 60px; height: 1px; background: var(--gold); margin: 1.25rem auto; position: relative; }
+        .header-tagline { font-size: 0.85rem; color: rgba(247,243,236,0.6); font-style: italic; position: relative; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CONTAINER
+        ════════════════════════════════════════════════════════════════ */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           INTRO BLOCK
+        ════════════════════════════════════════════════════════════════ */
+        .intro-block {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-style: italic;
+            line-height: 1.7;
+        }
+        .intro-block strong { color: var(--ink); font-style: normal; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SECTION DIVIDER
+        ════════════════════════════════════════════════════════════════ */
+        .section-divider { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 2rem; }
+        .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+        .section-divider-text { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.3em; color: var(--gold); white-space: nowrap; text-transform: uppercase; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           GRID KARTU (4 kolom)
+        ════════════════════════════════════════════════════════════════ */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* CARD — berdasarkan desain dari template */
+        .card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.2);
+        }
+        .card-header {
+            padding: 1rem 1.2rem 0.8rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--cream-deep);
+        }
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .badge {
+            font-family: var(--font-mono);
+            font-size: 8px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .badge-gold { background: #fff0d6; color: #7d4e00; }
+        .badge-teal { background: var(--teal-light); color: var(--teal); }
+        .badge-blue { background: #e8f0f8; color: #2d5a8e; }
+        .badge-purple { background: #eee8f8; color: #5b4a9e; }
+        .badge-ink { background: var(--ink); color: var(--gold-light); }
+        
+        .card-header h2 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        .card-header .chinese-sub {
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-family: 'Noto Serif SC', var(--font-serif);
+            margin-top: 0.2rem;
+        }
+        .card-header .date {
+            font-size: 0.65rem;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            margin-top: 0.3rem;
+        }
+        .card-body {
+            padding: 1rem 1.2rem;
+            flex: 1;
+        }
+        .card-body p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .card-body .quote {
+            font-style: italic;
+            border-left: 2px solid var(--gold);
+            padding-left: 0.8rem;
+            margin: 0.8rem 0;
+            font-size: 0.8rem;
+            color: var(--ink);
+        }
+        .card-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+            font-size: 0.7rem;
+        }
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--muted);
+            font-family: var(--font-mono);
+        }
+        .stat-value {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .card-footer {
+            padding: 0.8rem 1.2rem 1.2rem;
+            border-top: 1px solid var(--border);
+        }
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--ink);
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            color: var(--gold-light);
+            text-decoration: none;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        .card-link:hover {
+            background: var(--gold);
+            color: var(--ink);
+        }
+
+        /* BOX STATUS (dari template) */
+        .box-synthesis {
+            background: #14532d30;
+            border-left: 4px solid #4ade80;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .box-note {
+            background: var(--cream);
+            border-left: 3px solid var(--gold);
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--muted);
+        }
+        .box-note strong { color: var(--ink); font-style: normal; }
+
+        /* LIVING DOC BADGE */
+        .living-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--teal);
+            background: var(--teal-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+        .living-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+        /* FOOTER */
+        footer.main-footer {
+            background: var(--ink);
+            color: var(--muted);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        footer.main-footer a { color: var(--gold); text-decoration: none; }
+        footer.main-footer a:hover { color: var(--gold-light); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+        }
+        @media (max-width: 640px) {
+            .grid-4 { grid-template-columns: 1fr; }
+            .container { padding: 1.5rem 1rem; }
+            header h1 { font-size: 1.6rem; }
+            .section-divider-text { font-size: 8px; letter-spacing: 0.2em; white-space: normal; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ LANG BAR — TRILINGUAL ═══════════════════════════════════ -->
+<div class="lang-bar">
+    <button class="lang-btn active" id="btn-id" onclick="setLang('id')">ID</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-jv" onclick="setLang('jv')">JV</button>
+</div>
+
+<!-- ═══ HEADER ══════════════════════════════════════════════════ -->
+<header>
+    <div class="header-eyebrow"
+        data-id="THE SOVEREIGN ONE · SERI BIJI"
+        data-en="THE SOVEREIGN ONE · THE SEED SERIES"
+        data-jv="THE SOVEREIGN ONE · SERI BIJI">
+        THE SOVEREIGN ONE · SERI BIJI
+    </div>
+    <h1>Biji yang Membiji Ulang<br>The Cloner Better</h1>
+    <div class="subtitle"
+        data-id="Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě 自主者"
+        data-en="Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě"
+        data-jv="Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě">
+        Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě 自主者
+    </div>
+    <div class="gold-line"></div>
+    <div class="header-tagline"
+        data-id="Empat seri filosofis tentang perjalanan biji — dari kesadaran, pertumbuhan, hingga kebebasan sejati"
+        data-en="Four philosophical series on the seed's journey — from awareness, growth, to true freedom"
+        data-jv="Sekawan seri filosofis babagan perjalanan biji — saka kesadaran, wutuh, nganti kamardikan sejati">
+        Empat seri filosofis tentang perjalanan biji — dari kesadaran, pertumbuhan, hingga kebebasan sejati
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- INTRO BLOCK -->
+    <div class="intro-block">
+        <span
+            data-id="<strong>ARSIP HIDUP.</strong> Empat tulisan ini adalah 'biji' yang ditanam dalam kesadaran. Dimulai dari refleksi di Tiong Hoa Ie Wan, Semarang — hingga pemahaman tentang Xiāo Yáo, kebebasan sejati yang lahir dari keikhlasan. Setiap seri berdiri sendiri, namun menyatu dalam satu alur: menjadi sadar, bertumbuh, membiji ulang, dan akhirnya ikhlas."
+            data-en="<strong>LIVING ARCHIVE.</strong> These four writings are 'seeds' planted with awareness. Starting from a reflection at Tiong Hoa Ie Wan, Semarang — to the understanding of Xiāo Yáo, true freedom born from acceptance. Each series stands alone, yet unites in one flow: becoming aware, growing, re-seeding, and finally accepting."
+            data-jv="<strong>ARSIP URIP.</strong> Sekawan tulisan iki minangka 'biji' sing ditandur ing kesadaran. Diwiwiti saka refleksi ing Tiong Hoa Ie Wan, Semarang — nganti pemahaman babagan Xiāo Yáo, kamardikan sejati sing lair saka ikhlas. Saben seri madeg dhewe, nanging manunggal ing siji alur: dadi sadar, thukul, miji maneh, lan pungkasane ikhlas.">
+            <strong>ARSIP HIDUP.</strong> Empat tulisan ini adalah "biji" yang ditanam dalam kesadaran. Dimulai dari refleksi di Tiong Hoa Ie Wan, Semarang — hingga pemahaman tentang Xiāo Yáo, kebebasan sejati yang lahir dari keikhlasan. Setiap seri berdiri sendiri, namun menyatu dalam satu alur: menjadi sadar, bertumbuh, membiji ulang, dan akhirnya ikhlas.
+        </span>
+    </div>
+
+    <!-- SECTION DIVIDER -->
+    <div class="section-divider">
+        <span class="section-divider-text"
+            data-id="§1 · EMPAT SERI BIJI"
+            data-en="§1 · FOUR SEED SERIES"
+            data-jv="§1 · SEKAWAN SERI BIJI">
+            §1 · EMPAT SERI BIJI
+        </span>
+    </div>
+
+    <!-- 4 KARTU (GRID) -->
+    <div class="grid-4">
+
+        <!-- Kartu 1: Seri 1 — Di dalam biji, sudah ada pohon -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🌱</div>
+                <div class="badge-row">
+                    <span class="badge badge-gold" data-id="SERI 1" data-en="SERIES 1" data-jv="SERI 1">SERI 1</span>
+                    <span class="badge badge-teal" data-id="Refleksi" data-en="Reflection" data-jv="Refleksi">Refleksi</span>
+                </div>
+                <h2 data-id="Di dalam biji, sudah ada pohon" data-en="Inside the seed, the tree already exists" data-jv="Ing jero biji, wis ana wit">Di dalam biji, sudah ada pohon</h2>
+                <div class="chinese-sub" data-id="种瓜得瓜" data-en="种瓜得瓜" data-jv="种瓜得瓜">种瓜得瓜</div>
+                <div class="date" data-id="Pelajaran dari Tiong Hoa Ie Wan" data-en="Lesson from Tiong Hoa Ie Wan" data-jv="Piwulang saka Tiong Hoa Ie Wan">Pelajaran dari Tiong Hoa Ie Wan</div>
+            </div>
+            <div class="card-body">
+                <p data-id="Sebuah perjalanan menemukan 'pohon' di dalam diri — dari duka, menjadi terang. Berawal dari berdiri di Tiong Hoa Ie Wan, Semarang, mengantarkan ibu yang telah berpulang, muncul pertanyaan: 'Sebenarnya saya ini pohon apa?'" data-en="A journey of discovering the 'tree' within — from grief, into light. It began while standing at Tiong Hoa Ie Wan, Semarang, accompanying my mother who had passed away — a question emerged: 'What tree am I, actually?'" data-jv="Perjalanan nemokake 'wit' ing jero diri — saka susah, dadi padhang. Diwiwiti saka ngadeg ing Tiong Hoa Ie Wan, Semarang, ngantar ibu sing wis seda — muncul pitakonan: 'Sejatine aku iki wit apa?'">Sebuah perjalanan menemukan "pohon" di dalam diri — dari duka, menjadi terang. Berawal dari berdiri di Tiong Hoa Ie Wan, Semarang, mengantarkan ibu yang telah berpulang, muncul pertanyaan: "Sebenarnya saya ini pohon apa?"</p>
+                <div class="quote" data-id="'Di dalam biji, sudah ada pohon.'" data-en="'Inside the seed, the tree already exists.'" data-jv="'Ing jero biji, wis ana wit.'">"Di dalam biji, sudah ada pohon."</div>
+                <div class="card-stats">
+                    <span class="stat">📍 <span class="stat-value">Tiong Hoa Ie Wan</span></span>
+                    <span class="stat">📖 <span class="stat-value" data-id="Refleksi Diri" data-en="Self-Reflection" data-jv="Refleksi Diri">Refleksi Diri</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="https://gokiantik.github.io/thesovereignone/001_Di_dalam_biji_sudah_ada_pohon.html" class="card-link" target="_blank">
+                    📄 <span data-id="Baca Seri 1" data-en="Read Series 1" data-jv="Waca Seri 1">Baca Seri 1</span> →
+                </a>
+            </div>
+        </div>
+
+        <!-- Kartu 2: Seri 2 — Biji yang sadar melanjutkan bertumbuh -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🌿</div>
+                <div class="badge-row">
+                    <span class="badge badge-gold" data-id="SERI 2" data-en="SERIES 2" data-jv="SERI 2">SERI 2</span>
+                    <span class="badge badge-blue" data-id="Pertumbuhan" data-en="Growth" data-jv="Wutuh">Pertumbuhan</span>
+                </div>
+                <h2 data-id="Biji yang sadar melanjutkan bertumbuh" data-en="The aware seed continues to grow" data-jv="Biji sing sadar nerusake wutuh">Biji yang sadar melanjutkan bertumbuh</h2>
+                <div class="chinese-sub" data-id="覺醒的種子繼續生長" data-en="覺醒的種子繼續生長" data-jv="覺醒的種子繼續生長">覺醒的種子繼續生長</div>
+                <div class="date" data-id="Proses yang tidak terlihat" data-en="The invisible process" data-jv="Proses sing ora katon">Proses yang tidak terlihat</div>
+            </div>
+            <div class="card-body">
+                <p data-id="Tentang pertumbuhan diam, kesadaran, dan proses panjang yang tidak terlihat kemarin. 'Yang terlihat hari ini — adalah hasil dari proses panjang yang tidak terlihat kemarin.'" data-en="On silent growth, awareness, and the long process that was invisible yesterday. 'What is visible today — is the result of a long process that was invisible yesterday.'" data-jv="Babagan wutuh sepi, kesadaran, lan proses dawa sing ora katon wingi. 'Sing katon dina iki — asil saka proses dawa sing ora katon wingi.'">Tentang pertumbuhan diam, kesadaran, dan proses panjang yang tidak terlihat kemarin. "Yang terlihat hari ini — adalah hasil dari proses panjang yang tidak terlihat kemarin."</p>
+                <div class="quote" data-id="'Biji yang sadar tidak berhenti bertumbuh. Ia terus berakar, meski tidak terlihat.'" data-en="'The aware seed does not stop growing. It keeps taking root, even when unseen.'" data-jv="'Biji sing sadar ora mandheg thukul. Terus oyot, sanajan ora katon.'">"Biji yang sadar tidak berhenti bertumbuh. Ia terus berakar, meski tidak terlihat."</div>
+                <div class="card-stats">
+                    <span class="stat">🌱 <span class="stat-value" data-id="Pertumbuhan Diam" data-en="Silent Growth" data-jv="Wutuh Sepi">Pertumbuhan Diam</span></span>
+                    <span class="stat">🎯 <span class="stat-value" data-id="Kesadaran" data-en="Awareness" data-jv="Kesadaran">Kesadaran</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="https://gokiantik.github.io/thesovereignone/002_Biji_yang_sadar_melanjutkan_bertumbuh.html" class="card-link" target="_blank">
+                    📄 <span data-id="Baca Seri 2" data-en="Read Series 2" data-jv="Waca Seri 2">Baca Seri 2</span> →
+                </a>
+            </div>
+        </div>
+
+        <!-- Kartu 3: Seri 3 — Biji yang membiji ulang / The Cloner Better -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🔄</div>
+                <div class="badge-row">
+                    <span class="badge badge-gold" data-id="SERI 3" data-en="SERIES 3" data-jv="SERI 3">SERI 3</span>
+                    <span class="badge badge-purple" data-id="The Cloner Better" data-en="The Cloner Better" data-jv="The Cloner Better">The Cloner Better</span>
+                </div>
+                <h2 data-id="Biji yang membiji ulang" data-en="The seed that re-seeds" data-jv="Biji sing miji maneh">Biji yang membiji ulang</h2>
+                <div class="chinese-sub">Wu · Neng · Xiu Xin Yang Xing · Qi · Dao Yin Shu</div>
+                <div class="date" data-id="Pewarisan ekosistem hidup" data-en="Inheriting a living ecosystem" data-jv="Pewarisan ekosistem urip">Pewarisan ekosistem hidup</div>
+            </div>
+            <div class="card-body">
+                <p data-id="Pohon yang berbuah — tidak otomatis menghasilkan biji yang sama kuatnya. The Cloner Better adalah pewarisan ekosistem hidup — lengkap dengan napasnya, detaknya, Qi-nya, wataknya, dan cara menuntunnya." data-en="A tree that bears fruit — does not automatically produce seeds of equal strength. The Cloner Better is the inheritance of a living ecosystem — complete with its breath, its beat, its Qi, its character, and its way of guiding." data-jv="Wit sing woh — ora otomatis ngasilake biji sing padha kekuatane. The Cloner Better yaiku pewarisan ekosistem urip — lengkap karo napase, detake, Qi-ne, watake, lan cara nuntun.">Pohon yang berbuah — tidak otomatis menghasilkan biji yang sama kuatnya. The Cloner Better adalah pewarisan ekosistem hidup — lengkap dengan napasnya, detaknya, Qi-nya, wataknya, dan cara menuntunnya.</p>
+                <div class="quote" data-id="'The Cloner Better bukan kloning genetik. The Cloner Better adalah pewarisan ekosistem hidup.'" data-en="'The Cloner Better is not genetic cloning. The Cloner Better is the inheritance of a living ecosystem.'" data-jv="'The Cloner Better dudu kloning genetik. The Cloner Better yaiku pewarisan ekosistem urip.'">"The Cloner Better bukan kloning genetik. The Cloner Better adalah pewarisan ekosistem hidup."</div>
+                <div class="card-stats">
+                    <span class="stat">🧬 <span class="stat-value" data-id="6 Pilar" data-en="6 Pillars" data-jv="6 Pilar">6 Pilar</span></span>
+                    <span class="stat">🌱 <span class="stat-value" data-id="Ekosistem" data-en="Ecosystem" data-jv="Ekosistem">Ekosistem</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="https://gokiantik.github.io/thesovereignone/003_Biji_yang_membiji_ulang_v2.html" class="card-link" target="_blank">
+                    📄 <span data-id="Baca Seri 3" data-en="Read Series 3" data-jv="Waca Seri 3">Baca Seri 3</span> →
+                </a>
+            </div>
+        </div>
+
+        <!-- Kartu 4: Seri 4 — The Sovereign One Xiāo Yáo -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🌬️</div>
+                <div class="badge-row">
+                    <span class="badge badge-gold" data-id="SERI 4" data-en="SERIES 4" data-jv="SERI 4">SERI 4</span>
+                    <span class="badge badge-ink" data-id="Xiāo Yáo" data-en="Xiāo Yáo" data-jv="Xiāo Yáo">Xiāo Yáo</span>
+                </div>
+                <h2 data-id="The Sovereign One · Biji Yang Telah Ikhlas" data-en="The Sovereign One · The Seed That Has Accepted" data-jv="The Sovereign One · Biji Sing Wis Ikhlas">The Sovereign One · Biji Yang Telah Ikhlas</h2>
+                <div class="chinese-sub" data-id="逍遙 · 自主者" data-en="逍遙 · 自主者" data-jv="逍遙 · 自主者">逍遙 · 自主者</div>
+                <div class="date" data-id="Bukan bebas dari masalah, tapi bebas dalam menghadapi masalah" data-en="Not free from problems, but free within facing problems" data-jv="Dudu bebas saka masalah, nanging bebas sajrone ngadepi masalah">Bukan bebas dari masalah, tapi bebas dalam menghadapi masalah</div>
+            </div>
+            <div class="card-body">
+                <p data-id="Xiāo Yáo bukan bebas dari masalah. Xiāo Yáo adalah ikhlas — kemampuan memilih dan berteguh di atas probabilitas. Ikhlas transenden: 100% yakin dengan kompas arah, 0% melekat pada hasil." data-en="Xiāo Yáo is not freedom from problems. Xiāo Yáo is acceptance — the capacity to choose and stand firm above probability. Transcendent acceptance: 100% certain of the directional compass, 0% attached to outcome." data-jv="Xiāo Yáo dudu bebas saka masalah. Xiāo Yáo yaiku ikhlas — kemampuan milih lan mantep ing ndhuwur probabilitas. Ikhlas transenden: 100% yakin karo kompas arah, 0% gandeng karo asil.">Xiāo Yáo bukan bebas dari masalah. Xiāo Yáo adalah ikhlas — kemampuan memilih dan berteguh di atas probabilitas. Ikhlas transenden: 100% yakin dengan kompas arah, 0% melekat pada hasil.</p>
+                <div class="quote" data-id="'Bukan bebas dari masalah. Tapi bebas dalam menghadapi masalah. Bukan tanpa ketidakpastian. Tapi teguh di atas ketidakpastian.'" data-en="'Not free from problems. But free within facing problems. Not without uncertainty. But steadfast above uncertainty.'" data-jv="'Dudu bebas saka masalah. Nanging bebas sajrone ngadepi masalah. Dudu tanpa ketidakpastian. Nanging mantep ing ndhuwur ketidakpastian.'">"Bukan bebas dari masalah. Tapi bebas dalam menghadapi masalah. Bukan tanpa ketidakpastian. Tapi teguh di atas ketidakpastian."</div>
+                <div class="card-stats">
+                    <span class="stat">🎲 <span class="stat-value" data-id="5 Tingkat Ikhlas" data-en="5 Levels of Acceptance" data-jv="5 Tingkat Ikhlas">5 Tingkat Ikhlas</span></span>
+                    <span class="stat">🧭 <span class="stat-value" data-id="Kompas Arah" data-en="Directional Compass" data-jv="Kompas Arah">Kompas Arah</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="https://gokiantik.github.io/thesovereignone/004_The_Sovereign_One_Xiao_Yao_Biji_Yang_Telah_Ikhlas.html" class="card-link" target="_blank">
+                    📄 <span data-id="Baca Seri 4" data-en="Read Series 4" data-jv="Waca Seri 4">Baca Seri 4</span> →
+                </a>
+            </div>
+        </div>
+
+    </div> <!-- end grid-4 -->
+
+    <!-- SECTION DIVIDER untuk Catatan -->
+    <div class="section-divider">
+        <span class="section-divider-text"
+            data-id="§2 · TENTANG SERI INI"
+            data-en="§2 · ABOUT THIS SERIES"
+            data-jv="§2 · BABAGAN SERI IKI">
+            §2 · TENTANG SERI INI
+        </span>
+    </div>
+
+    <!-- Living Archive Badge -->
+    <div class="living-badge">
+        <div class="living-dot"></div>
+        <span data-id="Arsip Hidup · 4 Seri · Go Kian Tik (Mbah Hogi Bejo™)" data-en="Living Archive · 4 Series · Go Kian Tik (Mbah Hogi Bejo™)" data-jv="Arsip Urip · 4 Seri · Go Kian Tik (Mbah Hogi Bejo™)">Arsip Hidup · 4 Seri · Go Kian Tik (Mbah Hogi Bejo™)</span>
+    </div>
+
+    <div class="box-synthesis">
+        <span
+            data-id="<strong>🌱 Alur Keempat Seri:</strong><br><br>① <strong>Di dalam biji, sudah ada pohon</strong> — Menemukan potensi sejati di dalam diri. Refleksi dari duka menjadi terang.<br><br>② <strong>Biji yang sadar melanjutkan bertumbuh</strong> — Pertumbuhan diam yang tidak terlihat. Proses panjang di balik hasil yang tampak.<br><br>③ <strong>Biji yang membiji ulang / The Cloner Better</strong> — Pewarisan ekosistem hidup. Bukan kloning genetik, tapi pewarisan utuh.<br><br>④ <strong>The Sovereign One Xiāo Yáo</strong> — Kebebasan sejati yang lahir dari keikhlasan. Berteguh di atas probabilitas."
+            data-en="<strong>🌱 The Flow of Four Series:</strong><br><br>① <strong>Inside the seed, the tree already exists</strong> — Discovering true potential within. Reflection from grief into light.<br><br>② <strong>The aware seed continues to grow</strong> — Silent growth that is invisible. The long process behind visible results.<br><br>③ <strong>The seed that re-seeds / The Cloner Better</strong> — Inheritance of a living ecosystem. Not genetic cloning, but holistic inheritance.<br><br>④ <strong>The Sovereign One Xiāo Yáo</strong> — True freedom born from acceptance. Standing firm above probability."
+            data-jv="<strong>🌱 Alure Sekawan Seri:</strong><br><br>① <strong>Ing jero biji, wis ana wit</strong> — Nemokake potensi sejati ing jero diri. Refleksi saka susah dadi padhang.<br><br>② <strong>Biji sing sadar nerusake wutuh</strong> — Wutuh sepi sing ora katon. Proses dawa ing mburi asil sing katon.<br><br>③ <strong>Biji sing miji maneh / The Cloner Better</strong> — Pewarisan ekosistem urip. Dudu kloning genetik, nanging pewarisan utuh.<br><br>④ <strong>The Sovereign One Xiāo Yáo</strong> — Kamardikan sejati sing lair saka ikhlas. Mantep ing ndhuwur probabilitas.">
+            <strong>🌱 Alur Keempat Seri:</strong><br><br>
+            ① <strong>Di dalam biji, sudah ada pohon</strong> — Menemukan potensi sejati di dalam diri. Refleksi dari duka menjadi terang.<br><br>
+            ② <strong>Biji yang sadar melanjutkan bertumbuh</strong> — Pertumbuhan diam yang tidak terlihat. Proses panjang di balik hasil yang tampak.<br><br>
+            ③ <strong>Biji yang membiji ulang / The Cloner Better</strong> — Pewarisan ekosistem hidup. Bukan kloning genetik, tapi pewarisan utuh.<br><br>
+            ④ <strong>The Sovereign One Xiāo Yáo</strong> — Kebebasan sejati yang lahir dari keikhlasan. Berteguh di atas probabilitas.
+        </span>
+    </div>
+
+    <div class="box-note">
+        <span
+            data-id="<strong>☯️ Dari Go Kian Tik (Mbah Hogi Bejo™):</strong><br><br>'Keempat seri ini ditulis sebagai biji — bukan untuk dipanen saya sendiri, tapi untuk diwariskan. Biji yang baik adalah biji yang mau membiji ulang. The Cloner Better bukan tentang kloning, tapi tentang pewarisan ekosistem hidup. Dan Xiāo Yáo adalah kunci terakhir: ikhlas. Ketika ikhlas hadir, tidak ada situasi yang bisa menggoyahkan kompas arah.'"
+            data-en="<strong>☯️ From Go Kian Tik (Mbah Hogi Bejo™):</strong><br><br>'These four series were written as seeds — not for me to harvest, but to pass on. A good seed is one willing to re-seed. The Cloner Better is not about cloning, but about inheriting a living ecosystem. And Xiāo Yáo is the final key: acceptance. When acceptance is present, no situation can shake the directional compass.'"
+            data-jv="<strong>☯️ Saka Go Kian Tik (Mbah Hogi Bejo™):</strong><br><br>'Sekawan seri iki ditulis minangka biji — dudu kanggo dipanen dhewe, nanging kanggo diwarisake. Biji sing apik yaiku biji sing gelem miji maneh. The Cloner Better dudu babagan kloning, nanging babagan pewarisan ekosistem urip. Lan Xiāo Yáo minangka kunci pungkasan: ikhlas. Nalika ikhlas ana, ora ana kahanan sing bisa ngobahake kompas arah.'">
+            <strong>☯️ Dari Go Kian Tik (Mbah Hogi Bejo™):</strong><br><br>
+            "Keempat seri ini ditulis sebagai biji — bukan untuk dipanen saya sendiri, tapi untuk diwariskan. Biji yang baik adalah biji yang mau membiji ulang. The Cloner Better bukan tentang kloning, tapi tentang pewarisan ekosistem hidup. Dan Xiāo Yáo adalah kunci terakhir: ikhlas. Ketika ikhlas hadir, tidak ada situasi yang bisa menggoyahkan kompas arah."
+        </span>
+    </div>
+
+</div> <!-- end .container -->
+
+<!-- ═══ MAIN FOOTER (standar CHO dari template) ═══════════════════ -->
+<footer class="main-footer">
+    <div style="margin-bottom:0.5rem;">
+        <a href="https://gokiantik.github.io/chiefhumanityofficer/" target="_blank"
+            data-id="Relax Reading" data-en="Relax Reading" data-jv="Relax Reading">Relax Reading</a> &nbsp;·&nbsp;
+        <a href="https://zenodo.org/communities/chiefhumanityofficer" target="_blank">Zenodo</a> &nbsp;·&nbsp;
+        <a href="https://gokiantik.github.io/thesovereignone/" target="_blank"
+            data-id="The Sovereign One" data-en="The Sovereign One" data-jv="The Sovereign One">The Sovereign One</a> &nbsp;·&nbsp;
+        <a href="https://trakteer.id/gokiantik" target="_blank"
+            data-id="Dukung" data-en="Support" data-jv="Dhukungan">Dukung</a>
+    </div>
+    <div
+        data-id="Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě 自主者 · Superhero Café Inside"
+        data-en="Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě · Superhero Café Inside"
+        data-jv="Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě · Superhero Café Inside">
+        Go Kian Tik · Mbah Hogi Bejo™ · Zì Zhǔ Zhě 自主者 · Superhero Café Inside
+    </div>
+    <div style="margin-top:0.35rem;font-size:0.75rem;opacity:0.6;"
+        data-id="Walking Books Philosophy — Manusia adalah buku hidup yang berjalan"
+        data-en="Walking Books Philosophy — A human is a living book that walks"
+        data-jv="Walking Books Philosophy — Manungsa iku buku urip sing mlaku">
+        Walking Books Philosophy — Manusia adalah buku hidup yang berjalan
+    </div>
+    <div style="margin-top:0.5rem;font-size:0.72rem;opacity:0.55;font-family:'DM Mono',monospace;" id="footer-ts"></div>
+</footer>
+
+<script>
+    // TIMESTAMP (dari template)
+    (function() {
+        const now = new Date();
+        const pad = n => String(n).padStart(2,'0');
+        const fmt = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        const el = document.getElementById('footer-ts');
+        if (el) el.textContent = 'The Sovereign One · 4 Series · Generated: ' + fmt(now);
+    })();
+
+    // TRILINGUAL SYSTEM (dari template master)
+    let currentLang = 'id';
+
+    function setLang(lang) {
+        currentLang = lang;
+        ['id','en','jv'].forEach(l => {
+            const btn = document.getElementById('btn-' + l);
+            if (btn) btn.classList.toggle('active', l === lang);
+        });
+        document.documentElement.lang = lang === 'jv' ? 'jv' : lang;
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+            const val = el.getAttribute('data-' + lang);
+            if (val !== null) {
+                el.innerHTML = val;
+            }
+        });
+        if (lang === 'jv') {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (!el.hasAttribute('data-jv')) {
+                    el.innerHTML = el.getAttribute('data-en');
+                }
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
