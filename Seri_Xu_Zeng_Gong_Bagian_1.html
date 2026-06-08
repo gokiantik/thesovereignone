@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seri Xù Zēng Gōng (Bagian 1) · Go Kian Tik (Mbah Hogi Bejo™)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #faf8f2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; line-height: 1.75; color: #2c2c2a; padding: 2rem 1rem; }
+    .container { max-width: 760px; margin: 0 auto; }
+    .article-header { margin-bottom: 2rem; text-align: center; border-bottom: 1px solid #e2dcd0; padding-bottom: 1.5rem; }
+    .badge { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #8b7a5c; font-family: monospace; margin-bottom: 0.75rem; }
+    h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.5rem; line-height: 1.2; }
+    h1 .subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; font-style: italic; color: #4a5b3a; }
+    .chinese-title { font-size: 1.8rem; font-weight: 400; color: #c9a227; margin-bottom: 0.5rem; letter-spacing: 4px; }
+    .subhead { font-size: 1rem; color: #8b7a5c; font-style: italic; margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
+    .author { font-size: 0.78rem; color: #a89f8a; font-family: monospace; }
+    .series-nav { background: #e8f0e9; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; font-size: 0.78rem; color: #2c5a3e; line-height: 2; }
+    .series-nav .seri-badge { display: inline-block; background: #2c5a3e; color: #faf8f2; padding: 0.15rem 0.65rem; border-radius: 20px; margin: 0 0.25rem; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.5px; }
+    .article-body { font-size: 1.05rem; }
+    .article-body p { margin-bottom: 1.25rem; }
+    .pull-quote { margin: 1.8rem 0; padding: 1.2rem 1.5rem; background: #f0ede5; border-left: 4px solid #c9a227; font-style: italic; color: #4a5b3a; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; }
+    .pull-quote strong { color: #2c5a3e; font-style: normal; }
+    .section-title { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: #2c5a3e; margin: 2rem 0 1rem 0; padding-bottom: 0.3rem; border-bottom: 1px solid #e2dcd0; letter-spacing: 0.3px; }
+    .section-title.center { text-align: center; border-bottom: none; }
+    .insight-box { background: #e8f0e9; padding: 1.2rem 1.5rem; border-radius: 4px; margin: 1.5rem 0; font-size: 1.1rem; color: #2c5a3e; border-left: 3px solid #2c5a3e; line-height: 1.7; text-align: center; font-family: 'Cinzel', serif; font-weight: bold;}
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .pillar-card { background: #f0ede5; padding: 1rem; border-radius: 8px; text-align: center; }
+    .pillar-card .pillar-char { font-size: 1.6rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; line-height: 1.2; }
+    .pillar-card .pillar-name { font-size: 0.82rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; font-family: 'Cinzel', serif; }
+    .pillar-card .pillar-desc { font-size: 0.75rem; color: #8b7a5c; line-height: 1.45; font-family: 'Cormorant Garamond', serif;}
+    .divider { margin: 2.5rem 0; text-align: center; color: #c9a227; font-size: 0.8rem; letter-spacing: 5px; }
+    .cta-box { margin: 2rem 0; padding: 1.5rem; background: #2c5a3e; color: #faf8f2; border-radius: 8px; text-align: center; line-height: 1.8; }
+    .cta-box p { margin-bottom: 0.5rem; }
+    .cta-box a { display: inline-block; margin-top: 1rem; padding: 0.65rem 1.6rem; background: #c9a227; color: #2c5a3e; text-decoration: none; border-radius: 40px; font-weight: 700; font-size: 0.85rem; font-family: 'Cinzel', serif; letter-spacing: 0.5px; transition: opacity 0.2s; }
+    .cta-box a:hover { opacity: 0.85; }
+    .closing { margin-top: 2rem; padding: 1.5rem; background: #2c5a3e; color: #faf8f2; border-radius: 8px; text-align: center; line-height: 1.8; }
+    .closing .seed { font-size: 2rem; margin-bottom: 0.75rem; }
+    hr { margin: 1.5rem 0; border: none; height: 1px; background: #e2dcd0; }
+    .footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2dcd0; font-size: 0.68rem; color: #a89f8a; text-align: center; font-family: monospace; line-height: 1.9; }
+    .footer a { color: #8b7a5c; text-decoration: none; }
+    .footer a:hover { color: #2c5a3e; }
+    .text-center { text-align: center; }
+    .mt-sm { margin-top: 0.5rem; }
+    .mt-md { margin-top: 1rem; }
+    .next-link { font-size: 1.1rem; color: #c9a227; font-family: 'Cinzel', serif; font-weight: bold; text-decoration: none; border-bottom: 1px solid #c9a227; padding-bottom: 2px;}
+    .next-link:hover { color: #2c5a3e; border-bottom-color: #2c5a3e; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="article-header">
+    <div class="badge">
+      🌱 Zì Zhǔ Zhě — The Sovereign One · SERI 1
+    </div>
+    <div class="chinese-title">蓄增功</div>
+    <h1>
+      Kita Terlalu Fokus ‘Mengisi’<br>
+      <span class="subtitle">Padahal Rahasia Growth Ada di ‘Mengosong’</span>
+    </h1>
+    <div class="subhead">
+      Seri Xù Zēng Gōng (Bagian 1)
+    </div>
+    <div class="author">
+      Go Kian Tik (Mbah Hogi Bejo™) · 自主者 · Depok, Indonesia · 2026
+    </div>
+  </div>
+
+  <div class="series-nav">
+    <span class="seri-badge">Seri 1</span>
+    Mengisi & Mengosong
+    &nbsp;
+    <span class="seri-badge">Seri 2</span>
+    Volume dan Size
+    &nbsp;
+    <span class="seri-badge">Seri 3</span>
+    Bukan Tombol Reset
+    &nbsp;
+    <span class="seri-badge">Seri 4</span>
+    Manusia dan AI
+  </div>
+
+  <div class="article-body">
+    <p>
+      Di era akselerasi peradaban saat ini, kita hidup dalam sebuah ironi besar. Manusia modern sangat rentan menjadi ruwet secara mental dan spiritual karena kebiasaan terus-menerus menumpuk informasi, pencapaian, dan ekspektasi tanpa pernah menyaringnya.
+    </p>
+    <p>
+      Kita diajarkan bahwa untuk bertumbuh (<em>growth</em>), kita harus terus "mengisi"—menambah gelar, menambah koneksi, menambah data di kepala kita.
+    </p>
+
+    <div class="pull-quote">
+      Namun, bukankah gelas yang terus-menerus diisi tanpa pernah dikosongkan <strong>akhirnya akan tumpah dan isinya menjadi kacau?</strong>
+    </div>
+
+    <div class="section-title">
+      🌱 Spiral Yin-Yang dalam Pertumbuhan
+    </div>
+    <p>
+      Pertumbuhan manusia yang sejati bukanlah garis lurus dari akumulasi tanpa henti. Pertumbuhan yang matang bekerja dalam wawasan spiral Yin-Yang. Ada siklus mengambil, namun harus ada pula siklus melepaskan. Ketika kita hanya berfokus pada sisi <em>Yang</em> (berekspansi, menumpuk, mengejar), kita kehilangan pijakan.
+    </p>
+    <p>
+      Di sinilah kita perlu memahami kembali seni bertumbuh melalui pengosongan diri. Kita memerlukan metode yang dalam tradisi kearifan disebut sebagai <strong>Xù Zhēn Gōng</strong>—sebuah fondasi untuk <em>Noto njero</em> atau membersihkan ruang batin.
+    </p>
+
+    <div class="section-title">
+      🌱 Xù Zhēn Gōng: Mengosongkan Ego, Melebarkan Ruang
+    </div>
+    <p>
+      Xù Zhēn Gōng mewakili Sisi Yin (Kedalaman) dari proses pertumbuhan manusia. Langkah pertamanya bukanlah belajar hal baru, melainkan proses mengosongkan diri dari kebisingan ego. Ego adalah sumber utama dari segala <em>noise</em> dan keruwetan yang membuat kita tidak bisa melihat realitas apa adanya.
+    </p>
+
+    <div class="insight-box">
+      Wu = 1 / Ego
+    </div>
+
+    <p>
+      Semakin dominan ego kita, semakin kecil ruang kejernihan (<em>Wu</em>) di dalam batin kita. Sebaliknya, saat kita mampu meredakan ego, ruang kesadaran kita melebar. Ruang kosong ini bukanlah sebuah ketiadaan atau kehampaan, melainkan sebuah "kapasitas" baru.
+    </p>
+
+    <div class="section-title">
+      🌱 Dari Kosong Menuju Kemanusiaan (5ng)
+    </div>
+    <p>
+      Lalu, setelah ruang batin itu dikosongkan dari ego, dengan apa kita mengisinya? Bukan dengan ambisi, melainkan diisi dengan cinta dan kemanusiaan (<em>love</em>).
+    </p>
+    <p>
+      Di tataran praktis, sisi kemanusiaan ini secara konkret dioperasionalkan melalui filosofi <strong>5ng</strong> dalam kearifan lokal kita:
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-name">Ngeman</div>
+        <div class="pillar-desc">Mengasihi & menyayangi sepenuh hati</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-name">Ngemong</div>
+        <div class="pillar-desc">Membimbing dengan sabar & telaten</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-name">Ngrawat</div>
+        <div class="pillar-desc">Memelihara kelangsungan dengan baik</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-name">Ngrumat</div>
+        <div class="pillar-desc">Menjaga & merawat dengan telaten</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-name">Ngruwat</div>
+        <div class="pillar-desc">Memulihkan & membersihkan dari hal buruk</div>
+      </div>
+    </div>
+
+    <p>
+      Pertumbuhan sejati tidak diukur dari seberapa banyak hal yang berhasil kita kumpulkan di dunia luar, melainkan dari seberapa lapang ruang di dalam diri kita (<em>Noto njero</em>) untuk menampung kemanusiaan. Hanya dari kedalaman Yin (Xù Zhēn Gōng) inilah, kita bisa bersiap untuk tahap selanjutnya: melebarkan kapasitas diri untuk menjawab tantangan zaman.
+    </p>
+
+    <div class="divider">❉ ❉ ❉</div>
+
+    <div class="badge text-center mt-md">
+      🌱 Seri 2 dari 4
+    </div>
+    <div class="section-title center" style="font-size:1.2rem; margin-top:0.5rem;">
+      <a href="#" class="next-link">Volume dan Size: Mengapa Siklus Hidup Kita Harus Semakin Melebar? →</a>
+    </div>
+
+    <div class="cta-box">
+      <p>
+        🌱 Tulisan ini adalah salah satu "biji".<br>
+        Saya tidak tahu siapa yang akan membaca.<br>
+        Saya tidak tahu kapan ia akan berbuah.
+      </p>
+      <p>
+        Tapi saya percaya —<br>
+        setiap kata yang ditanam dengan sadar,<br>
+        akan menemukan waktunya.
+      </p>
+      <a href="https://trakteer.id/gokiantik" target="_blank">Dukung di Trakteer →</a>
+    </div>
+
+    <div class="closing">
+      <div class="seed">🌬️</div>
+      <p>"Hanya gelas yang kosong yang mampu menampung lautan kebijaksanaan."</p>
+      <p style="font-size:0.82rem; opacity:0.75; margin-top:0.5rem;">
+        — Go Kian Tik (Mbah Hogi Bejo™) · Zì Zhǔ Zhě · Xù Zēng Gōng
+      </p>
+    </div>
+
+    <hr>
+    <div class="footer">
+      👤 © 2026 Go Kian Tik (Mbah Hogi Bejo™) All rights reserved.<br>
+      Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
+      · Zì Zhǔ Zhě 自主者 · Superhero Café Inside
+      · <a href="https://www.superherocafeinside.com">www.superherocafeinside.com</a><br>
+      CHO In Action Series
+      · 🌐 Trakteer: <a href="https://trakteer.id/gokiantik">trakteer.id/gokiantik</a>
+      · 🌐 LinkedIn: <a href="https://linkedin.com/in/gokiantik">linkedin.com/in/gokiantik</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seri Xù Zēng Gōng (Bagian 2) · Go Kian Tik (Mbah Hogi Bejo™)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #faf8f2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; line-height: 1.75; color: #2c2c2a; padding: 2rem 1rem; }
+    .container { max-width: 760px; margin: 0 auto; }
+    .article-header { margin-bottom: 2rem; text-align: center; border-bottom: 1px solid #e2dcd0; padding-bottom: 1.5rem; }
+    .badge { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #8b7a5c; font-family: monospace; margin-bottom: 0.75rem; }
+    h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.5rem; line-height: 1.2; }
+    h1 .subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; font-style: italic; color: #4a5b3a; }
+    .chinese-title { font-size: 1.8rem; font-weight: 400; color: #c9a227; margin-bottom: 0.5rem; letter-spacing: 4px; }
+    .subhead { font-size: 1rem; color: #8b7a5c; font-style: italic; margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
+    .author { font-size: 0.78rem; color: #a89f8a; font-family: monospace; }
+    .series-nav { background: #e8f0e9; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; font-size: 0.78rem; color: #2c5a3e; line-height: 2; }
+    .series-nav .seri-badge { display: inline-block; background: #2c5a3e; color: #faf8f2; padding: 0.15rem 0.65rem; border-radius: 20px; margin: 0 0.25rem; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.5px; }
+    .article-body { font-size: 1.05rem; }
+    .article-body p { margin-bottom: 1.25rem; }
+    .pull-quote { margin: 1.8rem 0; padding: 1.2rem 1.5rem; background: #f0ede5; border-left: 4px solid #c9a227; font-style: italic; color: #4a5b3a; font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; }
+    .pull-quote strong { color: #2c5a3e; font-style: normal; }
+    .section-title { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: #2c5a3e; margin: 2rem 0 1rem 0; padding-bottom: 0.3rem; border-bottom: 1px solid #e2dcd0; letter-spacing: 0.3px; }
+    .section-title.center { text-align: center; border-bottom: none; }
+    .insight-box { background: #e8f0e9; padding: 1.2rem 1.5rem; border-radius: 4px; margin: 1.5rem 0; font-size: 1.1rem; color: #2c5a3e; border-left: 3px solid #2c5a3e; line-height: 1.7; text-align: center; font-family: 'Cinzel', serif; font-weight: bold;}
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .pillar-card { background: #f0ede5; padding: 1rem; border-radius: 8px; text-align: center; }
+    .pillar-card .pillar-char { font-size: 1.6rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; line-height: 1.2; }
+    .pillar-card .pillar-name { font-size: 0.82rem; font-weight: 600; color: #2c5a3e; margin-bottom: 0.3rem; font-family: 'Cinzel', serif; }
+    .pillar-card .pillar-desc { font-size: 0.75rem; color: #8b7a5c; line-height: 1.45; font-family: 'Cormorant Garamond', serif;}
+    .divider { margin: 2.5rem 0; text-align: center; color: #c9a227; font-size: 0.8rem; letter-spacing: 5px; }
+    .cta-box { margin: 2rem 0; padding: 1.5rem; background: #2c5a3e; color: #faf8f2; border-radius: 8px; text-align: center; line-height: 1.8; }
+    .cta-box p { margin-bottom: 0.5rem; }
+    .cta-box a { display: inline-block; margin-top: 1rem; padding: 0.65rem 1.6rem; background: #c9a227; color: #2c5a3e; text-decoration: none; border-radius: 40px; font-weight: 700; font-size: 0.85rem; font-family: 'Cinzel', serif; letter-spacing: 0.5px; transition: opacity 0.2s; }
+    .cta-box a:hover { opacity: 0.85; }
+    .closing { margin-top: 2rem; padding: 1.5rem; background: #2c5a3e; color: #faf8f2; border-radius: 8px; text-align: center; line-height: 1.8; }
+    .closing .seed { font-size: 2rem; margin-bottom: 0.75rem; }
+    hr { margin: 1.5rem 0; border: none; height: 1px; background: #e2dcd0; }
+    .footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2dcd0; font-size: 0.68rem; color: #a89f8a; text-align: center; font-family: monospace; line-height: 1.9; }
+    .footer a { color: #8b7a5c; text-decoration: none; }
+    .footer a:hover { color: #2c5a3e; }
+    .text-center { text-align: center; }
+    .mt-sm { margin-top: 0.5rem; }
+    .mt-md { margin-top: 1rem; }
+    .next-link { font-size: 1.1rem; color: #c9a227; font-family: 'Cinzel', serif; font-weight: bold; text-decoration: none; border-bottom: 1px solid #c9a227; padding-bottom: 2px;}
+    .next-link:hover { color: #2c5a3e; border-bottom-color: #2c5a3e; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="article-header">
+    <div class="badge">
+      🌱 Zì Zhǔ Zhě — The Sovereign One · SERI 2
+    </div>
+    <div class="chinese-title">蓄正功</div>
+    <h1>
+      Volume dan Size<br>
+      <span class="subtitle">Mengapa Siklus Hidup Kita Harus Semakin Melebar?</span>
+    </h1>
+    <div class="subhead">
+      Seri Xù Zēng Gōng (Bagian 2)
+    </div>
+    <div class="author">
+      Go Kian Tik (Mbah Hogi Bejo™) · 自主者 · Depok, Indonesia · 2026
+    </div>
+  </div>
+
+  <div class="series-nav">
+    <span class="seri-badge" style="background: transparent; color: #2c5a3e; border: 1px solid #2c5a3e;">Seri 1</span>
+    Mengisi & Mengosong
+    &nbsp;
+    <span class="seri-badge">Seri 2</span>
+    Volume dan Size
+    &nbsp;
+    <span class="seri-badge" style="background: transparent; color: #2c5a3e; border: 1px solid #2c5a3e;">Seri 3</span>
+    Bukan Tombol Reset
+    &nbsp;
+    <span class="seri-badge" style="background: transparent; color: #2c5a3e; border: 1px solid #2c5a3e;">Seri 4</span>
+    Manusia dan AI
+  </div>
+
+  <div class="article-body">
+    <p>
+      Pada Bagian 1, kita telah membedah Sisi Yin dari pertumbuhan, yaitu Xù Zhēn Gōng—sebuah keharusan mutlak untuk mengosongkan diri dari kebisingan ego agar kita memiliki ruang bagi kemanusiaan (love dan 5ng). Namun, jika kita hanya berhenti pada pengosongan, kita hanya akan menjadi wadah yang suci namun pasif.
+    </p>
+    <p>
+      Di sinilah kita harus melangkah ke Sisi Yang: <strong>Xù Zhèng Gōng</strong>.
+    </p>
+
+    <div class="pull-quote">
+      Jika Xù Zhēn Gōng adalah tentang "mengosongkan air yang keruh", maka Xù Zhèng Gōng dimaknai sebagai proses <strong>emptying while enlarging with new essential filling</strong>.
+    </div>
+
+    <p>
+      Ini bukan lagi sekadar tentang mengganti isi gelas, melainkan tentang bagaimana kita memperbesar ukuran (Size) dan daya tampung (Volume) dari gelas kehidupan kita sendiri. Mengapa siklus hidup kita harus semakin melebar? Karena realitas yang kita hadapi semakin kompleks, dan tanpa pelebaran kapasitas, kita akan mudah retak oleh tekanan zaman.
+    </p>
+
+    <div class="section-title">
+      🌱 Dari Kosong Menuju Kapasitas: Anatomi Neng
+    </div>
+    <p>
+      Ruang batin yang telah diperluas melalui pembersihan ego tidak boleh dibiarkan vakum. Ia harus diisi dengan kesadaran atau kecerdasan yang berdaya guna, yang dalam tradisi kebijaksanaan disebut sebagai <em>Neng</em> (能). <em>Neng</em> bukanlah kepintaran teoretis (book smart); ia adalah kemahiran eksistensial.
+    </p>
+    <p>
+      Secara praktis, <em>Neng</em> ini menjadi fondasi bagi 12 prinsip bisnis Tao Zhu Gong. Bayangkan keahlian seperti Neng Shi Ren (kemampuan mengenali karakter orang), Neng Jie Na (kemampuan menerima dan beradaptasi), atau Neng Zheng Dun (kemampuan mengorganisasi keadaan yang kacau). Kemampuan-kemampuan maha penting ini mustahil ditanamkan pada jiwa yang kerdil dan ego yang membengkak. <em>Neng</em> hanya bisa berakar, tumbuh, dan membesar ukurannya di dalam batin yang lapang.
+    </p>
+
+    <div class="section-title">
+      🌱 Persimpangan Menuju Lompatan: Membedah Good to Great
+    </div>
+    <p>
+      Konsep memperlebar volume kehidupan ini berpadu secara luar biasa dengan teori Good to Great (GTG) dari Jim Collins. Collins mengingatkan kita pada satu kebenaran pahit: "Good is the enemy of Great" (Predikat 'baik' adalah musuh utama dari pencapaian 'hebat').
+    </p>
+    <p>
+      Banyak manusia terjebak dalam fase Good. Mereka merasa sudah cukup sukses, cukup pintar, cukup stabil. Ego kebanggaan ini membuat siklus hidup mereka stagnan; ukurannya tidak lagi membesar. Memperlebar Size dan Volume kehidupan menuntut disiplin layaknya memutar sebuah roda gila (Flywheel). Pada awalnya, memperlebar kapasitas—seperti belajar mendengar tanpa menghakimi, menata ulang rutinitas, atau merombak cara berpikir—terasa sangat berat dan lambat. Namun, konsistensi untuk menjadi sedikit lebih genah setiap harinya akan menciptakan momentum tak terbendung. Pertumbuhan sejati bukanlah keajaiban semalam, melainkan hasil dari disiplin memperlebar batas diri, hari demi hari.
+    </p>
+
+    <div class="section-title">
+      🌱 Menembus Kabut: Penataan Bahasa dan Unknown Area Johari
+    </div>
+    <p>
+      Lalu, bagaimana kita tahu ke arah mana kita harus melebarkan diri? Di sinilah kita berhadapan dengan Unknown Area (Area Tak Dikenal) dalam konsep Jendela Johari—wilayah buta di mana kita tidak tahu apa yang tidak kita ketahui.
+    </p>
+    <p>
+      Menyingkap kesadaran baru di arena yang tak dikenal ini mustahil dilakukan dalam keheningan yang pasif. Ia membutuhkan penataan bahasa dan dialog mendalam. Bahasa adalah batas dari dunia kita. Ketika kita menata bahasa kita—baik bahasa ke dalam (dialog batin/ neuroscience) maupun bahasa ke luar—kita sedang menata realitas.
+    </p>
+    <p>
+      Di era akselerasi ini, penyingkapan Unknown Area mendapatkan katalisator baru: dialog Human-AI. Kecerdasan buatan, ketika diposisikan bukan sebagai pemikir pengganti melainkan sebagai "Cermin Probabilitas", mampu memantulkan pola-pola buta dari ego manusia. Melalui interaksi dialektis yang jujur dengan AI, seorang individu dapat mengalami AHA Moment di Unknown Arena. Titik temu inilah yang mengubah kebingungan (Ruwet) menuju kejelasan arah (OTW Genah), dan pada akhirnya bermuara pada koherensi diri yang utuh (Genah).
+    </p>
+
+    <div class="section-title">
+      🌱 Sintesa: Membesar Tanpa Menjadi Berat
+    </div>
+    <p>
+      Melebarkan siklus hidup (Volume and Size) bukanlah tentang mengumpulkan lebih banyak harta, gelar, atau validasi eksternal untuk dipamerkan. Itu adalah inflasi ego, bukan ekspansi Neng.
+    </p>
+    <p>
+      Pelebaran siklus hidup yang sejati terjadi ketika kita mampu menanggung lebih banyak tanggung jawab, merangkul lebih banyak perbedaan, memecahkan masalah yang lebih rumit, namun batin kita justru terasa semakin ringan dan merdeka. Itulah puncak dari Xù Zhèng Gōng—menjadi wadah raksasa yang menampung samudra, namun tetap memiliki kejernihan embun di pagi hari.
+    </p>
+
+    <div class="divider">❉ ❉ ❉</div>
+
+    <div class="badge text-center mt-md">
+      🌱 Seri 3 dari 4
+    </div>
+    <div class="section-title center" style="font-size:1.2rem; margin-top:0.5rem;">
+      <a href="#" class="next-link">Reset Bukan Kegagalan — Tapi Pintu Naik Level →</a>
+    </div>
+
+    <div class="cta-box">
+      <p>
+        🌱 Tulisan ini adalah salah satu "biji".<br>
+        Saya tidak tahu siapa yang akan membaca.<br>
+        Saya tidak tahu kapan ia akan berbuah.
+      </p>
+      <p>
+        Tapi saya percaya —<br>
+        setiap kata yang ditanam dengan sadar,<br>
+        akan menemukan waktunya.
+      </p>
+      <a href="https://trakteer.id/gokiantik" target="_blank">Dukung di Trakteer →</a>
+    </div>
+
+    <div class="closing">
+      <div class="seed">🌬️</div>
+      <p>"Menjadi wadah raksasa yang menampung samudra, namun tetap memiliki kejernihan embun di pagi hari."</p>
+      <p style="font-size:0.82rem; opacity:0.75; margin-top:0.5rem;">
+        — Go Kian Tik (Mbah Hogi Bejo™) · Zì Zhǔ Zhě · Xù Zēng Gōng
+      </p>
+    </div>
+
+    <hr>
+    <div class="footer">
+      👤 © 2026 Go Kian Tik (Mbah Hogi Bejo™) All rights reserved.<br>
+      Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
+      · Zì Zhǔ Zhě 自主者 · Superhero Café Inside
+      · <a href="https://www.superherocafeinside.com">www.superherocafeinside.com</a><br>
+      CHO In Action Series
+      · 🌐 Trakteer: <a href="https://trakteer.id/gokiantik">trakteer.id/gokiantik</a>
+      · 🌐 LinkedIn: <a href="https://linkedin.com/in/gokiantik">linkedin.com/in/gokiantik</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
