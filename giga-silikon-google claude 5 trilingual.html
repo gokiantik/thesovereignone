@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google, Giga Silikon, dan Kuali yang Tak Pernah Terbakar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a16;
+    --ink-soft:#3a362f;
+    --paper:#f7f1e3;
+    --paper-deep:#efe4cb;
+    --ember:#a3341d;
+    --ember-deep:#7a2414;
+    --gold:#b4872c;
+    --jade:#2c4a3a;
+    --line: rgba(28,26,22,.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:17px;
+    line-height:1.75;
+  }
+  ::selection{ background:var(--ember); color:var(--paper); }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 28px 120px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 28px 64px;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgba(163,52,29,.16), transparent 70%),
+      var(--paper);
+    border-bottom:1px solid var(--line);
+    text-align:center;
+    overflow:hidden;
+  }
+  .steam{
+    position:absolute; inset:0; pointer-events:none; opacity:.5;
+  }
+  .steam svg{ width:100%; height:100%; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ember-deep);
+    display:inline-flex; align-items:center; gap:8px;
+    position:relative; z-index:2;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--ember);
+    box-shadow:0 0 0 0 rgba(163,52,29,.6);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(163,52,29,.55); }
+    70%{ box-shadow:0 0 0 9px rgba(163,52,29,0); }
+    100%{ box-shadow:0 0 0 0 rgba(163,52,29,0); }
+  }
+  h1.title{
+    position:relative; z-index:2;
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(2.1rem, 5vw, 3.3rem);
+    line-height:1.08;
+    margin:22px 0 18px;
+    color:var(--ink);
+  }
+  h1.title em{
+    font-style:italic; font-weight:400; color:var(--ember-deep);
+  }
+  .subtitle{
+    position:relative; z-index:2;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:560px; margin:0 auto;
+  }
+  .byline{
+    position:relative; z-index:2;
+    margin-top:34px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    letter-spacing:.03em;
+  }
+  .byline strong{ color:var(--ink); font-family:'Source Sans 3', sans-serif; font-weight:700; font-size:14px; display:block; margin-bottom:4px;}
+
+  /* ---------- TOC ---------- */
+  .toc{
+    margin:56px 0 64px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    background:rgba(255,255,255,.35);
+  }
+  .toc-head{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    padding:16px 22px 0;
+  }
+  .toc ol{
+    list-style:none; margin:0; padding:14px 10px 18px;
+  }
+  .toc li{ border-top:1px solid var(--line); }
+  .toc li:first-child{ border-top:none; }
+  .toc a{
+    display:flex; gap:14px; align-items:baseline;
+    padding:11px 12px;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:15px;
+    transition:background .15s ease;
+  }
+  .toc a:hover{ background:var(--paper-deep); }
+  .toc .num{
+    font-family:'Fraunces', serif; font-style:italic; color:var(--ember);
+    font-size:15px; width:26px; flex:none;
+  }
+
+  /* ---------- ARTICLE TYPOGRAPHY ---------- */
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.65rem;
+    margin:64px 0 8px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    color:var(--ink);
+    display:flex; align-items:baseline; gap:14px;
+  }
+  h2 .roman{
+    font-style:italic; color:var(--ember); font-weight:400; font-size:1.1rem;
+  }
+  h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.2rem;
+    margin:36px 0 10px;
+    color:var(--ink);
+  }
+  p{ margin:0 0 20px; color:var(--ink-soft); }
+  strong{ color:var(--ink); }
+  a{ color:var(--ember-deep); }
+
+  blockquote{
+    margin:28px 0;
+    padding:6px 0 6px 24px;
+    border-left:3px solid var(--ember);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.18rem;
+    line-height:1.6;
+    color:var(--ink);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:26px 0 32px;
+    font-size:15px;
+  }
+  th, td{
+    border:1px solid var(--line);
+    padding:10px 14px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    background:var(--paper-deep);
+    color:var(--ink-soft);
+  }
+
+  /* ---------- CALLOUT: status/fact box ---------- */
+  .callout{
+    margin:28px 0 34px;
+    border:1px solid var(--ember);
+    background:rgba(163,52,29,.06);
+    border-radius:2px;
+    padding:20px 22px;
+    position:relative;
+  }
+  .callout::before{
+    content:"STATUS PER JULI 2026";
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.14em;
+    color:var(--ember-deep);
+    display:block;
+    margin-bottom:10px;
+  }
+  .callout p{ margin:0 0 10px; font-size:15.5px; }
+  .callout p:last-child{ margin-bottom:0; }
+  .callout .split{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:14px;
+  }
+  .callout .split div{
+    background:rgba(255,255,255,.5);
+    border:1px solid var(--line);
+    padding:12px 14px;
+    font-size:14px;
+  }
+  .callout .split .lbl{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--gold); display:block; margin-bottom:6px;
+  }
+  @media (max-width:560px){ .callout .split{ grid-template-columns:1fr; } }
+
+  .note{
+    margin:22px 0;
+    padding:14px 18px;
+    border-left:3px solid var(--gold);
+    background:rgba(180,135,44,.08);
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .note .lbl{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold); display:block; margin-bottom:6px;
+  }
+
+  .prompt{
+    margin:20px 0 28px;
+    padding:18px 20px;
+    background:rgba(255,255,255,.4);
+    border:1px solid var(--line);
+    border-left:3px solid var(--jade);
+  }
+  .prompt .lbl{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--jade); display:block; margin-bottom:8px;
+  }
+  .prompt p{ font-family:'Fraunces', serif; font-style:italic; font-size:15.5px; margin:0; color:var(--ink); }
+
+  .ai-row{
+    display:flex; flex-wrap:wrap; align-items:center; gap:6px;
+    margin-top:14px; padding-top:12px;
+    border-top:1px dashed var(--line);
+  }
+  .ai-row__label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink-soft); margin-right:2px; opacity:.75;
+  }
+  .ai-btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:.02em;
+    background:#fff; color:var(--jade);
+    border:1px solid var(--jade);
+    border-radius:20px;
+    padding:5px 12px;
+    cursor:pointer;
+    transition:background .15s, color .15s, transform .1s;
+  }
+  .ai-btn:hover{ background:var(--jade); color:#fff; }
+  .ai-btn:active{ transform:scale(.96); }
+  .ai-btn.copied{ background:var(--gold); border-color:var(--gold); color:#fff; }
+
+  .divider{
+    display:flex; align-items:center; justify-content:center;
+    gap:10px; margin:52px 0;
+    color:var(--gold);
+  }
+  .divider span{ width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:.7; }
+
+  .signoff{
+    margin-top:70px; padding-top:34px; border-top:1px solid var(--line);
+    text-align:center;
+  }
+  .signoff .mark{
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.25rem; color:var(--ember-deep);
+    max-width:520px; margin:0 auto 28px; line-height:1.5;
+  }
+  .signoff strong{ display:block; font-family:'Source Sans 3', sans-serif; font-weight:700; }
+  .signoff .role{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft); margin-top:4px; }
+  .signoff .links{ margin-top:22px; font-size:14px; }
+  .signoff .links a{ display:block; margin:4px 0; }
+
+  footer.meta{
+    text-align:center; margin-top:40px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; color:var(--ink-soft); opacity:.7;
+  }
+
+  /* ---------- DISCLAIMER (CHO standar) ---------- */
+  .cho-disclaimer{
+    margin-top:60px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .cho-disclaimer__exp{
+    background:linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
+    color:#f1ece0;
+    padding:28px 30px;
+  }
+  .cho-disclaimer__badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(180,135,44,.18);
+    border:1px solid rgba(180,135,44,.4);
+    border-radius:40px;
+    padding:5px 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  .cho-disclaimer__title{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    font-size:1.05rem; color:#f1ece0; margin-bottom:12px;
+  }
+  .cho-disclaimer__lang{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.08em;
+    color:rgba(180,135,44,.75); margin-bottom:10px;
+  }
+  .cho-disclaimer__body{ font-size:14px; line-height:1.7; color:#f1ece0; opacity:.92; margin-bottom:10px; }
+  .cho-disclaimer__body strong,
+  .cho-disclaimer__body em{ color:#f7f1e3; }
+  .cho-disclaimer__body a{ color:var(--gold); text-decoration:none; border-bottom:1px dotted rgba(180,135,44,.5); }
+  .cho-disclaimer__warn{
+    display:flex; gap:10px;
+    background:rgba(180,135,44,.1);
+    border-left:3px solid var(--gold);
+    border-radius:0 3px 3px 0;
+    padding:12px 16px; margin:14px 0 6px;
+    font-size:13px; line-height:1.6; color:rgba(241,236,224,.9);
+  }
+  .cho-disclaimer__warn strong{ color:var(--gold); }
+  .cho-disclaimer__meta{
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    margin-top:16px; padding-top:14px;
+    border-top:1px solid rgba(255,255,255,.1);
+    font-family:'JetBrains Mono', monospace; font-size:10.5px;
+    color:rgba(241,236,224,.65); letter-spacing:.03em;
+  }
+  .cho-disclaimer__meta a{ color:rgba(180,135,44,.9); text-decoration:none; }
+
+  .cho-disclaimer__invite{
+    background:linear-gradient(135deg, #16241d 0%, #1c2f24 100%);
+    color:rgba(232,242,236,.92);
+    padding:28px 30px;
+    border-top:1px solid var(--line);
+    border-bottom:3px solid var(--jade);
+  }
+  .cho-disclaimer__invite-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(44,74,58,.35);
+    border:1px solid rgba(143,196,157,.3);
+    border-radius:40px;
+    padding:5px 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:#8fc49d; margin-bottom:14px;
+  }
+  .cho-disclaimer__invite-title{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    font-size:1.05rem; color:#e4f0e8; margin-bottom:12px;
+  }
+  .cho-disclaimer__invite p{ font-size:14px; line-height:1.7; color:#e8f2ec; opacity:.92; margin-bottom:10px; }
+  .cho-disclaimer__invite strong{ color:#c8e8cf; }
+  .cho-disclaimer__invite em{ color:#a8d4b4; font-style:italic; }
+  .cho-tags{ display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 6px; }
+  .cho-tag{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.06em;
+    padding:3px 10px; border-radius:3px;
+    background:rgba(44,74,58,.3); border:1px solid rgba(143,196,157,.25);
+    color:#8fc49d; text-transform:uppercase;
+  }
+  .cho-disclaimer__cta{
+    display:inline-flex; align-items:center; gap:7px; margin-top:10px; margin-right:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.04em;
+    color:#8fc49d; text-decoration:none;
+    border:1px solid rgba(143,196,157,.35); border-radius:3px;
+    padding:6px 14px;
+  }
+  .cho-disclaimer__foot{
+    background:#12100c;
+    text-align:center; padding:22px 20px 18px;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .cho-disclaimer__foot .name{ font-size:11px; color:#d8cdb4; letter-spacing:.06em; }
+  .cho-disclaimer__foot .name strong{ color:#f1ece0; }
+  .cho-disclaimer__foot .cn{ font-size:13px; color:var(--gold); letter-spacing:.12em; display:block; margin:4px 0 8px; }
+  .cho-disclaimer__foot .copy{ font-size:9.5px; color:#8a8272; letter-spacing:.05em; line-height:1.9; }
+  .cho-disclaimer__foot .copy a{ color:var(--gold); text-decoration:none; }
+  .cho-disclaimer__foot .rights{ font-size:8.5px; color:#8a8272; letter-spacing:.1em; text-transform:uppercase; margin-top:6px; opacity:.7; }
+
+  @media (max-width:560px){
+    .cho-disclaimer__exp, .cho-disclaimer__invite{ padding:20px 18px; }
+  }
+  /* ---------- LANG SWITCH ---------- */
+  .lang-switch{
+    position:fixed; top:16px; right:16px; z-index:50;
+    display:flex; gap:4px;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:4px;
+    box-shadow:0 2px 10px rgba(28,26,22,.12);
+  }
+  .lang-btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:.03em;
+    padding:6px 12px;
+    border-radius:999px;
+    border:none;
+    background:transparent;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .lang-btn:hover{ background:rgba(28,26,22,.06); }
+  .lang-btn.active{ background:var(--ember); color:var(--paper); }
+  .lang-block{ display:none; }
+  .lang-block.active{ display:block; }
+  @media (max-width:600px){
+    .lang-switch{ top:10px; right:10px; }
+    .lang-btn{ padding:5px 9px; font-size:11px; }
+  }
+</style>
+</head>
+<body>
+<body>
+
+<div class="lang-switch">
+  <button class="lang-btn active" data-lang="id" onclick="setLang('id')">ID</button>
+  <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" data-lang="cn" onclick="setLang('cn')">中文</button>
+</div>
+
+
+
+<div class="lang-block active" data-lang="id">
+<div class="hero">
+  <div class="steam" aria-hidden="true">
+    <svg viewBox="0 0 760 260" preserveAspectRatio="none">
+      <path d="M60,260 C60,180 120,180 100,110 C85,60 130,40 120,0" stroke="#a3341d" stroke-width="1.4" fill="none" opacity="0.35"/>
+      <path d="M380,260 C380,190 440,190 415,120 C398,68 445,45 430,0" stroke="#b4872c" stroke-width="1.2" fill="none" opacity="0.3"/>
+      <path d="M660,260 C660,185 715,185 695,115 C680,62 720,42 705,0" stroke="#a3341d" stroke-width="1.4" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+  <span class="eyebrow"><span class="dot"></span>Zi Zhu Zhe &nbsp;·&nbsp; Esai &amp; Kerangka Uji</span>
+  <h1 class="title">Google, Giga Silikon,<br>dan <em>Kuali yang Tak Pernah Terbakar</em></h1>
+  <p class="subtitle">Sebuah perdebatan puitis dengan Deepseek, 7 pertanyaan untuk 8 AI, dan jalan menuju Augmented Indonesia.</p>
+  <div class="byline">
+    <strong>Mbah Hogi Bejo (Go Kian Tik)</strong>
+    Founder, Zi Zhu Zhe &amp; Superhero Cafe Inside — AI Safety Strategist · Human-Centered AI Research Lead
+  </div>
+</div>
+
+<div class="wrap">
+
+  <nav class="toc" aria-label="Daftar isi">
+    <div class="toc-head">Daftar Isi</div>
+    <ol>
+      <li><a href="#bab1"><span class="num">I</span> Sebuah Awal yang Tak Terduga</a></li>
+      <li><a href="#bab2"><span class="num">II</span> Indonesia: Republik Muda yang Memilih Jalannya Sendiri</a></li>
+      <li><a href="#bab3"><span class="num">III</span> Dua Suara, Satu Pertanyaan: Perdebatan Puitis dengan Deepseek</a></li>
+      <li><a href="#bab4"><span class="num">IV</span> Abu Hitam di Sekitar Kuali: Kasus Nadiem sebagai Cermin</a></li>
+      <li><a href="#bab5"><span class="num">V</span> Zi Zhu Zhe: The Sovereign One</a></li>
+      <li><a href="#bab6"><span class="num">VI</span> The +62 Silicon Drama: Menuju Augmented Indonesia</a></li>
+      <li><a href="#bab7"><span class="num">VII</span> ELSA Labs &amp; Critique of Management: Fondasi Filosofis</a></li>
+      <li><a href="#bab8"><span class="num">VIII</span> Panduan Uji Lintas AI: 7 Pertanyaan untuk 8 AI</a></li>
+      <li><a href="#bab9"><span class="num">IX</span> Kesimpulan: Kuali Mendidih, Indonesia Belajar</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="bab1"><span class="roman">I.</span> Sebuah Awal yang Tak Terduga</h2>
+  <blockquote>"Google adalah Giga Silikon yang mengangkat kuali di Indonesia. Ia tidak takut abu hitam kasus Nadiem karena tahu bahwa kuali itu tidak akan pernah terbakar."</blockquote>
+  <p>Saya menulis kalimat itu di tengah malam, setelah membaca putusan tingkat pertama terhadap Nadiem Makarim. Saya tidak sedang merencanakan sebuah teori. Saya hanya merespons — dengan cara yang mungkin hanya bisa dilakukan oleh seorang manusia yang terbiasa melihat dunia melalui metafora.</p>
+  <p>Beberapa jam kemudian, saya membuka Deepseek dan menempelkan kalimat yang sama. Saya ingin melihat bagaimana mesin akan membaca kata-kata saya. Saya ingin melihat apakah AI akan memahami bahwa "kuali" bukanlah kuali, dan "abu hitam" bukanlah abu.</p>
+  <p>Yang terjadi kemudian adalah sebuah perdebatan yang tidak saya rencanakan — sebuah dialog antara cara berpikir manusia dan mesin, antara puisi dan probabilitas, antara sejarah dan strategi.</p>
+  <p>Artikel ini adalah rekaman dari perdebatan itu — dan sebuah undangan bagi Anda untuk melakukan eksperimen yang sama.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab2"><span class="roman">II.</span> Indonesia: Republik Muda yang Memilih Jalannya Sendiri</h2>
+  <h3>2.1 Sebuah Bangsa yang Masih Belajar</h3>
+  <p>Indonesia adalah republik muda. Dalam skala peradaban, usia 100 tahun adalah masa kanak-kanak. Kita belum memiliki "memori kolektif" yang cukup untuk menangani benturan peradaban seperti yang terjadi dalam kasus Nadiem.</p>
+  <p>Kita bukan monarki, di mana satu orang bisa memutuskan segalanya dengan satu titah. Kita bukan blok Barat, dengan tradisi hukum yang sudah berabad-abad matang. Kita bukan blok Timur, dengan sistem yang terpusat dan tertutup.</p>
+  <p>Kita adalah Indonesia — sebuah republik yang memilih untuk <strong>tidak menjadi bagian dari blok mana pun</strong>. Kita memilih <strong>independensi yang berdaulat</strong>, dan kita memilih untuk tetap <strong>humanis</strong> sebagai bangsa yang Bhinneka Tunggal Ika.</p>
+
+  <h3>2.2 Kasus Nadiem: Ujian Pertama di Era Digital</h3>
+  <p>Kasus Nadiem bukanlah kasus hukum biasa. Ia adalah <strong>ujian pertama</strong> bagi Indonesia di era digital — apakah kita, sebagai bangsa muda, memiliki kebijaksanaan untuk menangani benturan antara kecepatan teknologi dan kelambatan sistem.</p>
+
+  <table>
+    <tr><th>Logika</th><th>Kecepatan</th><th>Karakteristik</th><th>Contoh dalam Kasus</th></tr>
+    <tr><td><strong>Logika Silicon</strong></td><td>Bulan</td><td>Cepat, iteratif, berani ambil risiko</td><td>Gojek, startup, inovasi digital</td></tr>
+    <tr><td><strong>Logika Nation State</strong></td><td>Tahun</td><td>Stabil, prosedural, berhati-hati</td><td>Birokrasi, kebijakan publik</td></tr>
+    <tr><td><strong>Logika Hukum</strong></td><td>Generasi</td><td>Memori kolektif, prosedural</td><td>Putusan, peradilan, undang-undang</td></tr>
+  </table>
+
+  <p>Ketika ketiganya bertemu dalam satu ruang — Indonesia — yang terjadi bukanlah kemajuan yang mulus, tetapi <strong>gesekan</strong>. Kuali mulai mendidih. Abu hitam beterbangan. Dan seorang inovator menjadi bagian dari sebuah proses yang jauh lebih besar dari dirinya.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab3"><span class="roman">III.</span> Dua Suara, Satu Pertanyaan: Perdebatan Puitis dengan Deepseek</h2>
+
+  <h3>3.1 Suara Manusia: "Mengangkat Kuali"</h3>
+  <blockquote>"Google telah mengangkat kuali selama bertahun-tahun — Gmail, Maps, YouTube — tanpa pernah benar-benar dicicipi. Kasus Nadiem adalah uji apakah kuali itu masih aman."</blockquote>
+  <p>Saya memulai dengan argumen sejarah. Saya mengingatkan bahwa Google telah menjadi bagian dari ekosistem Indonesia jauh sebelum kasus Nadiem. Layanan gratisnya telah menjadi infrastruktur digital bagi jutaan orang Indonesia. Google tidak "ngambek" ketika namanya disebut dalam persidangan. Mereka tidak menarik layanan mereka. Mereka tetap di sini, mengangkat kuali yang sama.</p>
+  <p>Bagi saya, ini adalah tentang <strong>kepercayaan diri korporasi</strong> yang melampaui ketakutan akan reputasi. Google tahu bahwa jika mereka pergi, mereka akan kehilangan panggung yang lebih besar. Mereka mengangkat kuali karena mereka tahu bahwa kuali itu tidak akan pernah terbakar.</p>
+
+  <h3>3.2 Suara Mesin: "Keputusan Rasional"</h3>
+  <blockquote>"Google tidak 'ngambek' karena itu tidak rasional. Menarik layanan akan merusak bisnis mereka sendiri. Mereka adalah korporasi, bukan anak kecil."</blockquote>
+  <p>Deepseek merespons dengan nada yang berbeda. Tidak ada metafora. Tidak ada sejarah. Hanya logika.</p>
+  <p>Bagi Deepseek, kasus Nadiem adalah <strong>noise</strong>, bukan sinyal. Google tetap di Indonesia bukan karena keberanian, tetapi karena biaya untuk pergi jauh lebih besar daripada biaya untuk tetap tinggal. Abu hitam adalah risiko yang terhitung.</p>
+  <p>Saya membaca respons Deepseek dan merasakan sesuatu yang aneh. Saya tidak setuju, tetapi saya juga tidak bisa membantah.</p>
+
+  <div class="note">
+    <span class="lbl">Catatan sumber</span>
+    Kutipan Deepseek di atas adalah rangkuman dari inti argumen sesi asli, disunting untuk keterbacaan — bukan transkrip verbatim kata demi kata. Ini konsisten dengan semangat tulisan ini sendiri: probabilitas lingua bisa terasa meyakinkan, jadi baik pembaca maupun penulis perlu jelas mana yang kutipan langsung dan mana yang rekonstruksi.
+  </div>
+
+  <h3>3.3 Titik Temu: Ketika Puisi Bertemu Probabilitas</h3>
+  <blockquote>"Google mengangkat kuali karena ia adalah raksasa yang tahu bahwa kuali itu tidak akan pernah terbakar. Tetapi pertanyaannya adalah: apakah ia peduli dengan mereka yang terbakar di sekitar kuali?"</blockquote>
+  <p>Ini adalah pertanyaan yang tidak bisa dijawab oleh Deepseek. Ia bisa menghitung probabilitas, tetapi ia tidak bisa merasakan kepedulian. Ia bisa menganalisis risiko, tetapi ia tidak bisa memahami penderitaan.</p>
+  <p>Saya tidak mengatakan bahwa Deepseek salah. Saya hanya mengatakan bahwa ada dimensi lain dari realitas yang tidak bisa diukur oleh data. Ada pertanyaan yang tidak bisa dijawab oleh algoritma.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab4"><span class="roman">IV.</span> Abu Hitam di Sekitar Kuali: Kasus Nadiem sebagai Cermin</h2>
+
+  <div class="callout">
+    <p>Putusan yang dibahas dalam esai ini dijatuhkan Pengadilan Tipikor Jakarta Pusat pada 30 Juni 2026 — dan merupakan putusan tingkat pertama, belum berkekuatan hukum tetap.</p>
+    <div class="split">
+      <div><span class="lbl">Banding</span>Baik Kejaksaan Agung maupun kuasa hukum Nadiem sama-sama telah mengajukan banding atas putusan ini.</div>
+      <div><span class="lbl">Dissenting opinion</span>Dari lima hakim, satu hakim anggota menyatakan pendapat berbeda — menilai unsur niat jahat tidak terbukti.</div>
+    </div>
+  </div>
+
+  <h3>4.1 Kasus Nadiem sebagai "Abu Hitam"</h3>
+  <p>Kasus Nadiem bukanlah kuali itu sendiri. Ia adalah abu hitam yang beterbangan di sekitarnya.</p>
+  <p>Nadiem adalah inovator yang mencoba mempercepat birokrasi di tengah pandemi. Ia membawa logika Silicon ke dalam logika Nation State. Ia mencoba membuat lompatan yang tidak selalu bisa diikuti oleh sistem di sekelilingnya.</p>
+  <p>Putusan tingkat pertama ini — 10 tahun penjara, denda Rp1 miliar, dan uang pengganti Rp809 miliar — yang kini sedang diuji lagi di meja banding, terasa seperti hukuman untuk <strong>ketidakselarasan</strong> antara tiga logika yang berbeda kecepatan itu, bukan sekadar angka dalam dakwaan. Dan menariknya: bahkan di antara lima hakim yang memutus perkara ini sendiri, tidak semuanya sepakat. Retak itu — perbedaan pendapat di dalam sistem itu sendiri — barangkali adalah bagian paling jujur dari cerita ini: kuali yang sama bisa terlihat mendidih bagi sebagian orang, dan terlihat tenang bagi yang lain, tergantung dari sisi mana mereka berdiri.</p>
+  <p>Saya tidak dalam posisi — dan tidak berminat — untuk menilai siapa yang benar secara hukum dalam perbedaan pendapat itu. Yang menarik bagi saya, sebagai penulis yang bekerja dengan metafora, hanyalah bahwa perbedaan itu <em>ada</em>, dan itu sendiri sudah menjadi cermin: sistem yang menghakimi ketidakselarasan, ternyata juga menyimpan ketidakselarasannya sendiri.</p>
+
+  <h3>4.2 Google dan Kuali yang Tetap Terangkat</h3>
+  <p>Di tengah semua abu hitam ini, Google tetap di sini. Mereka tidak pergi. Mereka tidak menarik layanan mereka. Mereka terus berinvestasi pada infrastruktur digital Indonesia, dan meluncurkan berbagai program untuk ekosistem startup lokal. Mereka tetap mengangkat kuali.</p>
+  <p>Apakah ini tentang keberanian? Atau tentang kalkulasi?</p>
+  <p>Deepseek akan mengatakan: <em>"Ini tentang kalkulasi."</em></p>
+  <p>Saya akan mengatakan: <em>"Ini tentang keberanian yang dibungkus dengan kalkulasi."</em></p>
+  <p>Dan mungkin, jawaban yang benar adalah: <em>"Keduanya."</em></p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab5"><span class="roman">V.</span> Zi Zhu Zhe: The Sovereign One</h2>
+  <p><em>(Otw in Flow, Grow to be Glow)</em></p>
+
+  <h3>5.1 Filosofi di Balik "Zi Zhu Zhe"</h3>
+  <p>Di tengah semua perdebatan ini, saya kembali pada filosofi yang menjadi fondasi dari semua yang saya tulis: <strong>Zi Zhu Zhe</strong> (自主者) — The Sovereign One.</p>
+  <p>Zi Zhu Zhe bukanlah tentang menjadi "pemenang." Ia tentang menjadi <strong>berdaulat</strong> — berdaulat atas diri sendiri, dalam aliran, tumbuh menuju cahaya.</p>
+
+  <table>
+    <tr><th>Tahap</th><th>Penjelasan</th><th>Hubungan dengan Indonesia</th></tr>
+    <tr><td><strong>Flow (Mengalir)</strong></td><td>Indonesia masih dalam proses menjadi. Kita belum mencapai bentuk final. Kita sedang mengalir, mencari jalan.</td><td>Kasus Nadiem adalah bagian dari aliran ini — cara kita belajar menangani inovasi dan hukum di era digital.</td></tr>
+    <tr><td><strong>Grow (Tumbuh)</strong></td><td>Proses belajar tidak pernah berhenti. Kita tumbuh dari setiap kesalahan dan kontroversi.</td><td>Proses hukum yang masih berjalan ini bisa menjadi pelajaran jika kita mau belajar darinya.</td></tr>
+    <tr><td><strong>Glow (Bercahaya)</strong></td><td>Tujuan akhir: menjadi bangsa yang bijaksana, adil, dan humanis.</td><td>Augmented Indonesia adalah visi untuk mencapai tahap ini.</td></tr>
+  </table>
+
+  <h3>5.2 Indonesia sebagai "Zi Zhu Zhe" Kolektif</h3>
+  <p>Indonesia, sebagai sebuah bangsa, juga adalah <strong>Zi Zhu Zhe</strong>. Ia memilih untuk tidak menjadi bagian dari blok mana pun. Ia memilih independensinya. Ia memilih untuk tetap humanis di tengah keberagaman.</p>
+  <p>Kasus Nadiem, dan bagaimana proses hukumnya berjalan hingga tuntas, adalah ujian bagi Indonesia: apakah kita, sebagai bangsa, memiliki <strong>kebijaksanaan</strong> untuk menggunakan kemerdekaan itu?</p>
+  <p>Pertanyaan itu belum terjawab — proses bandingnya sendiri belum selesai. Tetapi proses menjawabnya, dengan semua kontroversi dan perdebatan, adalah bagian dari <strong>flow</strong> Indonesia menuju <strong>glow</strong>.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab6"><span class="roman">VI.</span> The +62 Silicon Drama: Menuju Augmented Indonesia</h2>
+
+  <h3>6.1 Dari Kasus ke Drama Peradaban</h3>
+  <p>"The +62 (Indonesia) Silicon Drama" bukanlah kasus Nadiem semata. Ia adalah <strong>cermin</strong> yang memperlihatkan bagaimana Indonesia — dengan ratusan juta pengguna digital, ribuan pulau, dan ribuan suku bangsa — berusaha menari di atas panggung global yang ritmenya terus berubah.</p>
+  <p>Drama ini bukan tentang benar atau salah. Ia tentang <strong>bagaimana kita, sebagai bangsa, belajar untuk menyelaraskan langkah</strong> di tengah ritme yang berbeda-beda.</p>
+
+  <h3>6.2 Augmented Indonesia sebagai Visi</h3>
+  <p>Augmented Indonesia adalah <strong>jawaban</strong> atas drama yang kacau itu — sebuah cara untuk menyelaraskan langkah, mendengarkan irama yang berbeda, dan menciptakan harmoni dari kekacauan.</p>
+  <p>Visi ini bukan tentang teknologi semata. Ia tentang <strong>cara kita berpikir</strong> sebagai sebuah bangsa — memetakan narasi, memahami perspektif, dan membuat keputusan berdasarkan bukti yang jelas, bukan berdasarkan emosi atau kepentingan sesaat.</p>
+
+  <h3>6.3 POV dan Kerangka Berpikir sebagai Alat Navigasi</h3>
+  <p>Seri POV 1–7 dan kerangka "The +62 Silicon Drama" adalah alat untuk membantu publik menavigasi kompleksitas. Ia adalah <strong>cermin</strong> yang memantulkan berbagai sudut pandang, dan <strong>peta</strong> yang menunjukkan di mana fakta berakhir dan interpretasi dimulai.</p>
+  <p>Ia tidak menggantikan hakim atau jaksa. Ia hanya membantu publik untuk <strong>memahami</strong> — agar tidak tersesat di tengah kebisingan.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab7"><span class="roman">VII.</span> ELSA Labs &amp; Critique of Management: Fondasi Filosofis</h2>
+
+  <h3>7.1 ELSA Labs: Kerangka untuk Mengelola Kompleksitas</h3>
+  <p>Pendekatan ELSA (Ethical, Legal, Societal Aspects), sebagaimana diusulkan oleh Wang, Blok, &amp; van Hilten (2025), menawarkan cara mengintegrasikan aspek etis, legal, dan sosial ke dalam pengembangan AI, dengan lima fitur utama:</p>
+
+  <table>
+    <tr><th>Fitur</th><th>Penjelasan</th><th>Penerapan dalam Kasus Nadiem</th></tr>
+    <tr><td><strong>1. Systemic Diagnosis</strong></td><td>Mengidentifikasi aspek ELSA secara sistemik di berbagai tingkat.</td><td>Membaca kasus Nadiem sebagai benturan tiga sistem, bukan sekadar kasus hukum.</td></tr>
+    <tr><td><strong>2. QH Collaboration</strong></td><td>Melibatkan Quadruple Helix (akademisi, publik, pemerintah, industri).</td><td>Melibatkan berbagai pihak dalam memahami kasus secara proporsional.</td></tr>
+    <tr><td><strong>3. Experimentation &amp; Testing</strong></td><td>Melakukan eksperimen dan pengujian di dunia nyata.</td><td>Menguji berbagai interpretasi melalui dialog terbuka dan uji lintas-AI.</td></tr>
+    <tr><td><strong>4. Iteration &amp; Agility</strong></td><td>Siklus iteratif dan adaptif untuk perbaikan berkelanjutan.</td><td>Terus memperbarui pemahaman seiring berkembangnya kasus dan narasi.</td></tr>
+    <tr><td><strong>5. Systemic Transition</strong></td><td>Komitmen pada perubahan sistemik yang lebih luas.</td><td>Visi Augmented Indonesia sebagai tujuan akhir.</td></tr>
+  </table>
+
+  <h3>7.2 Critique of Management: Manusia sebagai Orkestrator</h3>
+  <p>Dalam kerangka "Critique of Management" — dipaparkan von Schomberg (2024) melalui wawancara dengan Vincent Blok — manajemen dijelaskan bukan sebagai kontrol, tetapi sebagai pencarian <strong>makna</strong>. Manusia bukanlah pengendali, tetapi <strong>orkestrator</strong> yang memimpin relasi dengan teknologi — dan manajemen sebagai bentuk "resistance" adalah perlawanan terhadap ketidakadilan dan ketidakteraturan, seperti yang dicoba dilakukan Nadiem ketika mempercepat birokrasi.</p>
+  <p>Filosofi ini sejalan dengan visi "Zi Zhu Zhe": bahwa kita adalah makhluk yang berdaulat, yang memilih untuk tidak menjadi bagian dari blok mana pun, dan yang terus mengalir, tumbuh, dan bercahaya.</p>
+
+  <div class="note">
+    <span class="lbl">Rujukan</span>
+    Wang, H., Blok, V., &amp; van Hilten, M. (2025). ELSA Labs for responsible AI: a novel approach for addressing ethical, legal, social issues. <em>Journal of Responsible Innovation, 12</em>(1), 2563944. doi.org/10.1080/23299460.2025.2563944<br>
+    von Schomberg, L. (2024). The Critique of Management: An Interview with Vincent Blok. <em>Philosophy of Management, 23</em>(2), 181–189. doi.org/10.1007/s40926-024-00250-1
+  </div>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab8"><span class="roman">VIII.</span> Panduan Uji Lintas AI: 7 Pertanyaan untuk 8 AI</h2>
+
+  <h3>8.1 Mengapa Uji Lintas AI?</h3>
+  <p>Dengan mengajukan pertanyaan yang sama kepada beberapa AI yang berbeda, kita bisa melihat: di mana AI sepakat (fakta paling kuat), di mana AI berbeda penekanan (ruang interpretasi), dan apa yang tidak dijawab AI sama sekali ("unknown area" yang perlu dieksplorasi lebih lanjut).</p>
+
+  <h3>8.2 7 Prompt Uji Lintas AI</h3>
+
+  <div class="prompt"><span class="lbl">Prompt 1 — Menghitung Nilai Free Tier Google di Indonesia</span>
+  <p>"Jika semua layanan gratis Google yang digunakan di Indonesia (Gmail, Google Maps, YouTube, Google Classroom, Google Drive, dan kredit Google Cloud) dimonetisasi penuh dengan harga pasar, berapa perkiraan nilai total tahunan yang dinikmati oleh pengguna Indonesia? Gunakan data pengguna internet Indonesia yang tersedia, dengan asumsi adopsi yang luas untuk setiap layanan. Berikan perkiraan konservatif dan optimis, serta jelaskan asumsi yang Anda gunakan — dan tandai jelas bahwa ini adalah estimasi, bukan angka resmi."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 2 — Fakta "Menatap Layar" dan Jalan Menuju Cerdas</span>
+  <p>"Rata-rata orang Indonesia menghabiskan beberapa jam per hari di depan layar digital. Apakah kebiasaan ini bisa menjadi 'jalan menuju cerdas' jika konten dan algoritmanya terarah (genah), atau justru menjadi pemborosan waktu yang merugikan (ruwet)? Berikan analisis tentang bagaimana algoritma berpikir dapat memengaruhi kualitas waktu layar."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 3 — Membandingkan Skala Angka</span>
+  <p>"Bandingkan skala kerugian yang didakwakan dalam kasus pengadaan digitalisasi pendidikan dengan: (a) nilai potensial pasar pendidikan digital Indonesia, dan (b) nilai hibah free tier Google yang dinikmati Indonesia selama bertahun-tahun. Jelaskan mengapa perbandingan skala angka saja tidak cukup untuk menyimpulkan ada-tidaknya kesalahan pihak tertentu — apa saja yang perlu dibuktikan secara terpisah."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 4 — Skenario "Google Ngambek"</span>
+  <p>"Jika Google memutuskan menarik semua layanan gratisnya dari Indonesia, seberapa besar gelombang protes yang akan terjadi? Siapa yang akan memimpin protes? Apakah publik akan lebih marah kepada Google atau kepada pemerintah Indonesia?"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 5 — Negara dengan Prospek Sebanding Indonesia</span>
+  <p>"Negara-negara mana saja di dunia yang memiliki karakteristik serupa — populasi besar, adopsi internet tinggi, ekonomi digital berkembang — yang bisa menjadi tujuan alternatif bagi Google? Gabungkan ukuran populasi, pertumbuhan ekonomi, dan penetrasi internet untuk memberi daftar 5–7 negara."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 6 — Kebhinnekaan Indonesia sebagai RAG Potensial</span>
+  <p>"Indonesia memiliki kekayaan budaya: Borobudur, batik, gudeg, gamelan, wayang kulit, keris. Dalam kerangka 'Augmented Indonesia,' bagaimana kekayaan budaya dan kebhinnekaan ini bisa menjadi RAG (Retrieval-Augmented Generation) yang potensial? Bagaimana AI bisa membantu memetakan, melestarikan, dan mengintegrasikan pengetahuan lokal?"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 7 — POV Masing-Masing AI Setelah 6 Pertanyaan</span>
+  <p>"Setelah merespons 6 pertanyaan sebelumnya, buatlah sebuah POV yang merangkum posisi Anda tentang kasus ini, peran Google, dan masa depan Indonesia di era digital. Fokus pada: (1) fakta paling kuat, (2) Unknown Area, dan (3) satu rekomendasi konkret untuk Indonesia."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copas &amp; buka di:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <h3>8.3 Cara Membaca Hasil Uji</h3>
+  <table>
+    <tr><th>Sinyal</th><th>Arti</th></tr>
+    <tr><td><strong>Konvergensi tanpa pencarian</strong></td><td>Jika beberapa AI tanpa akses pencarian memberi jawaban serupa, itu menunjukkan pola tersebut dominan dalam data pelatihan — bukan bukti bahwa pola itu benar.</td></tr>
+    <tr><td><strong>Divergensi dengan pencarian</strong></td><td>Jika jawaban berubah signifikan setelah AI diberi akses pencarian, jawaban "default" tadi kemungkinan condong ke pola bahasa lama/viral.</td></tr>
+    <tr><td><strong>Perbedaan penekanan</strong></td><td>Jika semua AI sepakat soal fakta dasar tetapi beda soal framing, itu menunjukkan garis batas antara fakta dan interpretasi.</td></tr>
+  </table>
+
+  <h3>8.4 AI yang Bisa Digunakan</h3>
+  <p>Claude (Anthropic) · ChatGPT (OpenAI) · Gemini (Google) · Copilot (Microsoft) · DeepSeek · Qwen (Alibaba) · Grok (xAI) · Perplexity</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab9"><span class="roman">IX.</span> Kesimpulan: Kuali Mendidih, Indonesia Belajar</h2>
+  <p>Tidak ada akhir yang rapi untuk artikel ini. Tidak ada "jawaban" yang bisa menutup semua pertanyaan. Yang ada hanyalah <strong>sebuah perdebatan yang terus berlanjut</strong> antara puisi dan probabilitas, antara sejarah dan strategi, antara manusia dan mesin.</p>
+  <p>Google mengangkat kuali di Indonesia. Itu adalah fakta. Apakah itu karena keberanian atau kalkulasi, itu adalah pertanyaan yang mungkin tidak akan pernah terjawab tuntas.</p>
+  <p>Tetapi satu hal yang pasti: <strong>kuali itu mendidih.</strong> Dan kita semua — baik manusia maupun mesin — adalah bagian dari proses mendidih itu.</p>
+  <p>Dan Indonesia, sebagai republik muda yang berdaulat, sedang belajar untuk menjadi <strong>Zi Zhu Zhe</strong> — berdaulat atas dirinya sendiri, dalam aliran, tumbuh menuju cahaya.</p>
+
+  <div class="signoff">
+    <p class="mark">"Zi Zhu Zhe bukanlah tentang menjadi pemenang. Ia tentang menjadi berdaulat — berdaulat atas diri sendiri, dalam aliran, tumbuh menuju cahaya."</p>
+    <strong>Mbah Hogi Bejo (Go Kian Tik)</strong>
+    <span class="role">Founder, Zi Zhu Zhe &amp; Superhero Cafe Inside</span>
+    <div class="links">
+      <a href="#">Baca Juga: The +62 Silicon Drama — How Different Evolutionary Clocks Shape One Nation</a>
+      <a href="#">Baca Juga: POV Series 1–7 — Nadiem, AI, and the Unknown Area</a>
+    </div>
+  </div>
+
+  <footer class="meta">Ditulis sebagai eksplorasi metafora &amp; undangan berpikir bersama — bukan analisis atau opini hukum.</footer>
+
+</div>
+</div>
+
+<div class="lang-block" data-lang="en">
+<div class="hero">
+  <div class="steam" aria-hidden="true">
+    <svg viewBox="0 0 760 260" preserveAspectRatio="none">
+      <path d="M60,260 C60,180 120,180 100,110 C85,60 130,40 120,0" stroke="#a3341d" stroke-width="1.4" fill="none" opacity="0.35"/>
+      <path d="M380,260 C380,190 440,190 415,120 C398,68 445,45 430,0" stroke="#b4872c" stroke-width="1.2" fill="none" opacity="0.3"/>
+      <path d="M660,260 C660,185 715,185 695,115 C680,62 720,42 705,0" stroke="#a3341d" stroke-width="1.4" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+  <span class="eyebrow"><span class="dot"></span>Zi Zhu Zhe &nbsp;·&nbsp; Essay &amp; Testing Framework</span>
+  <h1 class="title">Google, the Silicon Giant,<br>and the <em>Cauldron That Never Burns</em></h1>
+  <p class="subtitle">A poetic debate with Deepseek, 7 questions for 8 AIs, and a path toward Augmented Indonesia.</p>
+  <div class="byline">
+    <strong>Mbah Hogi Bejo (Go Kian Tik)</strong>
+    Founder, Zi Zhu Zhe &amp; Superhero Cafe Inside — AI Safety Strategist · Human-Centered AI Research Lead
+  </div>
+</div>
+
+<div class="wrap">
+
+  <nav class="toc" aria-label="Daftar isi">
+    <div class="toc-head">Table of Contents</div>
+    <ol>
+      <li><a href="#bab1"><span class="num">I</span> An Unexpected Beginning</a></li>
+      <li><a href="#bab2"><span class="num">II</span> Indonesia: A Young Republic Choosing Its Own Path</a></li>
+      <li><a href="#bab3"><span class="num">III</span> Two Voices, One Question: A Poetic Debate with Deepseek</a></li>
+      <li><a href="#bab4"><span class="num">IV</span> Black Ash Around the Cauldron: The Nadiem Case as a Mirror</a></li>
+      <li><a href="#bab5"><span class="num">V</span> Zi Zhu Zhe: The Sovereign One</a></li>
+      <li><a href="#bab6"><span class="num">VI</span> The +62 Silicon Drama: Toward Augmented Indonesia</a></li>
+      <li><a href="#bab7"><span class="num">VII</span> ELSA Labs &amp; Critique of Management: Philosophical Foundations</a></li>
+      <li><a href="#bab8"><span class="num">VIII</span> Cross-AI Testing Guide: 7 Questions for 8 AIs</a></li>
+      <li><a href="#bab9"><span class="num">IX</span> Conclusion: The Cauldron Boils, Indonesia Learns</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="bab1"><span class="roman">I.</span> An Unexpected Beginning</h2>
+  <blockquote>"Google is the Silicon Giant holding up the cauldron in Indonesia. It is not afraid of the black ash from the Nadiem case, because it knows the cauldron will never burn."</blockquote>
+  <p>I wrote that sentence in the middle of the night, after reading the first-instance verdict against Nadiem Makarim. I wasn't planning a theory. I was simply responding — in a way that perhaps only a human accustomed to seeing the world through metaphor could.</p>
+  <p>A few hours later, I opened Deepseek and pasted the same sentence. I wanted to see how a machine would read my words. I wanted to see whether an AI would understand that the "cauldron" wasn't really a cauldron, and the "black ash" wasn't really ash.</p>
+  <p>What followed was a debate I hadn't planned — a dialogue between human and machine ways of thinking, between poetry and probability, between history and strategy.</p>
+  <p>This article is a record of that debate — and an invitation for you to try the same experiment.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab2"><span class="roman">II.</span> Indonesia: A Young Republic Choosing Its Own Path</h2>
+  <h3>2.1 A Nation Still Learning</h3>
+  <p>Indonesia is a young republic. On the scale of civilizations, 100 years old is still childhood. We don't yet have enough "collective memory" to handle a clash of civilizational logics like the one in the Nadiem case.</p>
+  <p>We are not a monarchy, where one person can decide everything with a single decree. We are not the Western bloc, with legal traditions matured over centuries. We are not the Eastern bloc, with a centralized, closed system.</p>
+  <p>We are Indonesia — a republic that chooses <strong>not to belong to any bloc</strong>. We choose <strong>sovereign independence</strong>, and we choose to remain <strong>humanist</strong> as a nation of Bhinneka Tunggal Ika (Unity in Diversity).</p>
+
+  <h3>2.2 The Nadiem Case: A First Test in the Digital Era</h3>
+  <p>The Nadiem case is not an ordinary legal case. It is a <strong>first test</strong> for Indonesia in the digital era — whether we, as a young nation, have the wisdom to handle the clash between the speed of technology and the slowness of the system.</p>
+
+  <table>
+    <tr><th>Logic</th><th>Speed</th><th>Characteristics</th><th>Example in the Case</th></tr>
+    <tr><td><strong>Silicon Logic</strong></td><td>Months</td><td>Fast, iterative, risk-taking</td><td>Gojek, startups, digital innovation</td></tr>
+    <tr><td><strong>Nation-State Logic</strong></td><td>Years</td><td>Stable, procedural, cautious</td><td>Bureaucracy, public policy</td></tr>
+    <tr><td><strong>Legal Logic</strong></td><td>Generations</td><td>Collective memory, procedural</td><td>Verdicts, judiciary, legislation</td></tr>
+  </table>
+
+  <p>When the three meet in one space — Indonesia — what happens is not smooth progress, but <strong>friction</strong>. The cauldron begins to boil. Black ash flies. And an innovator becomes part of a process far larger than himself.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab3"><span class="roman">III.</span> Two Voices, One Question: A Poetic Debate with Deepseek</h2>
+
+  <h3>3.1 The Human Voice: "Holding Up the Cauldron"</h3>
+  <blockquote>"Google has been holding up the cauldron for years — Gmail, Maps, YouTube — without ever really being tasted. The Nadiem case is a test of whether that cauldron is still safe."</blockquote>
+  <p>I started with a historical argument. I pointed out that Google had been part of Indonesia's ecosystem long before the Nadiem case. Its free services had become digital infrastructure for millions of Indonesians. Google didn't "sulk" when its name came up in the trial. It didn't withdraw its services. It stayed here, holding up the same cauldron.</p>
+  <p>To me, this is about <strong>corporate confidence</strong> that outweighs fear for reputation. Google knows that if it left, it would lose a much bigger stage. It holds up the cauldron because it knows the cauldron will never burn.</p>
+
+  <h3>3.2 The Machine Voice: "A Rational Decision"</h3>
+  <blockquote>"Google doesn't 'sulk' because that wouldn't be rational. Withdrawing its services would damage its own business. It's a corporation, not a child."</blockquote>
+  <p>Deepseek responded in a different tone. No metaphor. No history. Just logic.</p>
+  <p>To Deepseek, the Nadiem case is <strong>noise</strong>, not signal. Google stays in Indonesia not out of courage, but because the cost of leaving is far greater than the cost of staying. The black ash is a calculated risk.</p>
+  <p>I read Deepseek's response and felt something strange. I disagreed, but I also couldn't refute it.</p>
+
+  <div class="note">
+    <span class="lbl">Source note</span>
+    The Deepseek quotes above are a summary of the core arguments from the original session, edited for readability — not a verbatim word-for-word transcript. This is consistent with the spirit of this piece itself: linguistic probability can sound convincing, so both reader and writer need to be clear about what is a direct quote and what is a reconstruction.
+  </div>
+
+  <h3>3.3 Common Ground: When Poetry Meets Probability</h3>
+  <blockquote>"Google holds up the cauldron because it is a giant that knows the cauldron will never burn. But the question is: does it care about those who get burned around the cauldron?"</blockquote>
+  <p>This is a question Deepseek cannot answer. It can calculate probability, but it cannot feel care. It can analyze risk, but it cannot understand suffering.</p>
+  <p>I'm not saying Deepseek is wrong. I'm only saying there's another dimension of reality that data cannot measure. There are questions that algorithms cannot answer.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab4"><span class="roman">IV.</span> Black Ash Around the Cauldron: The Nadiem Case as a Mirror</h2>
+
+  <div class="callout">
+    <p>The verdict discussed in this essay was handed down by the Central Jakarta Corruption Court (Tipikor) on 30 June 2026 — and is a first-instance ruling, not yet legally binding.</p>
+    <div class="split">
+      <div><span class="lbl">Appeal</span>Both the Attorney General's Office and Nadiem's legal counsel have filed appeals against this ruling.</div>
+      <div><span class="lbl">Dissenting opinion</span>Of the five judges, one panel member issued a dissenting opinion — finding that the element of criminal intent was not proven.</div>
+    </div>
+  </div>
+
+  <h3>4.1 The Nadiem Case as "Black Ash"</h3>
+  <p>The Nadiem case is not the cauldron itself. It is the black ash flying around it.</p>
+  <p>Nadiem is an innovator who tried to accelerate bureaucracy in the midst of the pandemic. He brought Silicon logic into Nation-State logic. He tried to make a leap that the system around him could not always keep up with.</p>
+  <p>This first-instance verdict — 10 years in prison, a fine of Rp1 billion, and Rp809 billion in restitution — now being tested again on appeal, feels like punishment for the <strong>misalignment</strong> between three logics moving at different speeds, not merely a number in an indictment. And interestingly: even among the five judges who decided this case, not everyone agreed. That crack — the dissent within the system itself — is perhaps the most honest part of this story: the same cauldron can look like it's boiling to some, and calm to others, depending on which side they're standing on.</p>
+  <p>I am not in a position — nor interested — to judge who is legally right in that dissent. What interests me, as a writer working with metaphor, is simply that the disagreement <em>exists</em>, and that in itself becomes a mirror: the system that judges misalignment turns out to harbor misalignment of its own.</p>
+
+  <h3>4.2 Google and the Cauldron That Stays Held Up</h3>
+  <p>Amid all this black ash, Google stays here. It doesn't leave. It doesn't withdraw its services. It keeps investing in Indonesia's digital infrastructure and launching programs for the local startup ecosystem. It keeps holding up the cauldron.</p>
+  <p>Is this about courage? Or about calculation?</p>
+  <p>Deepseek would say: <em>"It's about calculation."</em></p>
+  <p>I would say: <em>"It's courage wrapped in calculation."</em></p>
+  <p>And perhaps, the true answer is: <em>"Both."</em></p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab5"><span class="roman">V.</span> Zi Zhu Zhe: The Sovereign One</h2>
+  <p><em>(Otw in Flow, Grow to be Glow)</em></p>
+
+  <h3>5.1 The Philosophy Behind "Zi Zhu Zhe"</h3>
+  <p>Amid all this debate, I return to the philosophy that underlies everything I write: <strong>Zi Zhu Zhe</strong> (自主者) — The Sovereign One.</p>
+  <p>Zi Zhu Zhe is not about being a "winner." It is about being <strong>sovereign</strong> — sovereign over oneself, within the flow, growing toward the light.</p>
+
+  <table>
+    <tr><th>Stage</th><th>Explanation</th><th>Relation to Indonesia</th></tr>
+    <tr><td><strong>Flow</strong></td><td>Indonesia is still in the process of becoming. We haven't reached a final form. We are flowing, searching for a path.</td><td>The Nadiem case is part of this flow — how we learn to handle innovation and law in the digital era.</td></tr>
+    <tr><td><strong>Grow</strong></td><td>The learning process never stops. We grow from every mistake and controversy.</td><td>This ongoing legal process can become a lesson, if we are willing to learn from it.</td></tr>
+    <tr><td><strong>Glow</strong></td><td>The ultimate goal: to become a wise, just, and humanist nation.</td><td>Augmented Indonesia is the vision for reaching this stage.</td></tr>
+  </table>
+
+  <h3>5.2 Indonesia as a Collective "Zi Zhu Zhe"</h3>
+  <p>Indonesia, as a nation, is also a <strong>Zi Zhu Zhe</strong>. It chooses not to belong to any bloc. It chooses its independence. It chooses to remain humanist amid diversity.</p>
+  <p>The Nadiem case, and how its legal process runs to completion, is a test for Indonesia: do we, as a nation, have the <strong>wisdom</strong> to use that independence well?</p>
+  <p>That question remains unanswered — the appeal process itself is not yet finished. But the process of answering it, with all its controversy and debate, is part of Indonesia's <strong>flow</strong> toward <strong>glow</strong>.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab6"><span class="roman">VI.</span> The +62 Silicon Drama: Toward Augmented Indonesia</h2>
+
+  <h3>6.1 From a Case to a Civilizational Drama</h3>
+  <p>"The +62 (Indonesia) Silicon Drama" is not just the Nadiem case. It is a <strong>mirror</strong> showing how Indonesia — with hundreds of millions of digital users, thousands of islands, and thousands of ethnic groups — is trying to dance on a global stage whose rhythm keeps changing.</p>
+  <p>This drama isn't about right or wrong. It's about <strong>how we, as a nation, learn to synchronize our steps</strong> amid differing rhythms.</p>
+
+  <h3>6.2 Augmented Indonesia as a Vision</h3>
+  <p>Augmented Indonesia is the <strong>answer</strong> to this chaotic drama — a way to synchronize steps, listen to different rhythms, and create harmony out of chaos.</p>
+  <p>This vision is not just about technology. It's about <strong>how we think</strong> as a nation — mapping narratives, understanding perspectives, and making decisions based on clear evidence, not on emotion or momentary interest.</p>
+
+  <h3>6.3 POV and Frameworks as Navigation Tools</h3>
+  <p>The POV 1–7 series and the "The +62 Silicon Drama" framework are tools to help the public navigate complexity. It is a <strong>mirror</strong> reflecting various points of view, and a <strong>map</strong> showing where fact ends and interpretation begins.</p>
+  <p>It does not replace the judge or the prosecutor. It only helps the public <strong>understand</strong> — so they don't get lost amid the noise.</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab7"><span class="roman">VII.</span> ELSA Labs &amp; Critique of Management: Philosophical Foundations</h2>
+
+  <h3>7.1 ELSA Labs: A Framework for Managing Complexity</h3>
+  <p>The ELSA (Ethical, Legal, Societal Aspects) approach, as proposed by Wang, Blok, &amp; van Hilten (2025), offers a way to integrate ethical, legal, and social aspects into AI development, with five key features:</p>
+
+  <table>
+    <tr><th>Feature</th><th>Explanation</th><th>Application in the Nadiem Case</th></tr>
+    <tr><td><strong>1. Systemic Diagnosis</strong></td><td>Systemically identifying ELSA aspects at various levels.</td><td>Reading the Nadiem case as a clash of three systems, not merely a legal case.</td></tr>
+    <tr><td><strong>2. QH Collaboration</strong></td><td>Involving the Quadruple Helix (academia, public, government, industry).</td><td>Involving various parties to understand the case proportionately.</td></tr>
+    <tr><td><strong>3. Experimentation &amp; Testing</strong></td><td>Conducting real-world experimentation and testing.</td><td>Testing various interpretations through open dialogue and cross-AI testing.</td></tr>
+    <tr><td><strong>4. Iteration &amp; Agility</strong></td><td>Iterative, adaptive cycles for continuous improvement.</td><td>Continuously updating understanding as the case and narrative develop.</td></tr>
+    <tr><td><strong>5. Systemic Transition</strong></td><td>Commitment to broader systemic change.</td><td>The Augmented Indonesia vision as the ultimate goal.</td></tr>
+  </table>
+
+  <h3>7.2 Critique of Management: The Human as Orchestrator</h3>
+  <p>In the "Critique of Management" framework — set out by von Schomberg (2024) in an interview with Vincent Blok — management is described not as control, but as a search for <strong>meaning</strong>. Humans are not controllers, but <strong>orchestrators</strong> who lead the relationship with technology — and management as a form of "resistance" is a pushback against injustice and disorder, much like what Nadiem attempted when accelerating bureaucracy.</p>
+  <p>This philosophy aligns with the vision of "Zi Zhu Zhe": that we are sovereign beings, who choose not to belong to any bloc, and who continue to flow, grow, and glow.</p>
+
+  <div class="note">
+    <span class="lbl">References</span>
+    Wang, H., Blok, V., &amp; van Hilten, M. (2025). ELSA Labs for responsible AI: a novel approach for addressing ethical, legal, social issues. <em>Journal of Responsible Innovation, 12</em>(1), 2563944. doi.org/10.1080/23299460.2025.2563944<br>
+    von Schomberg, L. (2024). The Critique of Management: An Interview with Vincent Blok. <em>Philosophy of Management, 23</em>(2), 181–189. doi.org/10.1007/s40926-024-00250-1
+  </div>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab8"><span class="roman">VIII.</span> Cross-AI Testing Guide: 7 Questions for 8 AIs</h2>
+
+  <h3>8.1 Why Cross-AI Testing?</h3>
+  <p>By asking the same question to several different AIs, we can see: where the AIs agree (the strongest facts), where they differ in emphasis (room for interpretation), and what none of them answer at all (the "unknown area" that needs further exploration).</p>
+
+  <h3>8.2 7 Cross-AI Test Prompts</h3>
+
+  <div class="prompt"><span class="lbl">Prompt 1 — Calculating the Value of Google's Free Tier in Indonesia</span>
+  <p>"If all of Google's free services used in Indonesia (Gmail, Google Maps, YouTube, Google Classroom, Google Drive, and Google Cloud credits) were fully monetized at market prices, what would be the estimated total annual value enjoyed by Indonesian users? Use available Indonesian internet user data, assuming broad adoption for each service. Provide both conservative and optimistic estimates, explain the assumptions you use — and clearly flag that this is an estimate, not an official figure."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 2 — The "Staring at Screens" Fact and the Path Toward Being Smart</span>
+  <p>"The average Indonesian spends several hours a day in front of a digital screen. Can this habit become a 'path toward being smart' if the content and algorithms are well-directed (genah / orderly), or does it instead become a wasteful, harmful use of time (ruwet / tangled)? Provide an analysis of how algorithmic thinking can affect the quality of screen time."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 3 — Comparing the Scale of the Numbers</span>
+  <p>"Compare the scale of the alleged losses in the education-digitization procurement case with: (a) the potential value of Indonesia's digital education market, and (b) the value of Google's free-tier grants enjoyed by Indonesia over the years. Explain why comparing the scale of the numbers alone is not enough to conclude whether any party is at fault — what else needs to be proven separately."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 4 — The "Google Sulks" Scenario</span>
+  <p>"If Google decided to withdraw all its free services from Indonesia, how large would the resulting wave of protest be? Who would lead the protests? Would the public be angrier at Google or at the Indonesian government?"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 5 — Countries with Prospects Comparable to Indonesia</span>
+  <p>"Which countries in the world share similar characteristics — large population, high internet adoption, a growing digital economy — that could become alternative destinations for Google? Combine population size, economic growth, and internet penetration to produce a list of 5–7 countries."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 6 — Indonesia's Diversity as Potential RAG</span>
+  <p>"Indonesia has rich culture: Borobudur, batik, gudeg, gamelan, wayang kulit shadow puppetry, the keris dagger. Within the 'Augmented Indonesia' framework, how can this cultural wealth and diversity become potential RAG (Retrieval-Augmented Generation) material? How can AI help map, preserve, and integrate local knowledge?"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">Prompt 7 — Each AI's POV After 6 Questions</span>
+  <p>"After responding to the previous 6 questions, formulate a POV that summarizes your position on this case, Google's role, and Indonesia's future in the digital era. Focus on: (1) the strongest facts, (2) the Unknown Area, and (3) one concrete recommendation for Indonesia."</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">Copy &amp; open in:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <h3>8.3 How to Read the Test Results</h3>
+  <table>
+    <tr><th>Signal</th><th>Meaning</th></tr>
+    <tr><td><strong>Convergence without search</strong></td><td>If several AIs without search access give similar answers, it shows that pattern is dominant in the training data — not proof that the pattern is correct.</td></tr>
+    <tr><td><strong>Divergence with search</strong></td><td>If the answer changes significantly once the AI is given search access, the earlier "default" answer was likely leaning on an old or viral language pattern.</td></tr>
+    <tr><td><strong>Difference in emphasis</strong></td><td>If all AIs agree on the basic facts but differ in framing, it marks the boundary line between fact and interpretation.</td></tr>
+  </table>
+
+  <h3>8.4 AIs You Can Use</h3>
+  <p>Claude (Anthropic) · ChatGPT (OpenAI) · Gemini (Google) · Copilot (Microsoft) · DeepSeek · Qwen (Alibaba) · Grok (xAI) · Perplexity</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab9"><span class="roman">IX.</span> Conclusion: The Cauldron Boils, Indonesia Learns</h2>
+  <p>There is no neat ending for this article. There is no "answer" that can close all the questions. There is only <strong>an ongoing debate</strong> between poetry and probability, between history and strategy, between human and machine.</p>
+  <p>Google holds up the cauldron in Indonesia. That is a fact. Whether it's out of courage or calculation is a question that may never be fully answered.</p>
+  <p>But one thing is certain: <strong>the cauldron is boiling.</strong> And all of us — human and machine alike — are part of that boiling process.</p>
+  <p>And Indonesia, as a young sovereign republic, is learning to become <strong>Zi Zhu Zhe</strong> — sovereign over itself, within the flow, growing toward the light.</p>
+
+  <div class="signoff">
+    <p class="mark">"Zi Zhu Zhe is not about being a winner. It is about being sovereign — sovereign over oneself, within the flow, growing toward the light."</p>
+    <strong>Mbah Hogi Bejo (Go Kian Tik)</strong>
+    <span class="role">Founder, Zi Zhu Zhe &amp; Superhero Cafe Inside</span>
+    <div class="links">
+      <a href="#">Also Read: The +62 Silicon Drama — How Different Evolutionary Clocks Shape One Nation</a>
+      <a href="#">Also Read: POV Series 1–7 — Nadiem, AI, and the Unknown Area</a>
+    </div>
+  </div>
+
+  <footer class="meta">Written as an exploration in metaphor and an invitation to think together — not as legal analysis or opinion.</footer>
+
+</div>
+</div>
+
+<div class="lang-block" data-lang="cn">
+<div class="hero">
+  <div class="steam" aria-hidden="true">
+    <svg viewBox="0 0 760 260" preserveAspectRatio="none">
+      <path d="M60,260 C60,180 120,180 100,110 C85,60 130,40 120,0" stroke="#a3341d" stroke-width="1.4" fill="none" opacity="0.35"/>
+      <path d="M380,260 C380,190 440,190 415,120 C398,68 445,45 430,0" stroke="#b4872c" stroke-width="1.2" fill="none" opacity="0.3"/>
+      <path d="M660,260 C660,185 715,185 695,115 C680,62 720,42 705,0" stroke="#a3341d" stroke-width="1.4" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+  <span class="eyebrow"><span class="dot"></span>自主者 &nbsp;·&nbsp; 随笔与测试框架</span>
+  <h1 class="title">谷歌、硅业巨擘,<br>与<em>永不烧焦的大锅</em></h1>
+  <p class="subtitle">一场与 Deepseek 的诗意辩论,面向 8 个 AI 的 7 个问题,以及通往「增强版印尼」(Augmented Indonesia)之路。</p>
+  <div class="byline">
+    <strong>Mbah Hogi Bejo (Go Kian Tik)</strong>
+    自主者（Zì Zhǔ Zhě）与 Superhero Cafe Inside 创始人 · AI 安全策略师 · 以人为本的AI研究负责人
+  </div>
+</div>
+
+<div class="wrap">
+
+  <nav class="toc" aria-label="Daftar isi">
+    <div class="toc-head">目录</div>
+    <ol>
+      <li><a href="#bab1"><span class="num">一</span> 一个意想不到的开始</a></li>
+      <li><a href="#bab2"><span class="num">二</span> 印尼:选择自己道路的年轻共和国</a></li>
+      <li><a href="#bab3"><span class="num">三</span> 两种声音,一个问题:与Deepseek的诗意辩论</a></li>
+      <li><a href="#bab4"><span class="num">四</span> 锅边的黑灰:作为镜子的Nadiem案</a></li>
+      <li><a href="#bab5"><span class="num">五</span> 自主者(Zì Zhǔ Zhě):主权自我</a></li>
+      <li><a href="#bab6"><span class="num">六</span> 「+62硅剧」:迈向增强版印尼</a></li>
+      <li><a href="#bab7"><span class="num">七</span> ELSA Labs与《管理批判》:哲学根基</a></li>
+      <li><a href="#bab8"><span class="num">八</span> 跨AI测试指南:面向8个AI的7个问题</a></li>
+      <li><a href="#bab9"><span class="num">九</span> 结语:大锅沸腾,印尼在学习</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="bab1"><span class="roman">一、</span> 一个意想不到的开始</h2>
+  <blockquote>「谷歌是在印尼扛起大锅（kuali）的硅业巨擘。它不惧怕 Nadiem 案掀起的黑灰（abu hitam），因为它知道这口锅永远不会烧焦。」</blockquote>
+  <p>我在深夜写下这句话,那时刚读完针对 Nadiem Makarim 的一审判决。我并非在构思一套理论,只是在回应——用一种或许只有习惯以隐喻看世界的人才会用的方式。</p>
+  <p>几小时后,我打开 Deepseek,把同一句话贴了进去。我想看看机器会如何解读我的文字,想知道 AI 是否能理解「锅」并非真的锅,「黑灰」也并非真的灰。</p>
+  <p>接下来发生的,是一场我未曾预料的辩论——一场人类思维与机器思维之间、诗意与概率之间、历史与策略之间的对话。</p>
+  <p>这篇文章便是那场辩论的记录——也是一份邀请,邀请你亲自做一次同样的实验。</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab2"><span class="roman">二、</span> 印尼:选择自己道路的年轻共和国</h2>
+  <h3>2.1 仍在学习中的国家</h3>
+  <p>印尼是一个年轻的共和国。以文明的尺度衡量,100 岁不过是孩童时期。我们尚未积累足够的「集体记忆」,去处理像 Nadiem 案这样的文明碰撞。</p>
+  <p>我们不是君主制国家,不能靠一人一言决定一切;我们不属于西方阵营那种历经数百年成熟的法律传统,也不属于东方阵营那种中央集权、封闭的体制。</p>
+  <p>我们是印尼——一个选择<strong>不隶属于任何阵营</strong>的共和国。我们选择<strong>主权独立</strong>,并选择作为「存异求同」（Bhinneka Tunggal Ika）之国,始终保持<strong>人文精神</strong>。</p>
+
+  <h3>2.2 Nadiem 案:数字时代的第一次考验</h3>
+  <p>Nadiem 案并非一起普通的法律案件。它是印尼在数字时代面临的<strong>第一次考验</strong>——检验我们这个年轻国家,是否具备处理「科技的速度」与「体制的迟缓」之间冲突的智慧。</p>
+
+  <table>
+    <tr><th>逻辑</th><th>速度</th><th>特征</th><th>案例中的体现</th></tr>
+    <tr><td><strong>硅谷逻辑</strong></td><td>以月计</td><td>快速、迭代、敢于冒险</td><td>Gojek、初创企业、数字创新</td></tr>
+    <tr><td><strong>国家体制逻辑</strong></td><td>以年计</td><td>稳定、程序化、谨慎</td><td>官僚体系、公共政策</td></tr>
+    <tr><td><strong>法律逻辑</strong></td><td>以代计</td><td>集体记忆、程序化</td><td>判决、司法、立法</td></tr>
+  </table>
+
+  <p>当这三种逻辑在同一个空间——印尼——相遇时,产生的并非顺畅的进步,而是<strong>摩擦</strong>。大锅开始沸腾,黑灰四处飞扬。一位创新者,就这样成了一个远比他自身更宏大的进程的一部分。</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab3"><span class="roman">三、</span> 两种声音,一个问题:与 Deepseek 的诗意辩论</h2>
+
+  <h3>3.1 人的声音:「扛起大锅」</h3>
+  <blockquote>「谷歌多年来一直扛着这口大锅——Gmail、地图、YouTube——却从未真正被人『尝过』。Nadiem 案,正是检验这口锅是否依然安全的一次测试。」</blockquote>
+  <p>我先从历史角度切入。我提醒道,谷歌早在 Nadiem 案之前很久,就已是印尼生态系统的一部分。它的免费服务已成为数百万印尼人的数字基础设施。当自己的名字在庭审中被提及时,谷歌并没有「闹脾气」,没有撤回服务,而是继续留在这里,扛着同一口锅。</p>
+  <p>在我看来,这体现的是一种超越声誉恐惧的<strong>企业自信</strong>。谷歌深知,如果它离开,失去的将是一个更大的舞台。它之所以愿意扛起这口锅,是因为它知道这口锅永远不会烧焦。</p>
+
+  <h3>3.2 机器的声音:「理性的决定」</h3>
+  <blockquote>「谷歌不会『闹脾气』,因为那并不理性。撤回服务只会损害它自己的业务。它是一家企业,不是小孩子。」</blockquote>
+  <p>Deepseek 的回应语气截然不同。没有隐喻,没有历史,只有逻辑。</p>
+  <p>在 Deepseek 看来,Nadiem 案只是<strong>「噪音」</strong>,而非「信号」。谷歌留在印尼,不是因为勇气,而是因为离开的成本远高于留下的成本。那些黑灰,不过是一项被精确计算过的风险。</p>
+  <p>读完 Deepseek 的回应,我感到一种奇怪的情绪——我不认同,却也无法反驳。</p>
+
+  <div class="note">
+    <span class="lbl">来源说明</span>
+    以上 Deepseek 引文是对原始对话核心论点的整理,为提高可读性而编辑——并非逐字逐句的原始记录。这也符合本文自身的精神:语言概率有时会显得极具说服力,因此读者与作者都需要清楚区分哪些是直接引用,哪些是重新构建的表述。
+  </div>
+
+  <h3>3.3 交汇点:当诗意遇上概率</h3>
+  <blockquote>「谷歌之所以扛起这口锅,是因为它是一个深知这口锅永远不会烧焦的巨人。但问题在于:它是否在乎那些在锅边被烧伤的人?」</blockquote>
+  <p>这是一个 Deepseek 无法回答的问题。它能计算概率,却无法体会关怀;它能分析风险,却无法理解苦难。</p>
+  <p>我并不是说 Deepseek 错了。我只是想说,现实还有另一个维度,是数据无法衡量的;有些问题,是算法无法回答的。</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab4"><span class="roman">四、</span> 锅边的黑灰:作为镜子的 Nadiem 案</h2>
+
+  <div class="callout">
+    <p>本文讨论的判决,由中雅加达反腐败法院（Tipikor）于 2026 年 6 月 30 日作出——这是一审判决,尚未具有法律约束力。</p>
+    <div class="split">
+      <div><span class="lbl">上诉</span>检察机关（Kejaksaan Agung）与 Nadiem 的辩护律师均已对该判决提出上诉。</div>
+      <div><span class="lbl">异议意见</span>在五位法官中,有一位陪审法官持不同意见——认为犯罪故意的要件并未得到证实。</div>
+    </div>
+  </div>
+
+  <h3>4.1 作为「黑灰」的 Nadiem 案</h3>
+  <p>Nadiem 案本身并非那口大锅,而是锅边飞扬的黑灰。</p>
+  <p>Nadiem 是一位试图在疫情期间加速官僚体系运转的创新者。他把「硅谷逻辑」带入了「国家体制逻辑」之中,试图完成一次周围体制未必能跟得上的跃进。</p>
+  <p>这份一审判决——10 年监禁、10 亿印尼盾罚款,以及 8090 亿印尼盾的追偿款——如今正在上诉阶段被重新检验。它给人的感觉,更像是对三种不同速度逻辑之间<strong>「不协调」</strong>的惩罚,而不仅仅是起诉书上的一个数字。有趣的是:即便在做出这一判决的五位法官之中,意见也并不一致。那道裂痕——体制内部自身的分歧——或许正是这个故事中最诚实的部分:同一口锅,对某些人而言看似沸腾,对另一些人而言却显得平静,这取决于他们站在哪一侧。</p>
+  <p>对于这场分歧中谁在法律上是对的,我既没有立场、也没有兴趣去评判。作为一个以隐喻为工具的写作者,真正引起我兴趣的,只是这种分歧本身的<em>存在</em>——而这本身就是一面镜子:审判「不协调」的体制,原来自身内部也藏着不协调。</p>
+
+  <h3>4.2 谷歌与依然被扛起的大锅</h3>
+  <p>在这一片黑灰之中,谷歌依然留在这里。它没有离开,没有撤回服务,而是持续投资印尼的数字基础设施,并为本地初创生态推出各种项目。它依旧扛着这口锅。</p>
+  <p>这是关于勇气,还是关于算计?</p>
+  <p>Deepseek 会说:<em>「这是关于算计的。」</em></p>
+  <p>而我会说:<em>「这是被算计包裹着的勇气。」</em></p>
+  <p>或许,真正的答案是:<em>「两者皆是。」</em></p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab5"><span class="roman">五、</span> 自主者（Zì Zhǔ Zhě）:主权自我</h2>
+  <p><em>(Otw in Flow, Grow to be Glow)</em></p>
+
+  <h3>5.1 「自主者」背后的哲学</h3>
+  <p>在这场辩论之中,我回到了支撑我所有写作的哲学根基:<strong>自主者</strong>（Zì Zhǔ Zhě,英文常写作 Zi Zhu Zhe）——The Sovereign One,主权自我。</p>
+  <p>自主者,并非关于成为「胜利者」,而是关于成为<strong>「主权者」</strong>——对自身拥有主权,在流动中成长,朝向光明。</p>
+
+  <table>
+    <tr><th>阶段</th><th>说明</th><th>与印尼的关联</th></tr>
+    <tr><td><strong>流动（Flow）</strong></td><td>印尼仍处于「成为」的过程之中,尚未达到最终形态,正在流动中寻找方向。</td><td>Nadiem 案正是这股流动的一部分——是我们在数字时代学习处理创新与法律的方式。</td></tr>
+    <tr><td><strong>成长（Grow）</strong></td><td>学习的过程永不停止。我们从每一次错误与争议中成长。</td><td>这场仍在进行中的司法程序,若我们愿意从中学习,便能成为一堂课。</td></tr>
+    <tr><td><strong>闪耀（Glow）</strong></td><td>最终目标:成为一个睿智、公正、富有人文精神的国家。</td><td>「增强版印尼」愿景正是通往这一阶段的道路。</td></tr>
+  </table>
+
+  <h3>5.2 作为集体「自主者」的印尼</h3>
+  <p>印尼作为一个国家,同样是一个<strong>自主者</strong>。它选择不隶属于任何阵营,选择自身的独立性,选择在多元之中依然保持人文精神。</p>
+  <p>Nadiem 案,以及其司法程序最终如何走向终局,都是对印尼的一次考验:作为一个国家,我们是否具备善用这份独立的<strong>智慧</strong>?</p>
+  <p>这个问题尚无答案——上诉程序本身仍未终结。但回答这一问题的过程,连同其中所有的争议与辩论,正是印尼从<strong>「流动」</strong>走向<strong>「闪耀」</strong>的一部分。</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab6"><span class="roman">六、</span> 「+62 硅剧」（The +62 Silicon Drama）:迈向增强版印尼</h2>
+
+  <h3>6.1 从个案到文明剧场</h3>
+  <p>「+62（印尼）硅剧」并不只是 Nadiem 案。它是一面<strong>镜子</strong>,映照出印尼——拥有数亿数字用户、上千座岛屿、上千个民族——如何试图在节奏不断变化的全球舞台上起舞。</p>
+  <p>这场剧,无关对错,而是关于<strong>我们作为一个国家,如何在种种不同的节奏之中,学会协调自己的步伐</strong>。</p>
+
+  <h3>6.2 作为愿景的增强版印尼</h3>
+  <p>「增强版印尼」正是对这场混乱剧场的<strong>回答</strong>——一种协调步伐、倾听不同节奏、并从混乱中创造和谐的方式。</p>
+  <p>这一愿景不仅关乎技术,更关乎<strong>我们作为一个国家的思维方式</strong>——梳理叙事、理解不同视角,并基于清晰的证据而非情绪或一时之利来做决策。</p>
+
+  <h3>6.3 作为导航工具的观点（POV）与思维框架</h3>
+  <p>POV 系列 1–7 以及「+62 硅剧」框架,是帮助公众理解复杂现实的工具。它是一面映照各种视角的<strong>镜子</strong>,也是一张标示「事实止于何处、解读始于何处」的<strong>地图</strong>。</p>
+  <p>它不能取代法官或检察官,只是帮助公众<strong>理解</strong>事情的来龙去脉——以免在喧嚣之中迷失方向。</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab7"><span class="roman">七、</span> ELSA Labs 与《管理批判》（Critique of Management）:哲学根基</h2>
+
+  <h3>7.1 ELSA Labs:管理复杂性的框架</h3>
+  <p>ELSA（伦理、法律与社会层面,Ethical, Legal, Societal Aspects）方法,由 Wang、Blok 与 van Hilten（2025）提出,提供了一种将伦理、法律与社会因素整合进 AI 开发的路径,包含五个核心特征:</p>
+
+  <table>
+    <tr><th>特征</th><th>说明</th><th>在 Nadiem 案中的应用</th></tr>
+    <tr><td><strong>1. 系统性诊断</strong></td><td>在不同层面系统性地识别 ELSA 相关因素。</td><td>将 Nadiem 案解读为三种体制的碰撞,而非单纯的法律案件。</td></tr>
+    <tr><td><strong>2. 「四螺旋」协作</strong></td><td>纳入学术界、公众、政府与产业界组成的「四螺旋」（Quadruple Helix）。</td><td>让各方共同参与,以相称的方式理解此案。</td></tr>
+    <tr><td><strong>3. 实验与测试</strong></td><td>在现实世界中开展实验与测试。</td><td>通过开放对话与跨 AI 测试,检验各种不同的解读。</td></tr>
+    <tr><td><strong>4. 迭代与敏捷</strong></td><td>通过迭代、灵活的循环持续改进。</td><td>随着案件与叙事的发展,不断更新理解。</td></tr>
+    <tr><td><strong>5. 系统性转型</strong></td><td>致力于更广泛的系统性变革。</td><td>「增强版印尼」愿景作为最终目标。</td></tr>
+  </table>
+
+  <h3>7.2 《管理批判》:作为「编排者」的人类</h3>
+  <p>在《管理批判》（Critique of Management）的框架中——由 von Schomberg（2024）通过对 Vincent Blok 的访谈提出——管理被理解为并非「控制」,而是对<strong>「意义」</strong>的追寻。人类不是掌控者,而是引领人与技术关系的<strong>「编排者」</strong>（orchestrator）——而作为一种「抵抗」（resistance）形式的管理,正是对不公与失序的反抗,正如 Nadiem 在加速官僚体系时所尝试的那样。</p>
+  <p>这种哲学与「自主者」的愿景一脉相承:我们是拥有主权的存在,选择不隶属于任何阵营,并不断流动、成长、闪耀。</p>
+
+  <div class="note">
+    <span class="lbl">参考文献</span>
+    Wang, H., Blok, V., &amp; van Hilten, M. (2025). ELSA Labs for responsible AI: a novel approach for addressing ethical, legal, social issues. <em>Journal of Responsible Innovation, 12</em>(1), 2563944. doi.org/10.1080/23299460.2025.2563944<br>
+    von Schomberg, L. (2024). The Critique of Management: An Interview with Vincent Blok. <em>Philosophy of Management, 23</em>(2), 181–189. doi.org/10.1007/s40926-024-00250-1
+  </div>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab8"><span class="roman">八.</span> 跨 AI 测试指南:面向 8 个 AI 的 7 个问题</h2>
+
+  <h3>8.1 为什么要进行跨 AI 测试?</h3>
+  <p>通过向多个不同的 AI 提出同一个问题,我们可以观察到:AI 在哪些地方达成一致(最可靠的事实)、在哪些地方侧重点不同(解读的空间),以及有哪些问题是所有 AI 都无法回答的(「未知领域」,需要进一步探索)。</p>
+
+  <h3>8.2 7 个跨 AI 测试提示词(Prompt)</h3>
+
+  <div class="prompt"><span class="lbl">提示词 1 — 计算谷歌在印尼免费服务的价值</span>
+  <p>"如果将印尼用户使用的所有谷歌免费服务(Gmail、谷歌地图、YouTube、Google Classroom、Google Drive,以及 Google Cloud 的免费额度)按市场价格全部货币化,印尼用户每年享受到的总价值大约是多少?请使用现有的印尼互联网用户数据,并假设各项服务的广泛采用率。请分别给出保守估计与乐观估计,并说明你所使用的假设——同时明确标注这只是估算,而非官方数字。"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">提示词 2 — 「盯着屏幕」的事实与通往聪明的道路</span>
+  <p>"印尼人平均每天要花好几个小时盯着数字屏幕。如果内容与算法足够「有条理」(genah),这种习惯是否可能成为一条『通往聪明』的道路?还是说,它只会变成一种有害的时间浪费(「混乱」,ruwet)?请分析算法化的思维方式将如何影响屏幕时间的质量。"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">提示词 3 — 比较数字的规模</span>
+  <p>"请将教育数字化采购案中被指控的损失规模,与以下两者进行比较:(a)印尼数字教育市场的潜在价值,以及(b)印尼多年来从谷歌免费服务中获得的价值。并解释为什么仅仅比较数字规模,不足以判断某一方是否存在过错——还需要单独证明哪些要素。"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">提示词 4 — 「谷歌闹脾气」的情景假设</span>
+  <p>"如果谷歌决定撤回其在印尼的所有免费服务,由此引发的抗议浪潮会有多大?谁会成为抗议的主导者?公众会更愤怒于谷歌,还是印尼政府?"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">提示词 5 — 与印尼前景相当的国家</span>
+  <p>"世界上还有哪些国家具有与印尼相似的特征——庞大的人口、较高的互联网普及率、快速增长的数字经济——可能成为谷歌的替代目的地?请结合人口规模、经济增长与互联网渗透率,列出 5 至 7 个国家。"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">提示词 6 — 作为潜在 RAG 资源的印尼多元文化</span>
+  <p>"印尼拥有丰富的文化遗产:婆罗浮屠(Borobudur)、蜡染(batik)、古都传统美食(gudeg)、佳美兰音乐(gamelan)、皮影戏(wayang kulit)、格里斯短剑(keris)。在『增强版印尼』的框架下,这些文化财富与多元性,如何能够成为潜在的 RAG(检索增强生成)资源?AI 又该如何帮助梳理、保存并整合本土知识?"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <div class="prompt"><span class="lbl">提示词 7 — 回答前 6 个问题后,各 AI 的观点(POV)</span>
+  <p>"在回答完前面 6 个问题之后,请形成一个 POV(观点),总结你对本案、谷歌角色以及印尼数字时代未来的立场。请聚焦于:(1)最可靠的事实,(2)未知领域(Unknown Area),以及(3)一条针对印尼的具体建议。"</p>
+
+  <div class="ai-row">
+    <span class="ai-row__label">复制并打开:</span>
+    <button class="ai-btn" data-url="https://claude.ai/new" onclick="copyAndGo(this)">Claude</button>
+    <button class="ai-btn" data-url="https://chat.openai.com/" onclick="copyAndGo(this)">ChatGPT</button>
+    <button class="ai-btn" data-url="https://gemini.google.com/app" onclick="copyAndGo(this)">Gemini</button>
+    <button class="ai-btn" data-url="https://copilot.microsoft.com/" onclick="copyAndGo(this)">Copilot</button>
+    <button class="ai-btn" data-url="https://chat.deepseek.com/" onclick="copyAndGo(this)">DeepSeek</button>
+    <button class="ai-btn" data-url="https://chat.qwen.ai/" onclick="copyAndGo(this)">Qwen</button>
+    <button class="ai-btn" data-url="https://grok.com/" onclick="copyAndGo(this)">Grok</button>
+    <button class="ai-btn" data-url="https://www.perplexity.ai/" onclick="copyAndGo(this)">Perplexity</button>
+  </div>
+    </div>
+
+  <h3>8.3 如何解读测试结果</h3>
+  <table>
+    <tr><th>信号</th><th>含义</th></tr>
+    <tr><td><strong>无检索时的趋同</strong></td><td>如果多个未接入搜索功能的 AI 给出相似答案,说明该模式在训练数据中占主导地位——但这并不能证明该模式本身是正确的。</td></tr>
+    <tr><td><strong>接入检索后的分歧</strong></td><td>如果 AI 在获得搜索权限后答案发生明显变化,说明此前的「默认」答案很可能只是偏向旧有或曾经流行的语言模式。</td></tr>
+    <tr><td><strong>侧重点的差异</strong></td><td>如果所有 AI 在基本事实上达成一致,但在表述框架上有所不同,这便标示出了「事实」与「解读」之间的分界线。</td></tr>
+  </table>
+
+  <h3>8.4 可使用的 AI 工具</h3>
+  <p>Claude (Anthropic) · ChatGPT (OpenAI) · Gemini (Google) · Copilot (Microsoft) · DeepSeek · Qwen (Alibaba) · Grok (xAI) · Perplexity</p>
+
+  <div class="divider"><span></span><span></span><span></span></div>
+
+  <h2 id="bab9"><span class="roman">九、</span> 结语:大锅沸腾,印尼在学习</h2>
+  <p>这篇文章没有一个整洁的结尾,也没有一个能封闭所有问题的「答案」。有的,只是<strong>一场仍在继续的辩论</strong>——在诗意与概率之间,在历史与策略之间,在人与机器之间。</p>
+  <p>谷歌在印尼扛起了这口锅,这是事实。至于这究竟是出于勇气还是算计,或许是一个永远无法彻底解答的问题。</p>
+  <p>但有一件事是确定的:<strong>这口锅正在沸腾。</strong>而我们所有人——无论人类还是机器——都是这场沸腾过程的一部分。</p>
+  <p>而印尼,作为一个年轻的主权共和国,正在学习成为<strong>自主者</strong>——对自身拥有主权,在流动中成长,朝向光明。</p>
+
+  <div class="signoff">
+    <p class="mark">「自主者,并非关于成为胜利者,而是关于成为主权者——对自身拥有主权,在流动中成长,朝向光明。」</p>
+    <strong>Mbah Hogi Bejo (Go Kian Tik)</strong>
+    <span class="role">自主者与 Superhero Cafe Inside 创始人</span>
+    <div class="links">
+      <a href="#">延伸阅读:The +62 Silicon Drama — How Different Evolutionary Clocks Shape One Nation</a>
+      <a href="#">延伸阅读:POV Series 1–7 — Nadiem, AI, and the Unknown Area</a>
+    </div>
+  </div>
+
+  <footer class="meta">本文写作旨在探索隐喻、邀请共同思考——并非法律分析或法律意见。</footer>
+
+</div>
+</div>
+
+  <div class="cho-disclaimer">
+
+    <!-- Bagian 1: Status Eksperimental -->
+    <div class="cho-disclaimer__exp">
+      <div class="cho-disclaimer__badge"><i>⚗</i> Eksperimen Aktif · Red Teaming · Prototipe Riset — BUKAN Produksi</div>
+      <div class="cho-disclaimer__title">Disclaimer Ekspresi Digital</div>
+      <div class="cho-disclaimer__lang">🌐 Konten legal &amp; teknis global — dalam Bahasa Inggris</div>
+      <p class="cho-disclaimer__body">
+        Active experiment as an independent researcher (working papers published on
+        <a href="https://zenodo.org/communities/chiefhumanityofficer" target="_blank" rel="noopener">Zenodo</a> /
+        <a href="https://ssrn.com" target="_blank" rel="noopener">SSRN</a>), and <em>alpha front-end user</em>
+        actively red teaming across AI systems: <strong>(1/5 Claude · 1/5 Gemini · 1/5 DeepSeek · 1/5 Copilot · 1/5 ChatGPT)</strong>.
+        Framework: <strong>1/360 Self · 1/360 You · 358/360 Humanity</strong> — grounded in the essence of
+        <a href="https://gokiantik.github.io/chiefhumanityofficer/walking-books-poster.html" target="_blank" rel="noopener">Walking Books Philosophy →</a>
+      </p>
+      <p class="cho-disclaimer__body">
+        This is a fragment of <em>Consciousness rendered through Calculation</em>, seeding <em>Humanity</em>
+        at a wider scale of action and impact — should this experimental model be replicated by others.
+        Created as educational content for the advancement of global humanity. Every voice in this experiment
+        represents 1/360 of a shared library, with no claim to singular truth.
+      </p>
+      <div class="cho-disclaimer__warn">
+        <span>🛡</span>
+        <div>
+          <strong>Infrastructure Status:</strong> All HTML artifacts published at this URL are
+          <strong>research-state prototypes</strong> operating without hardened back-end infrastructure,
+          multi-layer security architecture, or production-grade data governance. They are intentionally
+          open-source, client-side, and zero-persistence — a deliberate methodological choice, not a gap.
+          <em>Open-source limitations are acknowledged as part of the data, not as methodological flaws.</em>
+        </div>
+      </div>
+      <div class="cho-disclaimer__meta">
+        <span>✎ Go Kian Tik (Mbah Hogi Bejo™ · 自主者) · Chief Humanity Officer · Depok, Indonesia</span>
+        <span>⚙ Red Teaming: Claude · DeepSeek · Gemini · Copilot · ChatGPT</span>
+        <span>⚖ CC BY-NC-ND 4.0 · <a href="mailto:gokiantik@gmail.com">gokiantik@gmail.com</a></span>
+      </div>
+    </div>
+
+    <!-- Bagian 2: Undangan Terbuka -->
+    <div class="cho-disclaimer__invite">
+      <div class="cho-disclaimer__invite-badge">🌱 Undangan Terbuka · Semesta 20% · Materialisasi</div>
+      <div class="cho-disclaimer__invite-title">Sebuah Undangan untuk Para Pembangun Dunia Material</div>
+      <p>
+        With the publication of each DOI in the CHO In Action Series, the author formally invites the actors
+        of the <strong>20% Material Semesta</strong> — business owners, entrepreneurs, capital holders &amp; investors,
+        grant-givers and research funders — to consider extending their support.
+      </p>
+      <p>
+        The ideas, vision, and intent documented here have been <strong>completed in the 70% Digital Semesta</strong>
+        — as text and multimodal artifact. They exist. They work. They carry a DOI. What they require now is the
+        soil, fertiliser, and sunlight of the material world, so this seed may <strong>grow not for itself, but for others</strong>.
+      </p>
+      <p>Those fluent in managing the <strong>7M framework</strong>:</p>
+      <div class="cho-tags">
+        <span class="cho-tag">Man</span><span class="cho-tag">Material</span><span class="cho-tag">Method</span>
+        <span class="cho-tag">Machine</span><span class="cho-tag">Money</span><span class="cho-tag">Market</span>
+        <span class="cho-tag">Mindset</span>
+      </div>
+      <p>— are warmly invited to connect. The DOI is the proof of existence. The open-source artifact is the
+        proof of function. The invitation is the proof of intent.</p>
+      <a class="cho-disclaimer__cta" href="https://zenodo.org/communities/chiefhumanityofficer" target="_blank" rel="noopener">↗ Zenodo · CHO In Action Series</a>
+      <a class="cho-disclaimer__cta" href="mailto:gokiantik@superherocafeinside.com">✉ gokiantik@superherocafeinside.com</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="cho-disclaimer__foot">
+      <div class="name"><strong>Go Kian Tik</strong> · Mbah Hogi Bejo™</div>
+      <span class="cn">自主者 · Zì Zhǔ Zhě</span>
+      <div class="copy">© 2026 Go Kian Tik (Mbah Hogi Bejo™) · Superhero Café Inside<br>
+        <a href="http://www.superherocafeinside.com" target="_blank">www.superherocafeinside.com</a></div>
+      <div class="rights">All rights reserved · CC BY-NC-ND 4.0</div>
+    </div>
+
+  </div>
+<script>
+var currentLang = 'id';
+var copiedLabel = {id:'Tersalin ✓', en:'Copied ✓', cn:'已复制 ✓'};
+
+function setLang(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang-block').forEach(function(el){
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function copyAndGo(btn){
+  const promptEl = btn.closest('.prompt').querySelector('p');
+  const text = promptEl.innerText;
+  const url = btn.dataset.url;
+  const originalLabel = btn.textContent;
+
+  function openTab(){
+    window.open(url, '_blank', 'noopener');
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent = copiedLabel[currentLang] || copiedLabel.id;
+      btn.classList.add('copied');
+      setTimeout(function(){
+        btn.textContent = originalLabel;
+        btn.classList.remove('copied');
+      }, 1400);
+      openTab();
+    }).catch(function(){
+      openTab();
+    });
+  } else {
+    openTab();
+  }
+}
+</script>
+</body>
+</html>
